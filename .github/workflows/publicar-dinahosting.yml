@@ -1,0 +1,85 @@
+# Publica la web en Dinahosting (condadoclub.es) por FTPS.
+#
+# - Al subir cambios a main: copia de seguridad del servidor + publicación.
+# - Manual (pestaña Actions → "Publicar en Dinahosting" → Run workflow):
+#     "comparar" → solo copia de seguridad y lista de diferencias, no sube nada.
+#     "publicar" → copia de seguridad + publicación.
+#
+# Necesita el secreto FTP_PASSWORD (Settings → Secrets and variables → Actions).
+# Nunca borra archivos del servidor; cgi-bin y .well-known no se tocan.
+
+name: Publicar en Dinahosting
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - ".github/**"
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "comparar = solo revisar (no sube nada) · publicar = subir a condadoclub.es"
+        type: choice
+        options: [comparar, publicar]
+        default: comparar
+
+concurrency:
+  group: dinahosting
+  cancel-in-progress: false
+
+env:
+  FTP_HOST: condadoclub-es.espacioseguro.com
+  FTP_USER: condadoclub_ftp
+  LFTP_OPTS: "set ftp:ssl-force true; set ftp:ssl-protect-data true; set net:max-retries 3; set net:timeout 30;"
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Copia de seguridad del servidor
+        env:
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          test -n "$FTP_PASSWORD" || { echo "::error::Falta el secreto FTP_PASSWORD"; exit 1; }
+          mkdir -p "$RUNNER_TEMP/copia-servidor"
+          lftp -u "$FTP_USER,$FTP_PASSWORD" "ftp://$FTP_HOST" -e "$LFTP_OPTS
+            mirror --verbose --parallel=4 --exclude-glob cgi-bin/ --exclude-glob .well-known/ / $RUNNER_TEMP/copia-servidor;
+            bye"
+
+      - name: Guardar la copia (descargable 90 días)
+        uses: actions/upload-artifact@v4
+        with:
+          name: copia-servidor-${{ github.run_number }}
+          path: ${{ runner.temp }}/copia-servidor
+          include-hidden-files: true
+          retention-days: 90
+
+      - name: Diferencias entre el servidor y GitHub
+        run: |
+          {
+            echo "### Archivos distintos (servidor → GitHub)"
+            echo '```'
+            diff -rq --exclude=.git --exclude=.github "$RUNNER_TEMP/copia-servidor" . || true
+            echo '```'
+            echo "### Detalle de cambios"
+            echo '```diff'
+            for f in index.html evento/index.html robots.txt sitemap.xml; do
+              diff -u "$RUNNER_TEMP/copia-servidor/$f" "$f" 2>&1 | head -200 || true
+            done
+            echo '```'
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Subir a condadoclub.es
+        if: github.event_name == 'push' || inputs.modo == 'publicar'
+        env:
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -u "$FTP_USER,$FTP_PASSWORD" "ftp://$FTP_HOST" -e "$LFTP_OPTS
+            mirror --reverse --verbose --parallel=4 --exclude-glob .git/ --exclude-glob .github/ . /;
+            bye"
+          echo "### Publicado en https://condadoclub.es" >> "$GITHUB_STEP_SUMMARY"
