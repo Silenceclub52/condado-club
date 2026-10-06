@@ -5,8 +5,11 @@
 #     "comparar" → solo copia de seguridad y lista de diferencias, no sube nada.
 #     "publicar" → copia de seguridad + publicación.
 #
-# Necesita el secreto FTP_PASSWORD (Settings → Secrets and variables → Actions).
+# Solo sube los archivos que son distintos (o faltan) en el servidor, de uno en
+# uno y sobrescribiendo en su sitio: nunca borra un archivo antes de subirlo.
 # Nunca borra archivos del servidor; cgi-bin y .well-known no se tocan.
+#
+# Necesita el secreto FTP_PASSWORD (Settings → Secrets and variables → Actions).
 
 name: Publicar en Dinahosting
 
@@ -30,10 +33,11 @@ concurrency:
 env:
   FTP_HOST: condadoclub-es.espacioseguro.com
   FTP_USER: condadoclub_ftp
-  LFTP_OPTS: "set ftp:ssl-force true; set ftp:ssl-protect-data true; set net:max-retries 3; set net:timeout 30;"
+  LFTP_OPTS: "set ftp:ssl-force true; set ftp:ssl-protect-data true; set net:max-retries 10; set net:reconnect-interval-base 5; set net:timeout 60;"
 
 jobs:
-  publicar:
+  dinahosting:
+    name: ${{ (github.event_name == 'push' || inputs.modo == 'publicar') && 'Publicar' || 'Comparar' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -48,7 +52,7 @@ jobs:
           test -n "$FTP_PASSWORD" || { echo "::error::Falta el secreto FTP_PASSWORD"; exit 1; }
           mkdir -p "$RUNNER_TEMP/copia-servidor"
           lftp -u "$FTP_USER,$FTP_PASSWORD" "ftp://$FTP_HOST" -e "$LFTP_OPTS
-            mirror --verbose --parallel=4 --exclude-glob cgi-bin/ --exclude-glob .well-known/ / $RUNNER_TEMP/copia-servidor;
+            mirror --verbose --parallel=2 --exclude-glob cgi-bin/ --exclude-glob .well-known/ / $RUNNER_TEMP/copia-servidor;
             bye"
 
       - name: Guardar la copia (descargable 90 días)
@@ -59,12 +63,20 @@ jobs:
           include-hidden-files: true
           retention-days: 90
 
-      - name: Diferencias entre el servidor y GitHub
+      - name: Archivos a subir (distintos o que faltan en el servidor)
         run: |
+          mkdir -p "$RUNNER_TEMP/subir"
+          git -c core.quotePath=false ls-files -z | while IFS= read -r -d '' f; do
+            case "$f" in .github/*) continue ;; esac
+            if ! cmp -s "$f" "$RUNNER_TEMP/copia-servidor/$f"; then
+              mkdir -p "$RUNNER_TEMP/subir/$(dirname "$f")"
+              cp -p "$f" "$RUNNER_TEMP/subir/$f"
+            fi
+          done
           {
-            echo "### Archivos distintos (servidor → GitHub)"
+            echo "### Archivos que se subirán"
             echo '```'
-            diff -rq --exclude=.git --exclude=.github "$RUNNER_TEMP/copia-servidor" . || true
+            (cd "$RUNNER_TEMP/subir" && find . -type f | sort) || true
             echo '```'
             echo "### Detalle de cambios"
             echo '```diff'
@@ -79,7 +91,11 @@ jobs:
         env:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
+          if [ -z "$(find "$RUNNER_TEMP/subir" -type f)" ]; then
+            echo "### Nada que subir: el servidor ya está al día" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
           lftp -u "$FTP_USER,$FTP_PASSWORD" "ftp://$FTP_HOST" -e "$LFTP_OPTS
-            mirror --reverse --verbose --parallel=4 --exclude-glob .git/ --exclude-glob .github/ . /;
+            mirror --reverse --verbose --overwrite --parallel=1 $RUNNER_TEMP/subir /;
             bye"
           echo "### Publicado en https://condadoclub.es" >> "$GITHUB_STEP_SUMMARY"
