@@ -1,0 +1,23 @@
+# Configuración de Apache para condadoclub.es (Dinahosting).
+#
+# La web es una aplicación de una sola página: todas las secciones
+# (/calendario, /mesas-vip, /sala…) viven en index.html. Si alguien entra
+# directamente en una de esas direcciones, el servidor debe entregar
+# index.html en lugar de un error 404. Es lo mismo que hace vercel.json.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # /calendario/ → /calendario (las imágenes usan rutas relativas y fallarían
+  # con la barra final). No afecta a carpetas reales como /evento/.
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+  # Cualquier dirección que no sea un archivo ni una carpeta real → index.html.
+  # Las imágenes, vídeos, etc. que falten siguen dando 404 (así se detectan).
+  RewriteCond %{REQUEST_URI} !^/(assets|\.well-known)/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>

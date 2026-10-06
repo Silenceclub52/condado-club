@@ -1,0 +1,3 @@
+# Netlify: la web es una sola página; cualquier dirección que no sea un
+# archivo real se sirve con index.html (equivalente a .htaccess y vercel.json).
+/*    /index.html    200
