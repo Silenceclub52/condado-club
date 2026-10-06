@@ -1193,6 +1193,32 @@ function Footer({ onNav }) {
               <a href="https://facebook.com"  target="_blank" rel="noreferrer" className="social-icon" aria-label="Facebook"><FacebookIcon /></a>
               <a href="https://tiktok.com"    target="_blank" rel="noreferrer" className="social-icon" aria-label="TikTok"><TikTokIcon /></a>
             </div>
+            {/* Firma Silence Club */}
+            <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: 8 }}>
+              <a className="sc-credit" href="mailto:info@silenceclub.es" aria-label="Made with love by Silence Club. Escribir a info@silenceclub.es">
+                <span>Made with</span>
+                <svg className="sc-heart" viewBox="0 0 24 22" aria-hidden="true">
+                  <path d="M12 19.5 C5 14.5 1.6 10 3.4 6.2 C5.2 2.6 9.8 3 12 7.2"/>
+                  <path d="M12 19.5 C19 14.5 22.4 10 20.6 6.2 C18.8 2.6 14.2 3 12 7.2"/>
+                  <circle cx="12" cy="20.6" r=".9"/>
+                </svg>
+                <span>by</span>
+                <img className="sc-logo" src="assets/logos/logo-silence-club.png" alt="Silence Club" width={90} height={24} />
+              </a>
+              <style>{`
+                @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&display=swap');
+                .sc-credit{display:inline-flex;align-items:center;gap:7px;font-family:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;font-size:12.48px;font-weight:400;line-height:1.6;letter-spacing:.02em;color:#FFFFFF;text-decoration:none;opacity:.6;transition:opacity .25s}
+                .sc-credit:hover,.sc-credit:focus-visible{opacity:1}
+                .sc-credit .sc-heart{width:17px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;transform-origin:center;overflow:visible}
+                .sc-credit .sc-heart circle{fill:currentColor;stroke:none}
+                .sc-credit:hover .sc-heart path{stroke-dasharray:26;animation:sc-hdraw .8s ease both}
+                .sc-credit:hover .sc-heart{animation:sc-hbeat .9s ease .75s}
+                @keyframes sc-hdraw{from{stroke-dashoffset:26}to{stroke-dashoffset:0}}
+                @keyframes sc-hbeat{0%,100%{transform:scale(1)}30%{transform:scale(1.18)}60%{transform:scale(.96)}}
+                .sc-credit .sc-logo{height:22px;width:auto;display:block;margin-left:2px}
+                @media (prefers-reduced-motion: reduce){.sc-credit:hover .sc-heart,.sc-credit:hover .sc-heart path{animation:none}}
+              `}</style>
+            </div>
           </div>
         </div>
 
@@ -1213,32 +1239,6 @@ function Footer({ onNav }) {
           <p style={{ fontSize: 11, color: 'var(--w40)', textAlign: 'center', letterSpacing: 0.5 }}>
             © 2026 Condado Club · Dénia, Alicante · Todos los derechos reservados
           </p>
-          {/* Firma Silence Club */}
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <a className="sc-credit" href="mailto:info@silenceclub.es" aria-label="Made with love by Silence Club. Escribir a info@silenceclub.es">
-              <span>Made with</span>
-              <svg className="sc-heart" viewBox="0 0 24 22" aria-hidden="true">
-                <path d="M12 19.5 C5 14.5 1.6 10 3.4 6.2 C5.2 2.6 9.8 3 12 7.2"/>
-                <path d="M12 19.5 C19 14.5 22.4 10 20.6 6.2 C18.8 2.6 14.2 3 12 7.2"/>
-                <circle cx="12" cy="20.6" r=".9"/>
-              </svg>
-              <span>by</span>
-              <img className="sc-logo" src="assets/logos/logo-silence-club.png" alt="Silence Club" width={90} height={24} />
-            </a>
-            <style>{`
-              @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400&display=swap');
-              .sc-credit{display:inline-flex;align-items:center;gap:7px;font-family:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;font-size:12.48px;font-weight:400;line-height:1.6;letter-spacing:.02em;color:#FFFFFF;text-decoration:none;opacity:.6;transition:opacity .25s}
-              .sc-credit:hover,.sc-credit:focus-visible{opacity:1}
-              .sc-credit .sc-heart{width:17px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;transform-origin:center;overflow:visible}
-              .sc-credit .sc-heart circle{fill:currentColor;stroke:none}
-              .sc-credit:hover .sc-heart path{stroke-dasharray:26;animation:sc-hdraw .8s ease both}
-              .sc-credit:hover .sc-heart{animation:sc-hbeat .9s ease .75s}
-              @keyframes sc-hdraw{from{stroke-dashoffset:26}to{stroke-dashoffset:0}}
-              @keyframes sc-hbeat{0%,100%{transform:scale(1)}30%{transform:scale(1.18)}60%{transform:scale(.96)}}
-              .sc-credit .sc-logo{height:22px;width:auto;display:block;margin-left:2px}
-              @media (prefers-reduced-motion: reduce){.sc-credit:hover .sc-heart,.sc-credit:hover .sc-heart path{animation:none}}
-            `}</style>
-          </div>
         </div>
       </div>
 
