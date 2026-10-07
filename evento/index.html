@@ -211,7 +211,7 @@
   </nav>
 
   <div class="ev-bar">
-    <a class="ev-back" href="/evento/" hidden>
+    <a class="ev-back" href="/calendario" hidden>
       <!-- Flecha de retroceso curva -->
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M9 14 4 9l5-5"/>
@@ -249,7 +249,7 @@
       });
 
       // El botón "Eventos" solo aparece dentro de un evento concreto
-      // (dirección del tipo /evento/#events/nombre-del-evento). Vuelve a la lista.
+      // (dirección del tipo /evento/#events/nombre-del-evento). Lleva al calendario.
       var back = document.querySelector('.ev-back');
       var lastHash = null;
       function syncBack() {
