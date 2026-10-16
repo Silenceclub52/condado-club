@@ -4,8 +4,10 @@
 //
 // <eventos.json> es la respuesta de GET /integrations/events/ ({ success, data: [...] }).
 // Escribe:
-//   eventos/index.html            → listado de próximos eventos
+//   eventos/index.html            → listado: próximos eventos + eventos pasados
 //   eventos/<slug>/index.html     → una página por evento (las antiguas se conservan)
+//   eventos/historico.json        → todos los eventos vistos alguna vez; así los pasados
+//                                   siguen en el listado aunque la API ya no los devuelva
 //
 // La cabecera, el menú y el botón de WhatsApp se copian de evento/index.html,
 // para que todas las páginas compartan el mismo aspecto.
@@ -22,9 +24,17 @@ if (!input) {
   console.error('Uso: node scripts/generar-eventos.mjs <eventos.json>');
   process.exit(1);
 }
-const events = (JSON.parse(fs.readFileSync(input, 'utf8')).data || [])
-  .filter((e) => e && e.slug && e.name && e.start && e.visible !== false && e.active !== false)
-  .sort((a, b) => a.start - b.start);
+const HISTORY = path.join(ROOT, 'eventos', 'historico.json');
+const KEEP = ['_id', 'name', 'slug', 'url', 'start', 'end', 'flyer', 'description', 'age', 'music_genres', 'outfit', 'artists', 'location_town', 'visible', 'active'];
+const slim = (e) => Object.fromEntries(KEEP.filter((k) => e[k] !== undefined).map((k) => [k, e[k]]));
+
+// Histórico + lo nuevo de la API (lo nuevo manda: si cambia un evento, se actualiza).
+const merged = new Map();
+if (fs.existsSync(HISTORY)) for (const e of JSON.parse(fs.readFileSync(HISTORY, 'utf8'))) merged.set(e._id || e.slug, e);
+for (const e of JSON.parse(fs.readFileSync(input, 'utf8')).data || []) if (e && e.slug) merged.set(e._id || e.slug, slim(e));
+const all = [...merged.values()].sort((a, b) => a.start - b.start);
+
+const events = all.filter((e) => e.name && e.start && e.visible !== false && e.active !== false);
 
 // ---------- Piezas compartidas con evento/index.html ----------
 const base = fs.readFileSync(path.join(ROOT, 'evento/index.html'), 'utf8');
@@ -141,6 +151,12 @@ const pageStyle = `
       .ev-card-btn { height: 34px; font-size: 9.5px; letter-spacing: 1.5px; }
     }
     .ev-empty { color: var(--w60); }
+    .ev-past-head { margin: 72px 0 28px; }
+    .ev-past-head .ev-title { font-size: clamp(32px, 4.5vw, 52px); }
+    .ev-card.is-past img { filter: grayscale(0.6) brightness(0.8); }
+    .ev-card.is-past:hover img { filter: none; }
+    .ev-card.is-past .ev-card-date { color: var(--w60); }
+    .ev-card.is-past .ev-card-btn { background: transparent; color: var(--white); border: 1px solid var(--w15); }
 `;
 
 const menuScript = `
@@ -303,20 +319,19 @@ ${ended ? '' : `  <div class="ev-sticky">
 }
 
 // ---------- Listado ----------
-function listPage(upcoming) {
-  const cards = upcoming
-    .map(
-      (e) => `      <a class="ev-card" href="/eventos/${e.slug}/">
+const card = (e, past) => `      <a class="ev-card${past ? ' is-past' : ''}" href="/eventos/${e.slug}/">
         ${e.flyer ? `<img src="${esc(e.flyer)}" alt="Cartel de ${esc(titleCase(e.name))}" loading="lazy" />` : ''}
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
-          <p class="ev-card-date">${esc(fechaCorta(e.start))} · ${esc(hora(e.start))}</p>
+          <p class="ev-card-date">${past ? esc(cap(fmt(e.start, { day: 'numeric', month: 'short', year: 'numeric' }))) : `${esc(fechaCorta(e.start))} · ${esc(hora(e.start))}`}</p>
           <h2>${esc(e.name)}</h2>
-          <span class="ev-card-btn">Tickets y VIP</span>
+          <span class="ev-card-btn">${past ? 'Ver evento' : 'Tickets y VIP'}</span>
         </div>
-      </a>`
-    )
-    .join('\n');
+      </a>`;
+
+function listPage(upcoming, past) {
+  const cards = upcoming.map((e) => card(e, false)).join('\n');
+  const pastCards = past.map((e) => card(e, true)).join('\n');
 
   const ld = {
     '@context': 'https://schema.org',
@@ -336,6 +351,11 @@ function listPage(upcoming) {
       <h1 class="ev-title">Próximos eventos</h1>
     </div>
     ${upcoming.length ? `<div class="ev-cards">\n${cards}\n    </div>` : '<p class="ev-empty">Pronto anunciaremos nuevas fechas.</p>'}
+    ${past.length ? `<div class="ev-past-head">
+      <p class="ev-kicker">Histórico</p>
+      <h2 class="ev-title">Eventos pasados</h2>
+    </div>
+    <div class="ev-cards">\n${pastCards}\n    </div>` : ''}
   </main>`,
   });
 }
@@ -349,6 +369,9 @@ for (const e of events) {
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), eventPage(e, now));
 }
-const upcoming = events.filter((e) => (e.end || e.start + 6 * 3600) >= now);
-fs.writeFileSync(path.join(outDir, 'index.html'), listPage(upcoming));
-console.log(`Páginas generadas: ${events.length} eventos (${upcoming.length} próximos) + listado.`);
+const isOver = (e) => (e.end || e.start + 6 * 3600) < now;
+const upcoming = events.filter((e) => !isOver(e));
+const past = events.filter(isOver).reverse();
+fs.writeFileSync(path.join(outDir, 'index.html'), listPage(upcoming, past));
+fs.writeFileSync(HISTORY, JSON.stringify(all, null, 1) + '\n');
+console.log(`Páginas generadas: ${events.length} eventos (${upcoming.length} próximos, ${past.length} pasados) + listado.`);

@@ -1,9 +1,16 @@
 # Genera las páginas de eventos (eventos/…) con los datos de la API de Fourvenues.
 # Se lanza a mano (Actions → "Generar páginas de eventos" → Run workflow) y guarda
 # el resultado en la rama elegida. No publica en condadoclub.es por sí sola.
+# Descarga el último año y los próximos 4 meses: los eventos pasados forman el histórico.
 name: Generar páginas de eventos
 on:
   workflow_dispatch:
+  # Solo en la rama de prueba: regenera la vista previa al cambiar el generador.
+  push:
+    branches: [prueba-eventos]
+    paths:
+      - scripts/generar-eventos.mjs
+      - .github/workflows/generar-eventos.yml
 permissions:
   contents: write
 jobs:
@@ -19,10 +26,16 @@ jobs:
           KEY: ${{ secrets.CONDADO_FOURVENUES_API_KEY }}
         run: |
           test -n "$KEY" || { echo "::error::Falta el secreto CONDADO_FOURVENUES_API_KEY"; exit 1; }
-          START=$(date -u -d "-1 day" +%Y-%m-%d); END=$(date -u -d "+120 days" +%Y-%m-%d)
-          code=$(curl -sS -H "X-Api-Key: $KEY" -o "$RUNNER_TEMP/events.json" -w "%{http_code}" \
-            "https://api.fourvenues.com/integrations/events/?start=$START&end=$END")
-          echo "HTTP $code"; test "$code" = "200"
+          # Por tramos de 30 días (la API no pagina) y se juntan en un solo archivo.
+          d=$(date -u -d "-365 days" +%Y-%m-%d); END=$(date -u -d "+120 days" +%Y-%m-%d); i=0
+          while [[ "$d" < "$END" ]]; do
+            n=$(date -u -d "$d +30 days" +%Y-%m-%d)
+            code=$(curl -sS -H "X-Api-Key: $KEY" -o "$RUNNER_TEMP/tramo-$i.json" -w "%{http_code}" \
+              "https://api.fourvenues.com/integrations/events/?start=$d&end=$n")
+            echo "$d → $n: HTTP $code"; test "$code" = "200"
+            d=$n; i=$((i+1))
+          done
+          jq -s '{data: (map(.data // []) | add | unique_by(._id))}' "$RUNNER_TEMP"/tramo-*.json > "$RUNNER_TEMP/events.json"
           jq -r '.data[] | [(.start|todate), .name, (if .visible then "visible" else "oculto" end)] | @tsv' "$RUNNER_TEMP/events.json"
       - name: Generar páginas
         run: node scripts/generar-eventos.mjs "$RUNNER_TEMP/events.json"
