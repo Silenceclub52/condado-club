@@ -278,6 +278,11 @@
       // El botón "Eventos" solo aparece dentro de un evento concreto
       // (dirección del tipo /evento/#events/nombre-del-evento). Lleva al calendario.
       var back = document.querySelector('.ev-back');
+      // Si se llega desde la página de un evento (/eventos/…), el botón vuelve a ella.
+      try {
+        var ref = new URL(document.referrer);
+        if (ref.host === location.host && /^\/eventos\/[^/]+\/?$/.test(ref.pathname)) back.href = ref.pathname;
+      } catch (e) {}
       var lastHash = null;
       function syncBack() {
         if (location.hash === lastHash) return;

@@ -1,0 +1,35 @@
+# Genera las páginas de eventos (eventos/…) con los datos de la API de Fourvenues.
+# Se lanza a mano (Actions → "Generar páginas de eventos" → Run workflow) y guarda
+# el resultado en la rama elegida. No publica en condadoclub.es por sí sola.
+name: Generar páginas de eventos
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Descargar eventos de Fourvenues
+        env:
+          KEY: ${{ secrets.CONDADO_FOURVENUES_API_KEY }}
+        run: |
+          test -n "$KEY" || { echo "::error::Falta el secreto CONDADO_FOURVENUES_API_KEY"; exit 1; }
+          START=$(date -u -d "-1 day" +%Y-%m-%d); END=$(date -u -d "+120 days" +%Y-%m-%d)
+          code=$(curl -sS -H "X-Api-Key: $KEY" -o "$RUNNER_TEMP/events.json" -w "%{http_code}" \
+            "https://api.fourvenues.com/integrations/events/?start=$START&end=$END")
+          echo "HTTP $code"; test "$code" = "200"
+          jq -r '.data[] | [(.start|todate), .name, (if .visible then "visible" else "oculto" end)] | @tsv' "$RUNNER_TEMP/events.json"
+      - name: Generar páginas
+        run: node scripts/generar-eventos.mjs "$RUNNER_TEMP/events.json"
+      - name: Guardar cambios en la rama
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add eventos
+          git commit -m "Páginas de eventos actualizadas desde Fourvenues" || echo "Sin cambios"
+          git push
