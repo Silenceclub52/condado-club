@@ -10,24 +10,33 @@ jobs:
   explorar:
     runs-on: ubuntu-latest
     steps:
-      - name: Descargar el script del widget
+      - name: Script del widget completo (desde la letra 3000)
         run: |
           mkdir -p out
-          curl -sSL -A "Mozilla/5.0" -D out/widget.headers -o out/widget.js "https://www.fourvenues.com/assets/iframe/condado-club-denia/events"
-          echo "== cabeceras"; cat out/widget.headers
-          echo "== tamaño"; wc -c out/widget.js
-          echo "== primeras 3000 letras"; head -c 3000 out/widget.js; echo
-          echo "== URLs encontradas"; grep -oE "https?://[^\"' )<>]+" out/widget.js | sort -u | head -80
-      - name: Seguir las URLs de Fourvenues que aparecen
+          curl -sSL -A "Mozilla/5.0" -o out/widget.js "https://www.fourvenues.com/assets/iframe/condado-club-denia/events"
+          tail -c +3000 out/widget.js
+      - name: Página del iframe con la lista de eventos
         run: |
-          for u in $(grep -oE "https?://[a-z0-9.-]*fourvenues\.com[^\"' )<>]*" out/widget.js | sort -u | head -15); do
-            f="out/$(echo "$u" | md5sum | cut -c1-8)"
-            code=$(curl -sSL -A "Mozilla/5.0" -o "$f" -w "%{http_code} %{content_type}" "$u" || true)
-            echo "== $u -> $code ($(wc -c < "$f") bytes)"
-            head -c 1500 "$f" | tr -d '\000'; echo
-            echo "-- urls dentro:"; grep -oE "https?://[^\"' )<>]+" "$f" | grep -i -E "api|event|fourvenues" | sort -u | head -30
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
+          code=$(curl -sSL -A "$UA" -o out/iframe.html -w "%{http_code} %{content_type} %{url_effective}" "https://www.fourvenues.com/iframe/condado-club-denia/events")
+          echo "== $code ($(wc -c < out/iframe.html) bytes)"
+          head -c 4000 out/iframe.html; echo
+          echo "== enlaces a eventos"; grep -oE "condado-club-denia/events/[A-Za-z0-9_-]+" out/iframe.html | sort -u | head -40
+          echo "== json-ld / datos"; grep -oE "application/ld\+json|__NEXT_DATA__|ng-state|window\.__[A-Z_]+" out/iframe.html | sort | uniq -c
+          echo "== scripts"; grep -oE "src=\"[^\"]+\"" out/iframe.html | head -30
+          echo "== api"; grep -oE "https?://[^\"' )<>]*api[^\"' )<>]*" out/iframe.html | sort -u | head -30
+      - name: Página pública de eventos de Condado en fourvenues.com
+        run: |
+          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
+          for u in "https://www.fourvenues.com/es/condado-club-denia/events" "https://www.fourvenues.com/condado-club-denia/events"; do
+            f="out/pub-$(echo "$u" | md5sum | cut -c1-6).html"
+            code=$(curl -sSL -A "$UA" -o "$f" -w "%{http_code} %{url_effective}" "$u" || true)
+            echo "== $u -> $code ($(wc -c < "$f" 2>/dev/null) bytes)"
+            grep -oE "events/[A-Za-z0-9_-]{8,}" "$f" | sort -u | head -20
+            grep -c "application/ld+json" "$f" || true
+            grep -oE '"@type":"[A-Za-z]+"' "$f" | sort | uniq -c | head
           done
       - uses: actions/upload-artifact@v4
         with:
-          name: fourvenues-exploracion
+          name: fourvenues-exploracion-2
           path: out
