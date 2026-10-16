@@ -1,5 +1,5 @@
-# Solo lectura: descarga la documentación pública de la API de Fourvenues
-# y la guarda en la rama prueba-eventos (carpeta docs-fourvenues/).
+# Solo lectura: prueba la clave de la Integrations API de Fourvenues
+# y guarda una muestra de eventos (datos públicos) en la rama prueba-eventos.
 name: Explorar Fourvenues
 on:
   push:
@@ -9,39 +9,36 @@ on:
 permissions:
   contents: write
 jobs:
-  docs:
+  probar-clave:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Descargar documentación
+      - name: Probar la clave y leer eventos
+        env:
+          KEY: ${{ secrets.CONDADO_FOURVENUES_API_KEY }}
         run: |
-          mkdir -p docs-fourvenues
-          B=https://docs.fourvenues.com
-          for f in llms.txt llms-full.txt sitemap.xml openapi.json; do
-            code=$(curl -sSL -A "Mozilla/5.0" -o "docs-fourvenues/$f" -w "%{http_code}" "$B/$f" || true)
-            echo "$f -> $code ($(wc -c < docs-fourvenues/$f) bytes)"
-            [ "$code" = "200" ] || rm -f "docs-fourvenues/$f"
-          done
-          # Páginas en Markdown (Mintlify sirve .md) a partir de llms.txt o del sitemap
-          { grep -oE "https://docs\.fourvenues\.com/[^ )\"<]+" docs-fourvenues/llms.txt 2>/dev/null; grep -oE "https://docs\.fourvenues\.com/[^<]+" docs-fourvenues/sitemap.xml 2>/dev/null; } | sed 's/\.md$//' | sort -u > docs-fourvenues/_urls.txt || true
-          echo "URLs: $(wc -l < docs-fourvenues/_urls.txt)"
-          mkdir -p docs-fourvenues/pages
-          while read -r u; do
-            case "$u" in *integrations*|*introduction*|*getting*|*recipes*) ;; *) continue ;; esac
-            n=$(echo "${u#https://docs.fourvenues.com/}" | tr '/' '_')
-            curl -sSL -A "Mozilla/5.0" -o "docs-fourvenues/pages/$n.md" "$u.md" || true
-          done < docs-fourvenues/_urls.txt
-          ls -la docs-fourvenues docs-fourvenues/pages | head -100
-          # OpenAPI de la Integrations API (rutas habituales de Mintlify)
-          for p in integrations/openapi.json api-reference/openapi.json openapi.yaml integrations/openapi.yaml; do
-            code=$(curl -sSL -A "Mozilla/5.0" -o /tmp/o -w "%{http_code}" "$B/$p" || true)
-            echo "$p -> $code"; [ "$code" = "200" ] && cp /tmp/o "docs-fourvenues/$(echo $p | tr '/' '_')"
-          done
-          du -sh docs-fourvenues
-      - name: Guardar en la rama
+          test -n "$KEY" || { echo "::error::No encuentro el secreto CONDADO_FOURVENUES_API_KEY"; exit 1; }
+          B=https://api.fourvenues.com/integrations
+          mkdir -p muestra-fourvenues
+          echo "== ¿Quién soy? (channels)"
+          code=$(curl -sS -H "X-Api-Key: $KEY" -o muestra-fourvenues/channels.json -w "%{http_code}" "$B/channels/")
+          echo "HTTP $code"; head -c 800 muestra-fourvenues/channels.json; echo
+          START=$(date -u +%Y-%m-%d); END=$(date -u -d "+90 days" +%Y-%m-%d)
+          echo "== Eventos $START → $END"
+          code=$(curl -sS -H "X-Api-Key: $KEY" -o muestra-fourvenues/events.json -w "%{http_code}" "$B/events/?start=$START&end=$END")
+          echo "HTTP $code"
+          jq -r '.data[]? | [(.start|todate), .name, .slug, (.flyer // "-")] | @tsv' muestra-fourvenues/events.json | head -40 || head -c 1500 muestra-fourvenues/events.json
+          ID=$(jq -r '.data[0]._id // empty' muestra-fourvenues/events.json)
+          if [ -n "$ID" ]; then
+            echo "== Detalle del primer evento ($ID)"
+            code=$(curl -sS -H "X-Api-Key: $KEY" -o muestra-fourvenues/event-detail.json -w "%{http_code}" "$B/events/$ID")
+            echo "HTTP $code"
+            jq '.data | {name, slug, code, display_date, start_date, age, outfit, music_genres, artists, image_url, n_ticket_rates: (.ticket_rates|length), ticket_rates: [.ticket_rates[]? | {name, current_price, available}]}' muestra-fourvenues/event-detail.json || head -c 1500 muestra-fourvenues/event-detail.json
+          fi
+      - name: Guardar muestra en la rama
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git add docs-fourvenues
-          git commit -m "Documentación de la API de Fourvenues (descarga automática)" || echo "sin cambios"
+          git add muestra-fourvenues
+          git commit -m "Muestra de eventos de la API de Fourvenues" || echo "sin cambios"
           git push
