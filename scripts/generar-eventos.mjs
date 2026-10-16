@@ -55,8 +55,6 @@ const fmt = (unix, opts) => new Intl.DateTimeFormat('es-ES', { timeZone: TZ, ...
 const cap = (s) => s.charAt(0).toLocaleUpperCase('es') + s.slice(1);
 const fechaLarga = (u) => cap(fmt(u, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }));
 const fechaCorta = (u) => cap(fmt(u, { weekday: 'short', day: 'numeric', month: 'short' }));
-const dia = (u) => fmt(u, { day: '2-digit' });
-const mes = (u) => fmt(u, { month: 'short' }).replace('.', '');
 const hora = (u) => fmt(u, { hour: '2-digit', minute: '2-digit', hour12: false });
 const iso = (u) => new Date(u * 1000).toISOString();
 
@@ -90,10 +88,11 @@ const pageStyle = `
     .ev-crumbs a:hover { color: var(--gold); }
     .ev-grid { display: grid; gap: 24px; grid-template-areas: 'head' 'poster' 'rest'; }
     .ev-head { grid-area: head; } .ev-poster { grid-area: poster; } .ev-rest { grid-area: rest; }
-    @media (min-width: 860px) { .ev-grid { grid-template-columns: minmax(0, 420px) 1fr; grid-template-areas: 'poster head' 'poster rest'; grid-template-rows: auto 1fr; align-items: start; column-gap: 48px; row-gap: 0; } }
-    .ev-poster { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; background: var(--night-2); border: 1px solid var(--w08); display: block; }
+    @media (min-width: 860px) { .ev-grid { grid-template-columns: 380px 1fr; grid-template-areas: 'poster head' 'poster rest'; grid-template-rows: auto 1fr; align-items: start; column-gap: 48px; row-gap: 0; } }
+    .ev-poster { width: 100%; max-width: 380px; height: auto; border-radius: 24px; background: var(--night-2); border: 1px solid var(--w08); display: block; }
+    @media (min-width: 860px) { .ev-poster { position: sticky; top: 96px; } }
     .ev-kicker { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin: 0 0 12px; }
-    .ev-title { font-size: clamp(34px, 6vw, 60px); line-height: 0.95; letter-spacing: -0.5px; text-transform: uppercase; margin: 0 0 18px; font-weight: 600; }
+    .ev-title { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-size: clamp(40px, 6vw, 72px); line-height: 0.92; letter-spacing: -0.5px; text-transform: uppercase; margin: 0 0 18px; font-weight: 800; }
     .ev-when { font-size: 17px; color: var(--white); margin: 0 0 4px; }
     .ev-where { font-size: 14px; color: var(--w60); margin: 0; }
     @media (min-width: 860px) { .ev-where { margin-bottom: 22px; } }
@@ -121,17 +120,26 @@ const pageStyle = `
     @media (min-width: 860px) { body.has-sticky .ev-whatsapp { bottom: 20px; } }
 
     /* Listado */
-    .ev-list-head { margin: 0 0 28px; }
-    .ev-cards { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-    .ev-card { display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: var(--night-2); border: 1px solid var(--w08); transition: border-color 200ms ease, transform 200ms ease; }
-    .ev-card:hover, .ev-card:focus-visible { border-color: var(--gold); transform: translateY(-2px); }
-    .ev-card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; background: #111; }
-    .ev-card-body { display: flex; gap: 14px; align-items: center; padding: 14px 16px 16px; }
-    .ev-date { text-align: center; min-width: 46px; }
-    .ev-date b { display: block; font-size: 24px; line-height: 1; }
-    .ev-date span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
-    .ev-card h2 { font-size: 15px; letter-spacing: 1px; text-transform: uppercase; margin: 0 0 3px; font-weight: 600; }
-    .ev-card p { font-size: 12px; color: var(--w60); margin: 0; }
+    .ev-list-head { margin: 0 0 32px; }
+    .ev-cards { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+    @media (min-width: 1100px) { .ev-cards { grid-template-columns: repeat(4, 1fr); } }
+    .ev-card { position: relative; display: block; aspect-ratio: 4 / 5.5; border-radius: 24px; overflow: hidden; background: var(--night-2); transition: transform 400ms ease, box-shadow 400ms ease; }
+    .ev-card:hover, .ev-card:focus-visible { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(0,0,0,0.5); }
+    .ev-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 600ms ease; }
+    .ev-card:hover img { transform: scale(1.05); }
+    .ev-card-grad { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,5,9,0.97) 0%, rgba(8,5,9,0.65) 38%, rgba(8,5,9,0.12) 65%, transparent 100%); }
+    .ev-card-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px; }
+    .ev-card-date { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin: 0 0 4px; }
+    .ev-card h2 { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.3px; line-height: 0.95; margin: 0 0 14px; }
+    .ev-card-btn { display: flex; align-items: center; justify-content: center; height: 42px; border-radius: 999px; background: var(--gold); color: #120c02; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+    @media (max-width: 599px) {
+      .ev-cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .ev-card { border-radius: 16px; }
+      .ev-card-body { padding: 12px; }
+      .ev-card-date { font-size: 9px; letter-spacing: 1.5px; }
+      .ev-card h2 { font-size: 19px; margin-bottom: 10px; }
+      .ev-card-btn { height: 34px; font-size: 9.5px; letter-spacing: 1.5px; }
+    }
     .ev-empty { color: var(--w60); }
 `;
 
@@ -174,7 +182,7 @@ const layout = ({ title, description, canonical, image, jsonld = '', body, bodyC
   <meta property="og:locale" content="es_ES" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>${baseStyle}${pageStyle}  </style>
   ${jsonld}
 </head>
@@ -247,7 +255,7 @@ function eventPage(e, now) {
   const body = `  <main class="ev-wrap">
     <p class="ev-crumbs"><a href="/">Inicio</a> / <a href="/eventos/">Eventos</a></p>
     <div class="ev-grid">
-      ${e.flyer ? `<img class="ev-poster" src="${esc(e.flyer)}" alt="Cartel de ${esc(name)} en Condado Club Dénia" width="1080" height="1350" />` : ''}
+      ${e.flyer ? `<img class="ev-poster" src="${esc(e.flyer)}" alt="Cartel de ${esc(name)} en Condado Club Dénia" />` : ''}
       <div class="ev-head">
         <p class="ev-kicker">${ended ? 'Evento pasado' : 'Próximo evento'}</p>
         <h1 class="ev-title">${esc(e.name)}</h1>
@@ -299,10 +307,12 @@ function listPage(upcoming) {
   const cards = upcoming
     .map(
       (e) => `      <a class="ev-card" href="/eventos/${e.slug}/">
-        ${e.flyer ? `<img src="${esc(e.flyer)}" alt="Cartel de ${esc(titleCase(e.name))}" loading="lazy" width="1080" height="1350" />` : ''}
+        ${e.flyer ? `<img src="${esc(e.flyer)}" alt="Cartel de ${esc(titleCase(e.name))}" loading="lazy" />` : ''}
+        <div class="ev-card-grad"></div>
         <div class="ev-card-body">
-          <div class="ev-date"><b>${dia(e.start)}</b><span>${esc(mes(e.start))}</span></div>
-          <div><h2>${esc(e.name)}</h2><p>${esc(fechaCorta(e.start))} · ${esc(hora(e.start))}</p></div>
+          <p class="ev-card-date">${esc(fechaCorta(e.start))} · ${esc(hora(e.start))}</p>
+          <h2>${esc(e.name)}</h2>
+          <span class="ev-card-btn">Tickets y VIP</span>
         </div>
       </a>`
     )

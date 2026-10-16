@@ -16,7 +16,7 @@
   <meta property="og:locale" content="es_ES" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --gold: #E8A94A;
@@ -197,10 +197,11 @@
     .ev-crumbs a:hover { color: var(--gold); }
     .ev-grid { display: grid; gap: 24px; grid-template-areas: 'head' 'poster' 'rest'; }
     .ev-head { grid-area: head; } .ev-poster { grid-area: poster; } .ev-rest { grid-area: rest; }
-    @media (min-width: 860px) { .ev-grid { grid-template-columns: minmax(0, 420px) 1fr; grid-template-areas: 'poster head' 'poster rest'; grid-template-rows: auto 1fr; align-items: start; column-gap: 48px; row-gap: 0; } }
-    .ev-poster { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; background: var(--night-2); border: 1px solid var(--w08); display: block; }
+    @media (min-width: 860px) { .ev-grid { grid-template-columns: 380px 1fr; grid-template-areas: 'poster head' 'poster rest'; grid-template-rows: auto 1fr; align-items: start; column-gap: 48px; row-gap: 0; } }
+    .ev-poster { width: 100%; max-width: 380px; height: auto; border-radius: 24px; background: var(--night-2); border: 1px solid var(--w08); display: block; }
+    @media (min-width: 860px) { .ev-poster { position: sticky; top: 96px; } }
     .ev-kicker { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin: 0 0 12px; }
-    .ev-title { font-size: clamp(34px, 6vw, 60px); line-height: 0.95; letter-spacing: -0.5px; text-transform: uppercase; margin: 0 0 18px; font-weight: 600; }
+    .ev-title { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-size: clamp(40px, 6vw, 72px); line-height: 0.92; letter-spacing: -0.5px; text-transform: uppercase; margin: 0 0 18px; font-weight: 800; }
     .ev-when { font-size: 17px; color: var(--white); margin: 0 0 4px; }
     .ev-where { font-size: 14px; color: var(--w60); margin: 0; }
     @media (min-width: 860px) { .ev-where { margin-bottom: 22px; } }
@@ -228,17 +229,26 @@
     @media (min-width: 860px) { body.has-sticky .ev-whatsapp { bottom: 20px; } }
 
     /* Listado */
-    .ev-list-head { margin: 0 0 28px; }
-    .ev-cards { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-    .ev-card { display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background: var(--night-2); border: 1px solid var(--w08); transition: border-color 200ms ease, transform 200ms ease; }
-    .ev-card:hover, .ev-card:focus-visible { border-color: var(--gold); transform: translateY(-2px); }
-    .ev-card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; background: #111; }
-    .ev-card-body { display: flex; gap: 14px; align-items: center; padding: 14px 16px 16px; }
-    .ev-date { text-align: center; min-width: 46px; }
-    .ev-date b { display: block; font-size: 24px; line-height: 1; }
-    .ev-date span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
-    .ev-card h2 { font-size: 15px; letter-spacing: 1px; text-transform: uppercase; margin: 0 0 3px; font-weight: 600; }
-    .ev-card p { font-size: 12px; color: var(--w60); margin: 0; }
+    .ev-list-head { margin: 0 0 32px; }
+    .ev-cards { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+    @media (min-width: 1100px) { .ev-cards { grid-template-columns: repeat(4, 1fr); } }
+    .ev-card { position: relative; display: block; aspect-ratio: 4 / 5.5; border-radius: 24px; overflow: hidden; background: var(--night-2); transition: transform 400ms ease, box-shadow 400ms ease; }
+    .ev-card:hover, .ev-card:focus-visible { transform: translateY(-6px); box-shadow: 0 24px 50px rgba(0,0,0,0.5); }
+    .ev-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 600ms ease; }
+    .ev-card:hover img { transform: scale(1.05); }
+    .ev-card-grad { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,5,9,0.97) 0%, rgba(8,5,9,0.65) 38%, rgba(8,5,9,0.12) 65%, transparent 100%); }
+    .ev-card-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px; }
+    .ev-card-date { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin: 0 0 4px; }
+    .ev-card h2 { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.3px; line-height: 0.95; margin: 0 0 14px; }
+    .ev-card-btn { display: flex; align-items: center; justify-content: center; height: 42px; border-radius: 999px; background: var(--gold); color: #120c02; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+    @media (max-width: 599px) {
+      .ev-cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .ev-card { border-radius: 16px; }
+      .ev-card-body { padding: 12px; }
+      .ev-card-date { font-size: 9px; letter-spacing: 1.5px; }
+      .ev-card h2 { font-size: 19px; margin-bottom: 10px; }
+      .ev-card-btn { height: 34px; font-size: 9.5px; letter-spacing: 1.5px; }
+    }
     .ev-empty { color: var(--w60); }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://www.condadoclub.es/eventos/friday-mode-16-10-2026/"},{"@type":"ListItem","position":2,"url":"https://www.condadoclub.es/eventos/prive-17-10-2026/"},{"@type":"ListItem","position":3,"url":"https://www.condadoclub.es/eventos/zafiro-halloween-30-10-2026/"},{"@type":"ListItem","position":4,"url":"https://www.condadoclub.es/eventos/halloween-31-10-202638/"},{"@type":"ListItem","position":5,"url":"https://www.condadoclub.es/eventos/la-gran-fiesta-indie-21-11-2026/"},{"@type":"ListItem","position":6,"url":"https://www.condadoclub.es/eventos/chimo-bayo---remember-05-12-2026/"}]}</script>
@@ -294,45 +304,57 @@
     </div>
     <div class="ev-cards">
       <a class="ev-card" href="/eventos/friday-mode-16-10-2026/">
-        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/eff87245-1ea2-4e9a-02bc-6e6f1225cf00/w=1350" alt="Cartel de Friday Mode" loading="lazy" width="1080" height="1350" />
+        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/eff87245-1ea2-4e9a-02bc-6e6f1225cf00/w=1350" alt="Cartel de Friday Mode" loading="lazy" />
+        <div class="ev-card-grad"></div>
         <div class="ev-card-body">
-          <div class="ev-date"><b>16</b><span>oct</span></div>
-          <div><h2>FRIDAY MODE</h2><p>Vie, 16 oct · 23:45</p></div>
+          <p class="ev-card-date">Vie, 16 oct · 23:45</p>
+          <h2>FRIDAY MODE</h2>
+          <span class="ev-card-btn">Tickets y VIP</span>
         </div>
       </a>
       <a class="ev-card" href="/eventos/prive-17-10-2026/">
-        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/448fee2d-f21f-4669-ced6-27664c725000/w=1350" alt="Cartel de Privé" loading="lazy" width="1080" height="1350" />
+        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/448fee2d-f21f-4669-ced6-27664c725000/w=1350" alt="Cartel de Privé" loading="lazy" />
+        <div class="ev-card-grad"></div>
         <div class="ev-card-body">
-          <div class="ev-date"><b>17</b><span>oct</span></div>
-          <div><h2>PRIVÉ</h2><p>Sáb, 17 oct · 23:45</p></div>
+          <p class="ev-card-date">Sáb, 17 oct · 23:45</p>
+          <h2>PRIVÉ</h2>
+          <span class="ev-card-btn">Tickets y VIP</span>
         </div>
       </a>
       <a class="ev-card" href="/eventos/zafiro-halloween-30-10-2026/">
-        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/1077246e-ea1e-4b24-c226-c759e65d3b00/w=1350" alt="Cartel de Zafiro Halloween" loading="lazy" width="1080" height="1350" />
+        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/1077246e-ea1e-4b24-c226-c759e65d3b00/w=1350" alt="Cartel de Zafiro Halloween" loading="lazy" />
+        <div class="ev-card-grad"></div>
         <div class="ev-card-body">
-          <div class="ev-date"><b>30</b><span>oct</span></div>
-          <div><h2>ZAFIRO HALLOWEEN</h2><p>Vie, 30 oct · 23:45</p></div>
+          <p class="ev-card-date">Vie, 30 oct · 23:45</p>
+          <h2>ZAFIRO HALLOWEEN</h2>
+          <span class="ev-card-btn">Tickets y VIP</span>
         </div>
       </a>
       <a class="ev-card" href="/eventos/halloween-31-10-202638/">
-        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/d6058d78-8ce1-4815-2f7a-b39a93eb7700/w=1350" alt="Cartel de Halloween" loading="lazy" width="1080" height="1350" />
+        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/d6058d78-8ce1-4815-2f7a-b39a93eb7700/w=1350" alt="Cartel de Halloween" loading="lazy" />
+        <div class="ev-card-grad"></div>
         <div class="ev-card-body">
-          <div class="ev-date"><b>31</b><span>oct</span></div>
-          <div><h2>HALLOWEEN</h2><p>Sáb, 31 oct · 23:45</p></div>
+          <p class="ev-card-date">Sáb, 31 oct · 23:45</p>
+          <h2>HALLOWEEN</h2>
+          <span class="ev-card-btn">Tickets y VIP</span>
         </div>
       </a>
       <a class="ev-card" href="/eventos/la-gran-fiesta-indie-21-11-2026/">
-        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/c8617cc6-9b09-425e-5a11-1716e8bfbb00/w=1350" alt="Cartel de La Gran Fiesta Indie" loading="lazy" width="1080" height="1350" />
+        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/c8617cc6-9b09-425e-5a11-1716e8bfbb00/w=1350" alt="Cartel de La Gran Fiesta Indie" loading="lazy" />
+        <div class="ev-card-grad"></div>
         <div class="ev-card-body">
-          <div class="ev-date"><b>21</b><span>nov</span></div>
-          <div><h2>LA GRAN FIESTA INDIE</h2><p>Sáb, 21 nov · 17:00</p></div>
+          <p class="ev-card-date">Sáb, 21 nov · 17:00</p>
+          <h2>LA GRAN FIESTA INDIE</h2>
+          <span class="ev-card-btn">Tickets y VIP</span>
         </div>
       </a>
       <a class="ev-card" href="/eventos/chimo-bayo---remember-05-12-2026/">
-        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/d60b5ff2-961b-4ae7-29a9-0956ec705300/w=1350" alt="Cartel de Chimo Bayo – Remember" loading="lazy" width="1080" height="1350" />
+        <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/d60b5ff2-961b-4ae7-29a9-0956ec705300/w=1350" alt="Cartel de Chimo Bayo – Remember" loading="lazy" />
+        <div class="ev-card-grad"></div>
         <div class="ev-card-body">
-          <div class="ev-date"><b>05</b><span>dic</span></div>
-          <div><h2>CHIMO BAYO - REMEMBER</h2><p>Sáb, 5 dic · 17:00</p></div>
+          <p class="ev-card-date">Sáb, 5 dic · 17:00</p>
+          <h2>CHIMO BAYO - REMEMBER</h2>
+          <span class="ev-card-btn">Tickets y VIP</span>
         </div>
       </a>
     </div>
