@@ -156,7 +156,16 @@ const pageStyle = `
     .ev-card.is-past img { filter: grayscale(0.6) brightness(0.8); }
     .ev-card.is-past:hover img { filter: none; }
     .ev-card.is-past .ev-card-date { color: var(--w60); }
-    .ev-card.is-past .ev-card-btn { background: transparent; color: var(--white); border: 1px solid var(--w15); }
+    .ev-month { margin: 0 0 36px; }
+    .ev-month h3 { font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--w60); margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--w15); }
+    .ev-month h3 span { color: var(--w40); font-weight: 400; letter-spacing: 1px; margin-left: 8px; }
+    .ev-cards-past { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    @media (min-width: 1100px) { .ev-cards-past { grid-template-columns: repeat(6, 1fr); } }
+    @media (max-width: 599px) { .ev-cards-past { grid-template-columns: repeat(3, 1fr); gap: 8px; } }
+    .ev-card.is-past { border-radius: 14px; }
+    .ev-card.is-past .ev-card-body { padding: 12px; }
+    .ev-card.is-past h2 { font-size: 18px; margin: 0; }
+    @media (max-width: 599px) { .ev-card.is-past { border-radius: 10px; } .ev-card.is-past .ev-card-body { padding: 8px; } .ev-card.is-past h2 { font-size: 14px; } .ev-card.is-past .ev-card-date { font-size: 8px; letter-spacing: 1px; } }
 `;
 
 const menuScript = `
@@ -325,13 +334,27 @@ const card = (e, past) => `      <a class="ev-card${past ? ' is-past' : ''}" hre
         <div class="ev-card-body">
           <p class="ev-card-date">${past ? esc(cap(fmt(e.start, { day: 'numeric', month: 'short', year: 'numeric' }))) : `${esc(fechaCorta(e.start))} · ${esc(hora(e.start))}`}</p>
           <h2>${esc(e.name)}</h2>
-          <span class="ev-card-btn">${past ? 'Ver evento' : 'Tickets y VIP'}</span>
+          ${past ? '' : '<span class="ev-card-btn">Tickets y VIP</span>'}
         </div>
       </a>`;
 
 function listPage(upcoming, past) {
   const cards = upcoming.map((e) => card(e, false)).join('\n');
-  const pastCards = past.map((e) => card(e, true)).join('\n');
+  // Eventos pasados agrupados por mes (el más reciente primero).
+  const months = [];
+  for (const e of past) {
+    const key = fmt(e.start, { year: 'numeric', month: '2-digit' });
+    if (!months.length || months[months.length - 1].key !== key) months.push({ key, label: cap(fmt(e.start, { month: 'long', year: 'numeric' })), items: [] });
+    months[months.length - 1].items.push(e);
+  }
+  const pastCards = months
+    .map(
+      (m) => `    <section class="ev-month">
+      <h3>${esc(m.label)}<span>${m.items.length} ${m.items.length === 1 ? 'evento' : 'eventos'}</span></h3>
+      <div class="ev-cards-past">\n${m.items.map((e) => card(e, true)).join('\n')}\n      </div>
+    </section>`
+    )
+    .join('\n');
 
   const ld = {
     '@context': 'https://schema.org',
@@ -355,7 +378,7 @@ function listPage(upcoming, past) {
       <p class="ev-kicker">Histórico</p>
       <h2 class="ev-title">Eventos pasados</h2>
     </div>
-    <div class="ev-cards">\n${pastCards}\n    </div>` : ''}
+${pastCards}` : ''}
   </main>`,
   });
 }
