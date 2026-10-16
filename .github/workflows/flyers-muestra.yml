@@ -1,0 +1,30 @@
+# Temporal (rama de prueba): descarga los carteles de los eventos de los últimos
+# 75 días para hacer capturas de la vista previa. Se borra después.
+name: Carteles de muestra
+on:
+  push:
+    branches: [prueba-eventos]
+    paths: [.github/workflows/flyers-muestra.yml]
+permissions:
+  contents: write
+jobs:
+  carteles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar carteles
+        run: |
+          mkdir -p muestra-fourvenues/flyers
+          desde=$(( $(date +%s) - 75*86400 ))
+          jq -r --argjson d "$desde" '.[] | select(.start >= $d and .flyer != null) | .flyer' eventos/historico.json | while read -r u; do
+            id=$(echo "$u" | sed -E 's#.*/imagedelivery/[^/]+/([^/]+)/.*#\1#')
+            curl -sSL --fail -o "muestra-fourvenues/flyers/$id.jpg" "${u%/w=*}/w=600" || echo "falla $u"
+          done
+          ls -la muestra-fourvenues/flyers
+      - name: Guardar
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add muestra-fourvenues/flyers
+          git commit -m "Carteles de muestra para capturas" || echo "Sin cambios"
+          git push
