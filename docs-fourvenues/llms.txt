@@ -1,0 +1,167 @@
+# Fourvenues API
+
+- [Readme](https://docs.fourvenues.com/introduction/readme.md)
+- [Overview](https://docs.fourvenues.com/channel-manager/introduction/overview.md)
+- [How to Use](https://docs.fourvenues.com/channel-manager/introduction/how-to-use.md)
+- [Authentication](https://docs.fourvenues.com/channel-manager/introduction/authentication.md)
+- [Use cases](https://docs.fourvenues.com/channel-manager/introduction/use-cases.md)
+- [What can i do](https://docs.fourvenues.com/channel-manager/introduction/what-can-i-do.md)
+- [Requirements](https://docs.fourvenues.com/channel-manager/introduction/requirements.md)
+- [Get auth information](https://docs.fourvenues.com/channel-manager/api-reference/auth/get-auth-information.md): Get information about your organization and the ones you collaborate with.
+- [Get all bookings given a filter](https://docs.fourvenues.com/channel-manager/api-reference/bookings/get-bookings.md): Get all bookings given a filter
+- [Get bookings availability](https://docs.fourvenues.com/channel-manager/api-reference/bookings/get-bookings-availability.md): Get an event booking\'s availability
+- [Get booking by id](https://docs.fourvenues.com/channel-manager/api-reference/bookings/get-booking-by-id.md): Get a booking by id
+- [Get bookings zones for an event](https://docs.fourvenues.com/channel-manager/api-reference/bookings/get-bookings-zones.md): Get bookings zones for an event
+- [Create a checkout session for a booking](https://docs.fourvenues.com/channel-manager/api-reference/bookings/post-bookings-checkout.md): Create a checkout session for a booking
+- [Request a booking](https://docs.fourvenues.com/channel-manager/api-reference/bookings/post-bookings-request.md): Request a booking
+- [Update observations of a booking](https://docs.fourvenues.com/channel-manager/api-reference/bookings/patch-booking-observations.md): Update observations of a booking
+- [Get custom taxes](https://docs.fourvenues.com/channel-manager/api-reference/custom-taxes/get-custom-taxes.md)
+- [Get discount code](https://docs.fourvenues.com/channel-manager/api-reference/discount-codes/get-discount-code.md): Get discount code
+- [Validate booking discount code](https://docs.fourvenues.com/channel-manager/api-reference/discount-codes/post-discount-codes-bookings-validate.md): Validate booking discount code
+- [Validate ticket discount code](https://docs.fourvenues.com/channel-manager/api-reference/discount-codes/post-discount-codes-tickets-validate.md): Validate ticket discount code
+- [Get all events](https://docs.fourvenues.com/channel-manager/api-reference/events/get-all-events.md): Get all events
+- [Get an event by id](https://docs.fourvenues.com/channel-manager/api-reference/events/get-an-event-by-id.md): Get an event by its identifier.
+- [Get an event by slug](https://docs.fourvenues.com/channel-manager/api-reference/events/get-an-event-by-slug.md): Get an event by slug
+- [Register a user for event preregister](https://docs.fourvenues.com/channel-manager/api-reference/events/post-event-preregister.md): Registers an attendee on the preregister list for the given event.
+- [Get all event groups](https://docs.fourvenues.com/channel-manager/api-reference/eventgroups/get-all-event-groups.md): Get all event groups for the organizations the API key has access to. Event ids blocked for the channel are excluded from each group.
+- [Get event group by id](https://docs.fourvenues.com/channel-manager/api-reference/eventgroups/get-event-group-by-id.md): Get a single event group by id. Event ids blocked for the channel are excluded.
+- [Get all list rates](https://docs.fourvenues.com/channel-manager/api-reference/listrates/get-all-list-rates.md): Get all list rates
+- [Get list rate by id](https://docs.fourvenues.com/channel-manager/api-reference/listrates/get-list-rate-by-id.md): Get list rate by id
+- [Get list rate by slug](https://docs.fourvenues.com/channel-manager/api-reference/listrates/get-list-rate-by-slug.md): Get list rate by slug
+- [Get all lists](https://docs.fourvenues.com/channel-manager/api-reference/lists/get-lists.md): Get all lists
+- [Create a new list](https://docs.fourvenues.com/channel-manager/api-reference/lists/create-list.md): Create a new list
+- [Get list by id](https://docs.fourvenues.com/channel-manager/api-reference/lists/get-list-by-id.md): Get a list by its identifier.
+- [Get list by code](https://docs.fourvenues.com/channel-manager/api-reference/lists/get-list-by-code.md): Get a list by its code.
+- [Get all locations](https://docs.fourvenues.com/channel-manager/api-reference/locations/get-all-locations.md): Get all locations
+- [Get location](https://docs.fourvenues.com/channel-manager/api-reference/locations/get-location.md): Get location
+- [Get all organizations](https://docs.fourvenues.com/channel-manager/api-reference/organizations/get-all-organizations.md): Return the organizations that you have access to (and your's).
+- [Get an organization by id](https://docs.fourvenues.com/channel-manager/api-reference/organizations/get-an-organization-by-id.md): Get an organization by id
+- [Get an organization by slug](https://docs.fourvenues.com/channel-manager/api-reference/organizations/get-an-organization-by-slug.md): Get an organization by slug
+- [Get all payments](https://docs.fourvenues.com/channel-manager/api-reference/payments/get-all-payments.md): Get all payments
+- [Get a payment by id](https://docs.fourvenues.com/channel-manager/api-reference/payments/get-a-payment-by-id.md): Get a payment by its identifier. (Only using Fourvenues payments gateway).
+- [Get all ticket rates](https://docs.fourvenues.com/channel-manager/api-reference/ticketrates/get-all-ticket-rates.md): Get all ticket rates
+- [Get ticket rate by id](https://docs.fourvenues.com/channel-manager/api-reference/ticketrates/get-ticket-rate-by-id.md): Get ticket rate by id
+- [Get pricing info of a ticket rate given a quantity of tickets](https://docs.fourvenues.com/channel-manager/api-reference/ticketrates/get-pricing-info-of-a-ticket-rate-given-a-quantity-of-tickets.md): Get ticket rate pricing info by id
+- [Get ticket rate by slug](https://docs.fourvenues.com/channel-manager/api-reference/ticketrates/get-ticket-rate-by-slug.md): Get ticket rate by slug
+- [Get tickets](https://docs.fourvenues.com/channel-manager/api-reference/tickets/get-tickets.md): Get tickets given certains query parameters
+- [Create ticket](https://docs.fourvenues.com/channel-manager/api-reference/tickets/create-ticket.md): Creates one or more active tickets (external gateway). Supplements require supplement_id and price per unit; optional quantity applies purchase_limit validation after collapsing duplicate supplement_id entries. For external payments, you may also send service_charge_amount (absolute amount per unit)…
+- [Checkout tickets](https://docs.fourvenues.com/channel-manager/api-reference/tickets/checkout-tickets.md): Creates a payment session for one or more tickets. Supplements are optional: send supplement_id per add-on and optionally quantity. Prices and service charge come from the ticket rate. Duplicate supplement_id entries are collapsed and quantities summed. Paid supplements with purchase_limit.min_quant…
+- [Get ticket by id](https://docs.fourvenues.com/channel-manager/api-reference/tickets/get-ticket-by-id.md): Get ticket by id.
+- [Get ticket by code](https://docs.fourvenues.com/channel-manager/api-reference/tickets/get-ticket-by-code.md): Get ticket by code.
+- [Refund Ticket](https://docs.fourvenues.com/channel-manager/api-reference/tickets/refund-ticket.md): Void ticket and mark the amount of money refunded. It can be partial or total and it can be done multiple times until the ticket is fully refunded. However, the first time it is done, the ticket is marked as voided.
+- [Get ticket upselling catalog](https://docs.fourvenues.com/channel-manager/api-reference/tickets/get-ticket-upselling.md): Returns supplements available to purchase for upselling (same shape as ticket rate supplements, plus current_purchase_quantity and available_quantity) and the ticket option fees (fee_type, fee_quantity) applied to the upselling checkout.
+- [Checkout ticket upselling](https://docs.fourvenues.com/channel-manager/api-reference/tickets/checkout-ticket-upselling.md): Validates additional supplement quantities for an existing ticket, then creates the upselling payment via the ticketing API (POST /upselling/supplements). Returns payment_id and payment_url (same format as ticket checkout) plus supplement line totals and fees.
+- [Get tip rates](https://docs.fourvenues.com/channel-manager/api-reference/tip-rates/get-tip-rates.md)
+- [Get all webhooks endpoints](https://docs.fourvenues.com/channel-manager/api-reference/webhooks/get-all-webhooks-endpoints.md)
+- [Create a new webhook endpoint](https://docs.fourvenues.com/channel-manager/api-reference/webhooks/create-a-new-webhook-endpoint.md)
+- [Delete a webhook endpoint by id](https://docs.fourvenues.com/channel-manager/api-reference/webhooks/delete-a-webhook-endpoint-by-id.md)
+- [Introduction](https://docs.fourvenues.com/channel-manager/webhooks/introduction/introduction.md)
+- [Creating a webhook endpoint](https://docs.fourvenues.com/channel-manager/webhooks/introduction/creating-a-webhook-endpoint.md)
+- [Authentication](https://docs.fourvenues.com/channel-manager/webhooks/introduction/authentication.md)
+- [Webhook event object](https://docs.fourvenues.com/channel-manager/webhooks/introduction/webhook-event-object.md)
+- [Payment Success Event](https://docs.fourvenues.com/channel-manager/webhooks/events/payment-success-event.md): Learn how to handle the payment success event in your integration.
+- [Ticket Refund Request Event](https://docs.fourvenues.com/channel-manager/webhooks/events/ticket-request-refund-event.md): Learn how to handle the payment success event in your integration.
+- [💳 Creating a Checkout Process](https://docs.fourvenues.com/channel-manager/recipes/creating-a-checkout-process.md): Learn how to create a checkout process for your channel.
+- [🔊 Listening to Webhooks](https://docs.fourvenues.com/channel-manager/recipes/listening-to-webhooks.md): Learn how to listen to webhooks and handle the events.
+- [Overview](https://docs.fourvenues.com/integrations/introduction/overview.md)
+- [Authentication](https://docs.fourvenues.com/integrations/introduction/authentication.md)
+- [Use cases](https://docs.fourvenues.com/integrations/introduction/use-cases.md)
+- [What can i do](https://docs.fourvenues.com/integrations/introduction/what-can-i-do.md)
+- [Requirements](https://docs.fourvenues.com/integrations/introduction/requirements.md)
+- [Publishing Checklist](https://docs.fourvenues.com/integrations/introduction/publishing-checklist.md): Minimum quality validation before merging documentation changes to the Integrations API or Channel Manager API docs.
+- [Get event by id](https://docs.fourvenues.com/integrations/api-reference/events/get-event-by-id.md): Get an event by its identifier.
+- [Get events](https://docs.fourvenues.com/integrations/api-reference/events/get-events.md): Get all the events given a date.
+- [Get bookings](https://docs.fourvenues.com/integrations/api-reference/bookings/get-bookings.md): Get all the bookings given a date (allows filtering by space name)
+- [Get booking by id](https://docs.fourvenues.com/integrations/api-reference/bookings/get-booking-by-id.md): Get a booking by id
+- [Get bookings availability](https://docs.fourvenues.com/integrations/api-reference/bookings/get-bookings-availability.md): Get an event booking\'s availability
+- [Get booking by code](https://docs.fourvenues.com/integrations/api-reference/bookings/get-booking-by-code.md): Get a booking by code
+- [Get bookings by email](https://docs.fourvenues.com/integrations/api-reference/bookings/get-bookings-by-email.md): Get bookings by client email
+- [Get bookings events](https://docs.fourvenues.com/integrations/api-reference/bookings/get-bookings-events.md): Get all the bookings by event date. This endpoint filters by event date instead of updated_at.
+- [Put bookings status](https://docs.fourvenues.com/integrations/api-reference/bookings/put-bookings-status.md): Update the status of a booking.
+- [Put bookings products](https://docs.fourvenues.com/integrations/api-reference/bookings/put-bookings-products.md): Update the products of a booking
+- [Put bookings update fields](https://docs.fourvenues.com/integrations/api-reference/bookings/put-bookings-update-fields.md): Update booking information
+- [Post bookings walk in](https://docs.fourvenues.com/integrations/api-reference/bookings/post-bookings-walk-in.md): Create a walk-in booking
+- [Patch booking deposit](https://docs.fourvenues.com/integrations/api-reference/bookings/patch-booking-deposit.md): Update the deposit (fianza) and deposit paid (fianza_pagada) of a booking.
+- [Patch booking minimum spend](https://docs.fourvenues.com/integrations/api-reference/bookings/patch-booking-minimum-spend.md): Update the minimum spend of a booking.
+- [Patch booking space](https://docs.fourvenues.com/integrations/api-reference/bookings/patch-booking-space.md): Update the space of a booking.
+- [Post booking external transaction](https://docs.fourvenues.com/integrations/api-reference/bookings/post-booking-external-transaction.md): Create an external payment for a booking
+- [Get channels](https://docs.fourvenues.com/integrations/api-reference/channels/get-channels.md): Get all the channels.
+- [Get clients](https://docs.fourvenues.com/integrations/api-reference/clients/get-clients.md): Get all the clients
+- [Get client by id](https://docs.fourvenues.com/integrations/api-reference/clients/get-client-by-id.md): Get a client by id
+- [Get clients marketing preferences](https://docs.fourvenues.com/integrations/api-reference/clients/get-clients-marketing-preferences.md): Get marketing preferences for a list of clients by their emails
+- [Get discount codes](https://docs.fourvenues.com/integrations/api-reference/discount-codes/get-discount-codes.md): Get discount codes for the organization.  Without event_id returns organization-level codes.  With event_id returns codes scoped to that event.
+- [Get discount code by id](https://docs.fourvenues.com/integrations/api-reference/discount-codes/get-discount-code-by-id.md): Get a single discount code by its unique id.
+- [Get discount code by code](https://docs.fourvenues.com/integrations/api-reference/discount-codes/get-discount-code-by-code.md): Get a single discount code by its code.  Same scope as the list: without event_id it looks up the organization-level code;  with event_id it looks up the code scoped to that event.  If not found in the event but the code exists at organization level, returns 404 with a body  { reason: "DISCOUNT_CODE…
+- [Post discount codes tickets](https://docs.fourvenues.com/integrations/api-reference/discount-codes/post-discount-codes-tickets.md): Create a ticket (entradas) discount code at organization or event level.  Ticket codes can be associated to ticket rates via rate_ids and support quantity/sales limits.
+- [Post discount codes bookings](https://docs.fourvenues.com/integrations/api-reference/discount-codes/post-discount-codes-bookings.md): Create a booking (reservas) discount code at organization or event level.  Booking codes validate at event level only: no rate association and no quantity/sales limits.
+- [Post discount codes import](https://docs.fourvenues.com/integrations/api-reference/discount-codes/post-discount-codes-import.md): Import organization-level discount codes into an event.  All codes must belong to the organization and have a parent reference.  Already imported codes are skipped. Duplicate IDs in the request are ignored.  Fails when a code with the same value already exists in the target event.
+- [Patch discount codes tickets](https://docs.fourvenues.com/integrations/api-reference/discount-codes/patch-discount-codes-tickets.md): Update an existing ticket (entradas) discount code by id.  The code type and the code value are fixed at creation: the id must belong to a ticket code.  rate_ids can only be updated on event-scoped codes and requires event_id.
+- [Patch discount codes bookings](https://docs.fourvenues.com/integrations/api-reference/discount-codes/patch-discount-codes-bookings.md): Update an existing booking (reservas) discount code by id.  The code type and the code value are fixed at creation: the id must belong to a booking code.  Booking codes have no rate association or quantity/sales limits.
+- [Delete discount codes](https://docs.fourvenues.com/integrations/api-reference/discount-codes/delete-discount-codes.md): Delete one or more discount codes by id (scoped to the organization).  Already-deleted or non-existing ids are ignored. The codes are also detached from any rate that references them.
+- [Get external payments](https://docs.fourvenues.com/integrations/api-reference/external-payments/get-external-payments.md): Get all the external payments given an event or a date range.
+- [Get invoices](https://docs.fourvenues.com/integrations/api-reference/invoicing/get-invoices.md): Get all the invoices for an organization
+- [Get lists](https://docs.fourvenues.com/integrations/api-reference/lists/get-lists.md): Get all the lists given a event.
+- [Get list by id](https://docs.fourvenues.com/integrations/api-reference/lists/get-list-by-id.md): Get a list by its identifier.
+- [Get list by code](https://docs.fourvenues.com/integrations/api-reference/lists/get-list-by-code.md): Get a list by its code.
+- [Put list checkin](https://docs.fourvenues.com/integrations/api-reference/lists/put-list-checkin.md): Checkin a list by its identifier.
+- [Put list by code checkin](https://docs.fourvenues.com/integrations/api-reference/lists/put-list-by-code-checkin.md): Checkin a list by its code.
+- [Get lists rates](https://docs.fourvenues.com/integrations/api-reference/lists/get-lists-rates.md): Get all the rates of lists given a event.
+- [Get passes](https://docs.fourvenues.com/integrations/api-reference/passes/get-passes.md): Get all the passes given a event.
+- [Get pass by id](https://docs.fourvenues.com/integrations/api-reference/passes/get-pass-by-id.md): Get a pass by its identifier.
+- [Get pass by code](https://docs.fourvenues.com/integrations/api-reference/passes/get-pass-by-code.md): Get a pass by its code.
+- [Put pass checkin](https://docs.fourvenues.com/integrations/api-reference/passes/put-pass-checkin.md): Activate a pass.
+- [Put pass by code checkin](https://docs.fourvenues.com/integrations/api-reference/passes/put-pass-by-code-checkin.md): Activate a pass.
+- [Get passes rates](https://docs.fourvenues.com/integrations/api-reference/passes/get-passes-rates.md): Get all the rates of passes given a event.
+- [Get payments](https://docs.fourvenues.com/integrations/api-reference/payments/get-payments.md): Get all the payments given a event or a date range. (Only using Fourvenues payments gateway).
+- [Get payment by id](https://docs.fourvenues.com/integrations/api-reference/payments/get-payment-by-id.md): Get a payment by its identifier. (Only using Fourvenues payments gateway).
+- [Get refunds](https://docs.fourvenues.com/integrations/api-reference/refunds/get-refunds.md): Get all the refunds given a event or a date range. (Only using Fourvenues payments gateway).
+- [Get refund by id](https://docs.fourvenues.com/integrations/api-reference/refunds/get-refund-by-id.md): Get a refund by its identifier.
+- [Get sales](https://docs.fourvenues.com/integrations/api-reference/sales/get-sales.md)
+- [Post subscription](https://docs.fourvenues.com/integrations/api-reference/subscriptions/post-subscription.md): Insert subscription for an email.
+- [Get tickets](https://docs.fourvenues.com/integrations/api-reference/tickets/get-tickets.md): Get all tickets for an event. Supports filtering by date range on created_at or updated_at. Each ticket includes created_at and updated_at in ISO 8601 format.
+- [Post tickets](https://docs.fourvenues.com/integrations/api-reference/tickets/post-tickets.md): Create one or more tickets.  Email and FullName are required for each ticket.  All tickets must have the same rate and priceId.  ReferralId or ChannelId can be passed but not both.  This endpoint does not check for rate, channel or any sort of limits
+- [Get ticket by id](https://docs.fourvenues.com/integrations/api-reference/tickets/get-ticket-by-id.md): Get ticket by id.
+- [Get ticket by code](https://docs.fourvenues.com/integrations/api-reference/tickets/get-ticket-by-code.md): Get ticket by code.
+- [Get tickets check in](https://docs.fourvenues.com/integrations/api-reference/tickets/get-tickets-check-in.md): Check if a ticket is allowed to be checked in. Its checked against the current event.
+- [Put ticket checkin](https://docs.fourvenues.com/integrations/api-reference/tickets/put-ticket-checkin.md): Update check-in from ticket
+- [Put ticket by code checkin](https://docs.fourvenues.com/integrations/api-reference/tickets/put-ticket-by-code-checkin.md): Update check-in from ticket
+- [Post tickets refund](https://docs.fourvenues.com/integrations/api-reference/tickets/post-tickets-refund.md): Refund a ticket.
+- [Delete tickets](https://docs.fourvenues.com/integrations/api-reference/tickets/delete-tickets.md): Soft delete tickets created by integrations API.
+- [Patch tickets supplement product quantity used](https://docs.fourvenues.com/integrations/api-reference/tickets/patch-tickets-supplement-product-quantity-used.md): Update the product quantity used of a supplement given its slug.
+- [Get tickets rates](https://docs.fourvenues.com/integrations/api-reference/tickets/get-tickets-rates.md): Get all the rates of tickets given a event.
+- [Get tickets rates future events supplement labels](https://docs.fourvenues.com/integrations/api-reference/tickets/get-tickets-rates-future-events-supplement-labels.md): Get all the labels of the supplements configured in rates from future events.
+- [Get users](https://docs.fourvenues.com/integrations/api-reference/users/get-users.md): Get all the users.
+- [Get v2 passes](https://docs.fourvenues.com/integrations/api-reference/v2/get-v2-passes.md): Get all the passes given an event with usage information for every event assigned to their pass type.
+- [Get v2 pass by code](https://docs.fourvenues.com/integrations/api-reference/v2/get-v2-pass-by-code.md): Get a pass by its code with usage information for every event assigned to its pass type.
+- [Get v2 pass by id](https://docs.fourvenues.com/integrations/api-reference/v2/get-v2-pass-by-id.md): Get a pass by its identifier with usage information for every event assigned to its pass type.
+- [Patch v2 pass check in by code](https://docs.fourvenues.com/integrations/api-reference/v2/patch-v2-pass-check-in-by-code.md): Check in a pass by its code if it belongs to the event and the current time is within the event range.
+- [Get wallet movements](https://docs.fourvenues.com/integrations/api-reference/wallet-movement/get-wallet-movements.md): Get all the wallet movements in your organization.
+- [Get webhook endpoints](https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/get-webhook-endpoints.md): Lists all webhook subscriptions of the organization. No query parameters accepted.
+- [Get webhook endpoint by id](https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/get-webhook-endpoint-by-id.md): Gets a single webhook subscription owned by the organization.
+- [Post webhook endpoints](https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/post-webhook-endpoints.md): Creates a webhook subscription for the organization. `events` is deduplicated automatically.  `sign_secret` is shown only once — store it now, it cannot be retrieved later. There is no rotation: if you lose it,  create a new endpoint.  <br><br>Outbound webhook contract: every webhook is an HTTP POST…
+- [Patch webhook endpoint](https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/patch-webhook-endpoint.md): Updates `name`, `url` and/or `events` of an owned webhook endpoint. At least one field is required.  `status`, `disabled_at`, `disabled_reason`, `sign_secret` and `organization_id` are not editable.
+- [Delete webhook endpoint](https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/delete-webhook-endpoint.md): Hard deletes an owned webhook endpoint. The delivery history is preserved.
+- [Post webhook endpoint enable](https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/post-webhook-endpoint-enable.md): Reactivates a disabled webhook endpoint. Idempotent if it is already active.
+- [Post webhook endpoint replay failed deliveries](https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/post-webhook-endpoint-replay-failed-deliveries.md): Bulk-replays all failed deliveries of the endpoint. Requires the endpoint to be active.  <br><br>Recovery flow when deliveries start failing: the endpoint is auto-disabled by the webhook-service after  repeated delivery failures (`status: "disabled"`, with `disabled_at` and `disabled_reason`). To re…
+- [Get webhook deliveries](https://docs.fourvenues.com/integrations/api-reference/webhook-deliveries/get-webhook-deliveries.md): Lists delivery attempts of the organization, optionally filtered by endpoint and/or status.
+- [Get webhook delivery by id](https://docs.fourvenues.com/integrations/api-reference/webhook-deliveries/get-webhook-delivery-by-id.md): Gets a single delivery owned by the organization, with its attempts and the exact  payload that was signed and sent (see the `WebhookEventPayload` schema).
+- [Post webhook delivery replay](https://docs.fourvenues.com/integrations/api-reference/webhook-deliveries/post-webhook-delivery-replay.md): Replays a single delivery, which must be in `failed` state and belong to an active endpoint.
+- [✅ Custom Check-in System](https://docs.fourvenues.com/integrations/recipes/checkin-tickets.md): Learn how to mark tickets as checked in using the Integrations API.
+- [💾 Create Datawarehouse](https://docs.fourvenues.com/integrations/recipes/datawarehouse.md): Learn how to generate custom Datawarehouse
+- [Overview](https://docs.fourvenues.com/reseller/introduction/overview.md): Welcome to the Reseller API Documentation site! Here you'll be able to find all the information regarding the Reseller API.
+- [Authentication](https://docs.fourvenues.com/reseller/introduction/authentication.md): To get started using the Reseller API, you'll need to authenticate your requests.
+- [Validate reseller barcode](https://docs.fourvenues.com/reseller/api-reference/validate-reseller-barcode.md): Validates a reseller's barcode and checks if it's valid and swappable.
+- [Swap reseller ticket](https://docs.fourvenues.com/reseller/api-reference/swap-reseller-ticket.md): Swaps a reseller's ticket with a new one and provides a new barcode and PDF.
+- [List reseller organizations](https://docs.fourvenues.com/reseller/api-reference/v2/get-v2-organizations.md): Lists the organizations the API key may sell for. The key itself is the scope: a key that covers no organization answers an empty page. Ordered by id so paging is deterministic.
+- [List reseller events](https://docs.fourvenues.com/reseller/api-reference/v2/get-v2-events.md): Lists the sellable events of the organizations the API key covers: active, visible, not cancelled, not private and not yet ended. Ordered by start date, ascending.
+- [Get reseller event](https://docs.fourvenues.com/reseller/api-reference/v2/get-v2-event-by-id.md): Returns one sellable event, with its ticket rates and their stock when asked for. An event outside the API key is answered as not found.
+- [List tickets of a buyer](https://docs.fourvenues.com/reseller/api-reference/v2/get-v2-tickets.md): Lists the activated tickets a buyer holds for one organization that can be resold, limited to events the reseller could list. Tickets that `/resellers/validate` would refuse are left out: already scanned, with a name change completed or still being paid for, or that came from a resale. Both `email`…
+
+## OpenAPI Specs
+
+- [channel_manager_api](/openapi/channel_manager_api.json)
+- [integrations_api](/openapi/integrations_api.json)
+- [reseller_api](/openapi/reseller_api.json)
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

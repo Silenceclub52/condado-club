@@ -1,0 +1,3295 @@
+# Get auth information
+Source: https://docs.fourvenues.com/channel-manager/api-reference/auth/get-auth-information
+
+get /auth
+Get information about your organization and the ones you collaborate with.
+
+
+
+# Get booking by id
+Source: https://docs.fourvenues.com/channel-manager/api-reference/bookings/get-booking-by-id
+
+get /bookings/{bookingId}
+Get a booking by id
+
+
+
+# Get all bookings given a filter
+Source: https://docs.fourvenues.com/channel-manager/api-reference/bookings/get-bookings
+
+get /bookings
+Get all bookings given a filter
+
+
+
+# Get bookings availability
+Source: https://docs.fourvenues.com/channel-manager/api-reference/bookings/get-bookings-availability
+
+get /bookings/availability
+Get an event booking\'s availability
+
+
+
+# Get bookings zones for an event
+Source: https://docs.fourvenues.com/channel-manager/api-reference/bookings/get-bookings-zones
+
+get /bookings/zones
+Get bookings zones for an event
+
+
+
+# Update observations of a booking
+Source: https://docs.fourvenues.com/channel-manager/api-reference/bookings/patch-booking-observations
+
+patch /bookings/{bookingId}/observations
+Update observations of a booking
+
+
+
+# Create a checkout session for a booking
+Source: https://docs.fourvenues.com/channel-manager/api-reference/bookings/post-bookings-checkout
+
+post /bookings/checkout
+Create a checkout session for a booking
+
+
+
+# Request a booking
+Source: https://docs.fourvenues.com/channel-manager/api-reference/bookings/post-bookings-request
+
+post /bookings/request
+Request a booking
+
+
+
+# Get custom taxes
+Source: https://docs.fourvenues.com/channel-manager/api-reference/custom-taxes/get-custom-taxes
+
+get /custom-taxes
+
+
+
+# Get discount code
+Source: https://docs.fourvenues.com/channel-manager/api-reference/discount-codes/get-discount-code
+
+get /discount-codes/{code}
+Get discount code
+
+
+
+# Validate booking discount code
+Source: https://docs.fourvenues.com/channel-manager/api-reference/discount-codes/post-discount-codes-bookings-validate
+
+post /discount-codes/bookings/validate/{code}
+Validate booking discount code
+
+
+
+# Validate ticket discount code
+Source: https://docs.fourvenues.com/channel-manager/api-reference/discount-codes/post-discount-codes-tickets-validate
+
+post /discount-codes/tickets/validate/{code}
+Validate ticket discount code
+
+
+
+# Get all event groups
+Source: https://docs.fourvenues.com/channel-manager/api-reference/eventgroups/get-all-event-groups
+
+get /event-groups
+Get all event groups for the organizations the API key has access to. Event ids blocked for the channel are excluded from each group.
+
+
+
+# Get event group by id
+Source: https://docs.fourvenues.com/channel-manager/api-reference/eventgroups/get-event-group-by-id
+
+get /event-groups/{eventGroupId}
+Get a single event group by id. Event ids blocked for the channel are excluded.
+
+
+
+# Get all events
+Source: https://docs.fourvenues.com/channel-manager/api-reference/events/get-all-events
+
+get /events
+Get all events
+
+
+
+# Get an event by id
+Source: https://docs.fourvenues.com/channel-manager/api-reference/events/get-an-event-by-id
+
+get /events/{eventId}
+Get an event by its identifier.
+
+
+
+# Get an event by slug
+Source: https://docs.fourvenues.com/channel-manager/api-reference/events/get-an-event-by-slug
+
+get /events/by-slug/{eventSlug}
+Get an event by slug
+
+
+
+# Register a user for event preregister
+Source: https://docs.fourvenues.com/channel-manager/api-reference/events/post-event-preregister
+
+post /events/{eventId}/preregister
+Registers an attendee on the preregister list for the given event.
+
+Requires API key capability `preregister:write` (or `all:write`). The event must belong to the API key organization.
+
+Registration is only accepted when the event has an active preregister configuration, the event is still purchasable, and the preregister window is open. Use `GET /events/{id}` to inspect preregister settings and which fields are required.
+
+Additional fields beyond `fullname` and `email` may be required depending on the event preregister configuration.
+
+
+
+# Get all list rates
+Source: https://docs.fourvenues.com/channel-manager/api-reference/listrates/get-all-list-rates
+
+get /list-rates
+Get all list rates
+
+
+
+# Get list rate by id
+Source: https://docs.fourvenues.com/channel-manager/api-reference/listrates/get-list-rate-by-id
+
+get /list-rates/{listRateId}
+Get list rate by id
+
+
+
+# Get list rate by slug
+Source: https://docs.fourvenues.com/channel-manager/api-reference/listrates/get-list-rate-by-slug
+
+get /list-rates/by-slug/{listRateSlug}
+Get list rate by slug
+
+
+
+# Create a new list
+Source: https://docs.fourvenues.com/channel-manager/api-reference/lists/create-list
+
+post /lists
+Create a new list
+
+
+
+# Get list by code
+Source: https://docs.fourvenues.com/channel-manager/api-reference/lists/get-list-by-code
+
+get /lists/by-code/{listCode}
+Get a list by its code.
+
+
+
+# Get list by id
+Source: https://docs.fourvenues.com/channel-manager/api-reference/lists/get-list-by-id
+
+get /lists/{listId}
+Get a list by its identifier.
+
+
+
+# Get all lists
+Source: https://docs.fourvenues.com/channel-manager/api-reference/lists/get-lists
+
+get /lists
+Get all lists
+
+
+
+# Get all locations
+Source: https://docs.fourvenues.com/channel-manager/api-reference/locations/get-all-locations
+
+get /locations
+Get all locations
+
+
+
+# Get location
+Source: https://docs.fourvenues.com/channel-manager/api-reference/locations/get-location
+
+get /locations/{locationId}
+Get location
+
+
+
+# Get all organizations
+Source: https://docs.fourvenues.com/channel-manager/api-reference/organizations/get-all-organizations
+
+get /organizations
+Return the organizations that you have access to (and your's).
+
+
+
+# Get an organization by id
+Source: https://docs.fourvenues.com/channel-manager/api-reference/organizations/get-an-organization-by-id
+
+get /organizations/{organizationId}
+Get an organization by id
+
+
+
+# Get an organization by slug
+Source: https://docs.fourvenues.com/channel-manager/api-reference/organizations/get-an-organization-by-slug
+
+get /organizations/by-slug/{organizationSlug}
+Get an organization by slug
+
+
+
+# Get a payment by id
+Source: https://docs.fourvenues.com/channel-manager/api-reference/payments/get-a-payment-by-id
+
+get /payments/{paymentId}
+Get a payment by its identifier. (Only using Fourvenues payments gateway).
+
+
+
+# Get all payments
+Source: https://docs.fourvenues.com/channel-manager/api-reference/payments/get-all-payments
+
+get /payments
+Get all payments
+
+
+
+# Get all ticket rates
+Source: https://docs.fourvenues.com/channel-manager/api-reference/ticketrates/get-all-ticket-rates
+
+get /ticket-rates
+Get all ticket rates
+
+
+
+# Get pricing info of a ticket rate given a quantity of tickets
+Source: https://docs.fourvenues.com/channel-manager/api-reference/ticketrates/get-pricing-info-of-a-ticket-rate-given-a-quantity-of-tickets
+
+get /ticket-rates/{ticketRateId}/pricing-info
+Get ticket rate pricing info by id
+
+
+
+# Get ticket rate by id
+Source: https://docs.fourvenues.com/channel-manager/api-reference/ticketrates/get-ticket-rate-by-id
+
+get /ticket-rates/{ticketRateId}
+Get ticket rate by id
+
+
+
+# Get ticket rate by slug
+Source: https://docs.fourvenues.com/channel-manager/api-reference/ticketrates/get-ticket-rate-by-slug
+
+get /ticket-rates/by-slug/{ticketRateSlug}
+Get ticket rate by slug
+
+
+
+# Checkout ticket upselling
+Source: https://docs.fourvenues.com/channel-manager/api-reference/tickets/checkout-ticket-upselling
+
+post /tickets/{ticketId}/upselling/checkout
+Validates additional supplement quantities for an existing ticket, then creates the upselling payment via the ticketing API (POST /upselling/supplements). Returns payment_id and payment_url (same format as ticket checkout) plus supplement line totals and fees.
+
+
+
+# Checkout tickets
+Source: https://docs.fourvenues.com/channel-manager/api-reference/tickets/checkout-tickets
+
+post /tickets/checkout
+Creates a payment session for one or more tickets. Supplements are optional: send supplement_id per add-on and optionally quantity. Prices and service charge come from the ticket rate. Duplicate supplement_id entries are collapsed and quantities summed. Paid supplements with purchase_limit.min_quantity are added automatically when omitted; if quantity is below min it is raised to min (max is still enforced). Free supplements (price 0) are added automatically when omitted (purchase_quantity 1, product_quantity from the rate). Only one free supplement type is allowed per ticket.
+
+
+
+# Create ticket
+Source: https://docs.fourvenues.com/channel-manager/api-reference/tickets/create-ticket
+
+post /tickets
+Creates one or more active tickets (external gateway). Supplements require supplement_id and price per unit; optional quantity applies purchase_limit validation after collapsing duplicate supplement_id entries. For external payments, you may also send service_charge_amount (absolute amount per unit) for a supplement; it will be stored separately as service_charge_amount/service_charge_type=fixed and added into the stored unit price. Free supplements from the ticket rate are NOT auto-added here; the selection must be provided by the client.
+
+
+
+# Get ticket by code
+Source: https://docs.fourvenues.com/channel-manager/api-reference/tickets/get-ticket-by-code
+
+get /tickets/by-code/{ticketCode}
+Get ticket by code.
+
+
+
+# Get ticket by id
+Source: https://docs.fourvenues.com/channel-manager/api-reference/tickets/get-ticket-by-id
+
+get /tickets/{ticketId}
+Get ticket by id.
+
+
+
+# Get ticket upselling catalog
+Source: https://docs.fourvenues.com/channel-manager/api-reference/tickets/get-ticket-upselling
+
+get /tickets/{ticketId}/upselling
+Returns supplements available to purchase for upselling (same shape as ticket rate supplements, plus current_purchase_quantity and available_quantity) and the ticket option fees (fee_type, fee_quantity) applied to the upselling checkout.
+
+
+
+# Get tickets
+Source: https://docs.fourvenues.com/channel-manager/api-reference/tickets/get-tickets
+
+get /tickets
+Get tickets given certains query parameters
+
+
+
+# Refund Ticket
+Source: https://docs.fourvenues.com/channel-manager/api-reference/tickets/refund-ticket
+
+put /tickets/{ticketId}/refund
+Void ticket and mark the amount of money refunded. It can be partial or total and it can be done multiple times until the ticket is fully refunded. However, the first time it is done, the ticket is marked as voided.
+
+
+
+# Get tip rates
+Source: https://docs.fourvenues.com/channel-manager/api-reference/tip-rates/get-tip-rates
+
+get /tip-rates
+
+
+
+# Create a new webhook endpoint
+Source: https://docs.fourvenues.com/channel-manager/api-reference/webhooks/create-a-new-webhook-endpoint
+
+post /webhooks/endpoints
+
+
+
+# Delete a webhook endpoint by id
+Source: https://docs.fourvenues.com/channel-manager/api-reference/webhooks/delete-a-webhook-endpoint-by-id
+
+delete /webhooks/endpoints/{id}
+
+
+
+# Get all webhooks endpoints
+Source: https://docs.fourvenues.com/channel-manager/api-reference/webhooks/get-all-webhooks-endpoints
+
+get /webhooks/endpoints
+
+
+
+# Authentication
+Source: https://docs.fourvenues.com/channel-manager/introduction/authentication
+
+
+
+***
+
+title: "Authentication"
+description: To get started using the Channel Manager API, you'll need to authenticate your requests.
+\---API Keys can be requested through your organization portal under **Settings > Developer Portal**.
+
+API Keys have a limited lifespan and can be revoked at any time if they are misused.
+Also, they have capabilities to access only the endpoints that are necessary for your integration.
+
+Api Keys must be included in the `X-Api-Key` HTTP header.
+
+Test everything is working correctly using the [auth](channel-manager/api-reference/auth/get-auth-information)
+endpoint and curl:
+
+```bash theme={null}
+$ curl -H "X-Api-Key: [apiKey]" https://channels-service.fourvenues.com/auth
+
+{
+  "data": {
+    "message": "Authed",
+    "channel": {
+      "_id": "org_channel_123",
+      "name": "My Channel",
+      "slug": "my-channel",
+      "hosts": [
+        {
+          "_id": "org123",
+          "name": "My organization.",
+          "slug": "my-organization.",
+          "created_at": "2022-01-01T00:00:00Z"
+        }
+      ],
+      "created_at": "2024-10-01T00:00:00Z"
+    }
+  },
+  "success": true
+}
+```
+
+
+# How to Use
+Source: https://docs.fourvenues.com/channel-manager/introduction/how-to-use
+
+
+
+
+
+# Overview
+Source: https://docs.fourvenues.com/channel-manager/introduction/overview
+
+
+
+***
+
+title: "Overview"
+description: "The Channel Manager API lets marketplaces and collaborators list events, sell tickets and manage guest lists across multiple Fourvenues venues."
+\---## What is the Channel Manager API?
+
+The **Channel Manager API** is designed for **marketplaces, ticket platforms, and multi-venue operators** — anyone who sells or manages services on behalf of Fourvenues venue owners. As a channel, you operate through a partnership established by the venue, which controls what you can access and sell.
+
+<Info>
+  Managing your own venue's data directly? You probably want the [Integrations API](/integrations/introduction/overview) instead.
+</Info>
+
+## Key concepts
+
+| Concept | Description |
+| - | - |
+| **Channel** | Your identity in the system — a marketplace or partner entity authorized by one or more venues. |
+| **Host** | A Fourvenues venue owner who has granted your channel access to their events. |
+| **Ownership** | Your API key only sees events from venues that have added you as a partner. |
+| **Read + Write** | Supports reading events/rates and creating tickets, lists and checkout sessions. |
+| **Webhooks** | Receive real-time payment confirmations and refund notifications via webhooks. |
+
+## Key difference vs Integrations API
+
+| | Integrations API | Channel Manager API |
+| - | - | - |
+| **Who uses it** | Venue owners / operators | Marketplaces / collaborators |
+| **Data access** | Own venues only | All partner venues (hosts) |
+| **Can sell tickets** | No | Yes (via checkout) |
+| **Can create lists** | No | Yes |
+| **Webhooks** | No | Yes |
+| **Base URL** | `api-alpha.fourvenues.com/integrations` | `channels-service-alpha.fourvenues.com` |
+
+## Where to start
+
+<CardGroup>
+  <Card title="Use Cases" icon="map" href="/channel-manager/introduction/use-cases">
+    End-to-end flows: list events, create guest lists, run a checkout.
+  </Card>
+
+  <Card title="What can I do?" icon="list-check" href="/channel-manager/introduction/what-can-i-do">
+    Full map of supported actions and the endpoints that back them.
+  </Card>
+
+  <Card title="Requirements" icon="shield-check" href="/channel-manager/introduction/requirements">
+    Auth, environments, conditional fields, webhooks and rate limits.
+  </Card>
+
+  <Card title="API Reference" icon="code" href="/channel-manager/api-reference/auth/get-auth-information">
+    Full endpoint reference with interactive playground.
+  </Card>
+</CardGroup>
+
+
+# Requirements
+Source: https://docs.fourvenues.com/channel-manager/introduction/requirements
+
+
+
+***
+
+title: "Requirements & Constraints"
+description: "Authentication, environments, webhook security, pagination, rate limits and conditional fields for the Channel Manager API."
+\---## Authentication
+
+All requests must include your API key in the `X-Api-Key` HTTP header:
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://channels-service-alpha.fourvenues.com/auth' \
+  --header 'X-Api-Key: YOUR_API_KEY_HERE'
+```
+
+### Getting an API key
+
+API keys are provisioned by the Fourvenues team. To request one, contact [integrations@fourvenues.com](mailto:integrations@fourvenues.com) and include:
+
+\- Your marketplace/channel name and company details
+\- The venues (hosts) you have or plan to have partnerships with
+\- The integration you are building (e.g. "ticket marketplace", "event aggregator")
+\- The endpoints you need access to
+
+<Warning>
+  API keys are **channel-scoped**: they grant access only to venues that have explicitly added your channel as a partner. If a venue removes you as a partner, events from that venue will no longer appear in your API responses.
+</Warning>
+
+### Key lifecycle
+
+| Property | Detail |
+| - | - |
+| **Expiry** | Keys have a limited lifespan and must be rotated before expiry. |
+| **Revocation** | Keys can be revoked immediately if misused. |
+| **Scope** | Each key is tied to a specific channel and its partner venues. |
+
+\---## Environments
+
+| Environment | Base URL | Purpose |
+| - | - | - |
+| **Alpha** | `https://channels-service-alpha.fourvenues.com` | Development & testing — isolated data, no real payments |
+| **Production** | `https://channels-service.fourvenues.com` | Live data — use only when fully tested |
+
+<Warning>
+  The alpha environment contains **test data only**. Always validate your integration end-to-end (including the webhook flow) in alpha before switching to production keys.
+</Warning>
+
+To verify connectivity:
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://channels-service-alpha.fourvenues.com/auth' \
+  --header 'X-Api-Key: YOUR_API_KEY_HERE'
+```
+
+A valid response includes your channel identity and all authorized host venues.
+
+\---## Conditional required fields
+
+### List creation (`POST /lists`)
+
+The fields required when creating a guest list entry depend on the **list rate configuration**. Always fetch the list rate first and check:
+
+| Flag on list rate | Meaning |
+| - | - |
+| `requires_full_name: true` | `name` is **required** in the request body |
+| `requires_email: true` | `email` is **required** in the request body |
+| `requires_phone: true` | `phone` is **required** in the request body |
+
+Example — list rate with email + name required (phone optional):
+
+```json theme={null}
+{
+  "rate_id": "lr_888",
+  "event_id": "ev_abc123",
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "for": 2
+}
+```
+
+Submitting without a required field returns `422 Unprocessable Entity`.
+
+### Ticket checkout (`POST /tickets/checkout`)
+
+| Field | Required? | Notes |
+| - | - | - |
+| `redirect_url` | **Required** | URL the user lands on after successful payment |
+| `error_url` | **Required** | URL the user lands on after failed payment |
+| `ticket_rate_id` | **Required** | The rate the user is purchasing |
+| `tickets` | **Required** | Array with at least one ticket object |
+| `tickets[].email` | Depends on `fields` config of the rate | — |
+| `tickets[].full_name` | Depends on `fields` config of the rate | — |
+| `tickets[].price_id` | Optional | ID of the price you displayed; returns `conditions_changed` flag |
+| `tickets[].supplements` | Optional | Array of supplement IDs |
+| `tickets[].warranty` | Required only if rate has warranty enabled | Boolean |
+| `discount_code` | Optional | Applied to all tickets in the session |
+| `send_resources` | Optional | If `true`, Fourvenues sends ticket by email/SMS/WhatsApp |
+| `metadata` | Optional | Free-form JSON object, max 1 KB — useful for your internal IDs |
+
+\---## Webhooks
+
+Webhooks allow you to receive real-time notifications when payments complete or refunds are requested. See the full guide at [Webhook Introduction](/channel-manager/webhooks/introduction/introduction).
+
+### Setting up a webhook endpoint
+
+```bash theme={null}
+curl --request POST \
+  --url 'https://channels-service-alpha.fourvenues.com/webhooks' \
+  --header 'X-Api-Key: <api-key>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "url": "https://myapp.com/webhooks/fourvenues",
+    "events": ["payment.success", "ticket.refund_request"]
+  }'
+```
+
+### Verifying webhook signatures
+
+Each webhook delivery includes a signature header so you can confirm the request is genuinely from Fourvenues. See [Webhook Authentication](/channel-manager/webhooks/introduction/authentication) for the verification algorithm.
+
+<Warning>
+  **Never process a webhook without verifying its signature.** Always validate the signature before updating your database or fulfilling orders.
+</Warning>
+
+### Available webhook events
+
+| Event | Triggered when |
+| - | - |
+| `payment.success` | A buyer completes payment for a checkout session |
+| `ticket.refund_request` | A buyer requests a refund for their ticket |
+
+\---## Pagination
+
+| Parameter | Type | Description |
+| - | - | - |
+| `page` | integer | Page number starting at `1` |
+| `limit` | integer | Results per page (default varies per endpoint) |
+| `start_date` | string (`YYYY-MM-DD` or ISO 8601) | Start of date range filter |
+| `end_date` | string (`YYYY-MM-DD` or ISO 8601) | End of date range filter |
+| `organization_id` | string | Filter events by a specific host organization |
+| `location_id` | string | Filter events by venue location |
+
+\---## Rate limits
+
+\- **Burst requests:** Avoid more than 10 requests per second from a single API key.
+\- **429 responses:** If you receive `429 Too Many Requests`, implement exponential backoff before retrying.
+\- **Webhook retries:** If your endpoint returns a non-2xx status, Fourvenues will retry the delivery with backoff. Ensure your endpoint responds quickly (\< 5 seconds) and processes asynchronously.
+
+\---## Common errors
+
+| HTTP Status | Cause | Fix |
+| - | - | - |
+| `401 Unauthorized` | Missing or invalid `X-Api-Key` | Check the header name and key value |
+| `403 Forbidden` | Key doesn't have access to this endpoint or venue | Contact the Fourvenues team to update your key scope, or verify the venue has added your channel |
+| `404 Not Found` | Resource doesn't exist or is not accessible to your channel | Verify the `_id` or `slug`; confirm the venue is a partner |
+| `422 Unprocessable Entity` | Missing required field or invalid value | Check the request body against the list rate's `requires_*` flags and the API reference |
+| `429 Too Many Requests` | Rate limit exceeded | Implement exponential backoff |
+| `500 Internal Server Error` | Unexpected server error | Retry once; if persistent, contact support |
+
+\---## Security considerations
+
+\- **Never expose your API key client-side** — all requests must go through your backend.
+\- **Validate webhook signatures** before acting on any webhook payload.
+\- **Rotate keys regularly** — contact the Fourvenues team to issue a new key.
+\- **Use HTTPS only** — HTTP requests are rejected at the infrastructure level.
+\- **Store `metadata` wisely** — the metadata field is not encrypted; do not store sensitive PII there.
+
+
+# Use cases
+Source: https://docs.fourvenues.com/channel-manager/introduction/use-cases
+
+
+
+***
+
+title: "Use Cases"
+description: "End-to-end integration flows for the Channel Manager API — built for marketplaces and multi-venue operators."
+\---The Channel Manager API is scoped to **your channel's partner venues**. The use cases below walk through the most common integration patterns with complete request/response examples.
+
+\---## Use Case 1 — Verify Your Channel & List Partner Venues
+
+**Goal:** Confirm your API key is valid and discover which venues (hosts) have granted your channel access.
+
+### Step 1 — Authenticate
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://channels-service-alpha.fourvenues.com/auth' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": {
+    "message": "Authed",
+    "channel": {
+      "_id": "ch_abc123",
+      "name": "My Marketplace",
+      "slug": "my-marketplace",
+      "hosts": [
+        {
+          "_id": "org_xyz789",
+          "name": "Club Razzmatazz",
+          "slug": "club-razzmatazz",
+          "created_at": "2023-06-01T00:00:00.000Z"
+        },
+        {
+          "_id": "org_def456",
+          "name": "Sala Apolo",
+          "slug": "sala-apolo",
+          "created_at": "2024-01-15T00:00:00.000Z"
+        }
+      ]
+    }
+  }
+}
+```
+
+The `hosts` array lists every venue that has authorized your channel. Use the `_id` values to filter events and resources by organization.
+
+\---## Use Case 2 — Browse Events & Ticket Rates
+
+**Goal:** Display an event catalog to end users with real-time pricing and availability.
+
+### Step 1 — List events across all partner venues
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://channels-service-alpha.fourvenues.com/events?start_date=2024-09-01&end_date=2024-09-30' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "ev_abc123",
+      "name": "Friday Night Sessions",
+      "slug": "friday-night-sessions-2024-09-06",
+      "description": "Weekly Friday party",
+      "display_date": "2024-09-06T00:00:00.000Z",
+      "start_date": "2024-09-06T22:00:00.000Z",
+      "end_date": "2024-09-07T06:00:00.000Z",
+      "organization_id": "org_xyz789",
+      "image_url": "https://cdn.fourvenues.com/events/friday-night.jpg",
+      "location_id": "loc_123",
+      "ticket_rates": [...],
+      "age": "18",
+      "outfit": "smart casual"
+    }
+  ]
+}
+```
+
+You can also filter by organization:
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://channels-service-alpha.fourvenues.com/events?organization_id=org_xyz789' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+### Step 2 — Get a specific event with full ticket rate detail
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://channels-service-alpha.fourvenues.com/events/ev_abc123' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+Inside the response you'll find `ticket_rates` with pricing and availability:
+
+```json theme={null}
+{
+  "success": true,
+  "data": {
+    "_id": "ev_abc123",
+    "name": "Friday Night Sessions",
+    "ticket_rates": [
+      {
+        "_id": "tr_111",
+        "name": "General Access",
+        "slug": "general-access",
+        "available": true,
+        "min": 1,
+        "max": 6,
+        "current_price": {
+          "_id": "price_early",
+          "name": "Early Bird",
+          "price": 1200,
+          "valid_until": "2024-09-06T20:00:00.000Z",
+          "fee_type": "percentage",
+          "fee_quantity": 10,
+          "includes": "1 Drink"
+        },
+        "availability": {
+          "sold": 45,
+          "available": 55
+        },
+        "supplements": [
+          { "_id": "sup_1", "label": "Extra drink token", "price": 500 }
+        ],
+        "warranty": {
+          "enabled": true,
+          "percentage": 20,
+          "hours": 24
+        }
+      }
+    ]
+  }
+}
+```
+
+<Info>
+  `price` is always in **cents** (e.g. `1200` = €12.00). Use `current_price` as the active price to show users — it reflects the currently valid pricing tier.
+</Info>
+
+\---## Use Case 3 — Create a Guest List Entry
+
+**Goal:** Add a contact to a guest list on behalf of a partner venue.
+
+### Step 1 — Get list rates for the event
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://channels-service-alpha.fourvenues.com/list-rates?event_id=ev_abc123' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "lr_888",
+      "name": "Free Entry List",
+      "event_id": "ev_abc123",
+      "requires_full_name": true,
+      "requires_email": true,
+      "requires_phone": false,
+      "for": 2,
+      "available": true
+    }
+  ]
+}
+```
+
+<Warning>
+  **Conditional required fields:** The fields `full_name`, `email` and `phone` are required or optional depending on the list rate configuration (`requires_full_name`, `requires_email`, `requires_phone`). Always check these flags before building your form — submitting missing required fields returns a `422` error.
+</Warning>
+
+### Step 2 — Create the list entry
+
+```bash theme={null}
+curl --request POST \
+  --url 'https://channels-service-alpha.fourvenues.com/lists' \
+  --header 'X-Api-Key: <api-key>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "rate_id": "lr_888",
+    "event_id": "ev_abc123",
+    "name": "Jane Doe",
+    "email": "jane@example.com",
+    "for": 2
+  }'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": {
+    "_id": "li_999abc",
+    "code": "JDOE2024",
+    "name": "Jane Doe",
+    "email": "jane@example.com",
+    "rate_id": "lr_888",
+    "event_id": "ev_abc123",
+    "for": 2,
+    "enter": 0,
+    "created_at": "2024-09-05T10:30:00.000Z"
+  }
+}
+```
+
+The `code` field is the unique identifier for check-in at the door.
+
+\---## Use Case 4 — Full Ticket Checkout Flow
+
+**Goal:** Let users purchase tickets through your marketplace, receive payment confirmation and handle refunds.
+
+See the complete step-by-step guide in the [Creating a Checkout Process](/channel-manager/recipes/creating-a-checkout-process) recipe. Here is a summary of the steps:
+
+1\. **Fetch events + ticket rates** — `GET /events`
+2\. **Create checkout session** — `POST /tickets/checkout` with `redirect_url`, `error_url`, ticket data and optional `discount_code`
+3\. **Redirect user** to `payment_url` from the response
+4\. **Receive webhook** — Fourvenues sends a `payment.success` event to your endpoint when payment completes
+5\. **Verify webhook signature** — see [Webhook Authentication](/channel-manager/webhooks/introduction/authentication)
+6\. **Issue refund** (if needed) — `POST /tickets/{id}/refund`
+
+### Minimal checkout request
+
+```bash theme={null}
+curl --request POST \
+  --url 'https://channels-service-alpha.fourvenues.com/tickets/checkout' \
+  --header 'X-Api-Key: <api-key>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "redirect_url": "https://myapp.com/payment/success",
+    "error_url": "https://myapp.com/payment/error",
+    "send_resources": true,
+    "ticket_rate_id": "tr_111",
+    "tickets": [
+      {
+        "email": "buyer@example.com",
+        "full_name": "John Smith",
+        "price_id": "price_early"
+      }
+    ]
+  }'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": {
+    "payment_id": "pay_xyz",
+    "payment_url": "https://pay.fourvenues.com/pay_xyz",
+    "conditions_changed": false,
+    "tickets": [
+      {
+        "_id": "tkt_abc",
+        "qr_code": "generated-qr-code"
+      }
+    ]
+  }
+}
+```
+
+<Info>
+  If `conditions_changed: true` in the response, the price shown to the user no longer matches the active price. Display an updated summary before redirecting to payment.
+</Info>
+
+
+# What can i do
+Source: https://docs.fourvenues.com/channel-manager/introduction/what-can-i-do
+
+
+
+***
+
+title: "What Can I Do?"
+description: "Full map of supported actions and the Channel Manager API endpoints that back them."
+\---Use this page as a quick reference to find the right endpoint for any action you want to build in your marketplace or channel integration.
+
+## Authentication & Channel Info
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| Verify API key + list partner venues | `GET` | `/auth` | Returns your channel profile and all authorized hosts |
+
+## Events
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List all events | `GET` | `/events` | Filter by `start_date`, `end_date`, `organization_id`, `location_id` |
+| Get event by ID | `GET` | `/events/{id}` | Includes `ticket_rates` with pricing |
+| Get event by slug | `GET` | `/events/slug/{slug}` | Useful when you store slugs in your DB |
+
+## Ticket Rates
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List all ticket rates | `GET` | `/ticket-rates` | Filter by `event_id` |
+| Get ticket rate by ID | `GET` | `/ticket-rates/{id}` | — |
+| Get ticket rate by slug | `GET` | `/ticket-rates/slug/{slug}` | — |
+| Get pricing info for a quantity | `GET` | `/ticket-rates/{id}/pricing?quantity=N` | Returns total price including fees |
+
+## Tickets
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List tickets | `GET` | `/tickets` | Filter by `event_id` |
+| Create a ticket (without checkout) | `POST` | `/tickets` | For cases where payment is handled externally |
+| Checkout — create payment session | `POST` | `/tickets/checkout` | Redirects user to Fourvenues payment page |
+| Get ticket by ID | `GET` | `/tickets/{id}` | — |
+| Get ticket by code | `GET` | `/tickets/code/{code}` | — |
+| Refund a ticket | `POST` | `/tickets/{id}/refund` | Triggers partial or full refund |
+
+## List Rates (guest lists)
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List all list rates | `GET` | `/list-rates` | Filter by `event_id` |
+| Get list rate by ID | `GET` | `/list-rates/{id}` | Includes `requires_full_name`, `requires_email`, `requires_phone` flags |
+| Get list rate by slug | `GET` | `/list-rates/slug/{slug}` | — |
+
+## Lists (guest list entries)
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List entries | `GET` | `/lists` | Filter by `event_id` |
+| Create a list entry | `POST` | `/lists` | Required fields depend on the list rate config |
+| Get list entry by ID | `GET` | `/lists/{id}` | — |
+| Get list entry by code | `GET` | `/lists/code/{code}` | — |
+
+## Locations
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List all locations | `GET` | `/locations` | All locations accessible to your channel |
+| Get a location | `GET` | `/locations/{id}` | — |
+
+## Organizations
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List all organizations | `GET` | `/organizations` | All venues (hosts) partnered with your channel |
+| Get organization by ID | `GET` | `/organizations/{id}` | — |
+| Get organization by slug | `GET` | `/organizations/slug/{slug}` | — |
+
+## Payments
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List payments | `GET` | `/payments` | Payments from your channel's transactions |
+| Get payment by ID | `GET` | `/payments/{id}` | — |
+
+## Webhooks
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List webhook endpoints | `GET` | `/webhooks` | — |
+| Create a webhook endpoint | `POST` | `/webhooks` | Subscribe to `payment.success`, `ticket.refund_request`, etc. |
+| Delete a webhook endpoint | `DELETE` | `/webhooks/{id}` | — |
+
+\---## Limitations
+
+\- **No check-in** — check-in operations are handled by the venue via the Integrations API or the Fourvenues app. Your channel can read ticket/list status but cannot mark entries.
+\- **No event creation** — venue owners manage events through the Fourvenues dashboard.
+\- **Scoped to partners only** — you can only see events from venues that have explicitly added your channel as a partner.
+\- **Ticket creation vs checkout** — `POST /tickets` creates a ticket without a payment flow. Use `POST /tickets/checkout` for buyer-facing purchase flows that require payment processing.
+
+
+# 💳 Creating a Checkout Process
+Source: https://docs.fourvenues.com/channel-manager/recipes/creating-a-checkout-process
+
+Learn how to create a checkout process for your channel.
+
+Creating a checkout process for a ticket can be a little bit tricky, but we're here to help you with that. In this guide, we'll show you how to create a checkout process for your channel.
+
+We will go through the following steps:
+
+* Fetching the events information with the ticket rates and availability.
+* Creating a checkout session.
+* Creating a webhook endpoint
+* Waiting for the payment confirmation via webhook.
+* Additionaly, we will show you how to handle the payment confirmation.
+
+## Fetching the events information
+
+The event information is available through the [events](channel-manager/api-reference/events/get-events) endpoint. You can filter the events by date range, location, and organization.
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://channels-service-alpha.fourvenues.com/events
+  ?start_date=2024&end_date=2025' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```json theme={null}
+{
+  "data": [
+    {
+      "_id": "abcdefghi1234567890",
+      "name": "Monday Night",
+      "slug": "monday-night",
+      "description": "Lorem ipsum",
+      "display_date": "2023-12-31T00:00:00.000Z",
+      "start_date": "2024-01-01T00:00:00.000Z",
+      "end_date": "2024-01-01T06:00:00.000Z",
+      "organization_id": "abcdefghi1234567890",
+      "age": "18",
+      "image_url": "https://somecdn.com/random-hash",
+      "outfit": "casual",
+      "ambiences": [...],
+      "music_genres": [...],
+      "artists": [],
+      "location_id": "locAbcdefghi1234567890",
+      "location": { ,
+      "ticket_rates": [...],
+      "fields": [...]
+    }
+  ],
+  "success": true
+}
+```
+
+Now that you have the event information, you can display it on your website or app.
+
+Inside the `ticket_rates` array, you will find the name, prices, current price and availability of this prices.
+
+```json theme={null}
+"ticket_rates": [
+  {
+    "_id": "abcdefghi1234567890",
+    "organization_id": "abcdefghi1234567890",
+    "event_id": "abcdefghi1234567890",
+    "name": "General Access",
+    "slug": "general-access",
+    "valid_from": "2022-01-01T00:00:00.000Z",
+    "complete": true,
+    "type": "limited",
+    "show_all_prices": true,
+    "prices": [
+      {
+        "_id": "1643064796675",
+        "name": "Early Bird",
+        "price": 12,
+        "valid_until": "2022-01-01T00:00:00.000Z",
+        "quantity": 123,
+        "fee_type": "percentage",
+        "fee_quantity": 10,
+        "includes": "1 Drink",
+        "additional_info": "Only valid before 2:00 am."
+      }
+    ],
+    "supplements": [
+      {
+        "_id": "1643064796675",
+        "label": "1 Copa",
+        "price": 12
+      }
+    ],
+    "available": true,
+    "current_price": {
+      "_id": "1643064796675",
+      "name": "Early Bird",
+      "price": 12,
+      "valid_until": "2022-01-01T00:00:00.000Z",
+      "quantity": 123,
+      "fee_type": "percentage",
+      "fee_quantity": 10,
+      "includes": "1 Drink",
+      "additional_info": "Only valid before 2:00 am."
+    },
+    "warranty": {
+      "enabled": true,
+      "is_fixed_price": false,
+      "fixed_price": 0,
+      "percentage": 20,
+      "hours": 12
+    },
+    "availability": {
+      "sold": 10,
+      "available": 90
+    },
+    "min": 1,
+    "max": 10,
+    "questions": [...]
+  }
+]
+```
+
+This information will show you the ticket rates available for the event. You can display the ticket rates on your website or app.
+
+Also, inside a `ticket_rate` object, you will find the `prices` array, which contains the different prices available for the ticket rate. You can just focus on the `current_price` object, which contains the current price available for the ticket rate.
+
+Also, the `ticket_rate` may contain other information like `supplements`, `warranty`, `availability`, `available`, `min`, `max`, `questions` and `fields`.
+
+* `fields` are the fieds that the user can or must fill before buying the ticket rate. It can be a text field or a select field.
+* `min` and `max` are the minimum and maximum number of tickets that can be bought in a unic checkout session.
+* `questions` are the questions that the user can or must answer before buying the ticket depending if the `question` is required or not.
+* `warranty` is the warranty information for the ticket rate. It can be bought or not depending on the `enabled` field. Also, it contains the `percentage` and `hours` that the warranty is available.
+* `available` shows if the ticket rate is available or not.
+* `availability.available` shows the number of tickets available.
+* `availability.sold` shows the number of tickets sold.
+* `supplements` are additional items that can be bought with the ticket rate. It can only be bought one item of each supplement.
+
+## Creating a checkout session
+
+Ones the user selects the ticket rate and the quantity of tickets, you can create a checkout session with the [checkout](channel-manager/api-reference/checkout/create-checkout-session) endpoint.
+
+Also, to recive the payment confirmation you will need to create a [webhook endpoint](channel-manager/api-reference/webhooks/create-a-new-webhook-endpoint). If you need to go deeper on how to handle webhook events you can check the [Listening to Webhooks](channel-manager/recipes/listening-to-webhooks) recipe.
+
+In order to create the checkout session, you will need to send a POST request to the [tickets checkout](channel-manager/api-reference/checkout/create-checkout-session) endpoint with the following information:
+
+* `redirect_url`: The URL where the user will be redirected after the payment confirmation.
+* `error_url`: The URL where the Fourvenues API will send the payment confirmation.
+* 'send\_resources': If you want Fourvenues to send the ticekt via email, SMS or / and WhatsApp(r) after the payment confirmation.
+* `metadata`: Free format object value object that you can use to store any information you want. Max 1kb.
+* `ticket_rate_id`: The ticket rate id that the user wants to buy.
+* `discount_code`: (Optional) The discount code that the user wants to use.
+* `tickets`: An array of objects with the ticket information.
+* `tickets[].email  ... tickets[].full_name`: The ticket information that is required as shown in the `fields` array of the ticket rate object.
+* `tickets[].qr_code`: (Optional) The QR code that will be used to validate the ticket. If not provided, Fourvenues will generate one.
+* `tickets[].price_id`: (Optional) The price id of the current\_price you have shown to the user. If not provided, Fourvenues will use the current\_price of the ticket rate. If provided, it will return a flag in the response to show if the price with what the checkout session has been generated is the same as the one you have shown to the user. Flag name: `conditions_changed`.
+* `tickets[].supplements`: (Optional) An array of objects with the supplement information.
+* `tickets[].supplements[].supplement_id`: The supplement id.
+* `tickets[].warranty`: (Optional if the ticket rate has warranty) A boolean value that shows if the user wants to buy the warranty or not.
+
+```bash theme={null}
+curl --request POST \
+  --url https://channels-service-alpha.fourvenues.com/tickets/checkout \
+  --header 'Content-Type: application/json' \
+  --header 'X-Api-Key: <api-key>' \
+  --data '{
+    "redirect_url": "https://mywebsite.com/redirect",
+    "error_url": "https://mywebsite.com/error",
+    "send_resources": true,
+    "metadata": {
+      "internal_id": "random-internal-id",
+    },
+    "ticket_rate_id": "abcdefghi1234567890",
+    "discount_code": "DISCOUNT_CODE",
+    "tickets": [
+      {
+        "email": "example@fourvenues.com",
+        "full_name": "John Doe",
+        "qr_code": "random-qr-code",
+        "price_id": "abcdefghi1234567890",
+        "supplements": [
+          {
+            "supplement_id": "abcdefghi1234567890"
+          }
+        ],
+        "warranty": true
+      }
+    ]
+  }'
+```
+
+Response example:
+
+```json theme={null}
+{
+  "data": {
+    "payment_id": "1234567890",
+    "payment_url": "https://payment.yourwebpage.com/1234567890",
+    "tickets": [
+      {
+        "_id": "1234567890",
+        "qr_code": "random-qr-code",
+        "price_id": "abcdefghi1234567890",
+        ...
+      },
+      ...
+    ]
+    "conditions_changed": false
+  },
+  "success": true
+}
+```
+
+Now, you can redirect the user to the `payment_url` to complete the payment.
+
+## Waiting for the payment confirmation via webhook
+
+After the user completes the payment, the Fourvenues API will send a webhook to your backend with the payment confirmation. You can check the [Listening to Webhooks](channel-manager/recipes/listening-to-webhooks) recipe to learn how to handle the webhook events.
+
+
+# 🔊 Listening to Webhooks
+Source: https://docs.fourvenues.com/channel-manager/recipes/listening-to-webhooks
+
+Learn how to listen to webhooks and handle the events.
+
+Webhooks are a powerful way to listen to events that happen in your integration. You can use webhooks to listen events us `payment.success` or `ticket.request_refund` and handle them in your application.
+
+In this guide, we'll show you how to listen to webhooks and handle the events.
+
+## Creating a webhook endpoint in your app
+
+To create a webhook endpoint, you need to create a new endpoint in your application that will listen to the events. You can use any programming language or framework to create this endpoint.
+
+You will need to expose this endpoint to the internet, so the Fourvenues API can send the events to it. Let's see an example of how to create a webhook endpoint in Node.js using Express:
+
+```javascript theme={null}
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(bodyParser.json());
+
+app.post('/webhook', (req, res) => {
+  const event = req.body;
+  console.log('Received event:', event);
+  res.status(200).send();
+});
+```
+
+## Register your webhook endpoint
+
+To register your webhook endpoint, you need to send a request to the \[webhook endpoints]channel-manager//api-reference/webhooks/create-a-new-webhook-endpoint) with the URL of your endpoint and the events you want to listen to. If you are in a local environment, you can use a tool like [ngrok](https://ngrok.com/) to expose your local server to the internet.
+
+```bash theme={null}
+curl --request POST \
+  --url https://channels-service-alpha.fourvenues.com/webhooks/endpoints \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "<string>",
+  "url": "<string>"
+}'
+```
+
+Response example:
+
+```json theme={null}
+{
+  "_id": "<string>",
+  "name": "<string>",
+  "url": "<string>",
+  "sign_secret": "<string>"
+}
+```
+
+Save the `sign_secret` value, you will need it to verify the events.
+
+## Listening to the events
+
+Now that you have your webhook endpoint registered, you can start listening to the events. When an event happens, the Fourvenues API will send a POST request to your endpoint with the event data.
+
+Let's see the example of `payment.success` event:
+
+```json theme={null}
+{
+  "id": "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b",
+  "event": "payment.success",
+  "payload": {
+    "payment_id": "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b",
+    "resource_type": "ticket",
+    "resource_ids": [
+      "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b"
+    ],
+    "metadata": {
+      "internal_id": "random-internal-id",
+    },
+    "send_resources": true
+  }
+}
+```
+
+* `id`: The unique identifier of the webhook event.
+* `event`: The name of the event.
+* `payload`: The data of the event.
+
+This looks good for now, but is it secure? Not really. Let's see how to verify the events.
+
+## Verifying the events
+
+To verify the events, you need to use the `sign_secret` value that you received when you registered the webhook endpoint. You can use this value to verify the signature of the event.
+
+Here is an example of how to verify the event in Node.js:
+
+```javascript theme={null}
+const crypto = require('crypto');
+
+const hmacSha256 = (input: string, key: string) => {
+  const hmac = crypto.createHmac('sha256', key);
+  hmac.update(input);
+  return hmac.digest('hex');
+};
+
+const middlewareFourvenuesEvents = (req, res, next) => {
+  const signSecret = 'your-sign-secret';
+  const signature = req.headers['X-Webhook-Signature'];
+  const body = JSON.stringify(req.body);
+
+  if (signature !== hmacSha256(body, signSecret)) {
+    // return 403 Forbidden if the signature is invalid.
+    // Also we recommend logging the event to investigate who is trying to send fake events. 
+    return res.status(403).send('Invalid signature');
+  }
+
+  next();
+};
+```
+
+## Retries and backoff
+
+Sometimes, the Fourvenues API may not receive a response from your webhook endpoint. In this case, the Fourvenues API will retry sending the event.
+Fourvenues use the following retry strategy:
+
+```typescript theme={null}
+public static calculateDelay(retries: number): number {
+  const jitter = Math.random() * 1000;
+  return Math.round(Math.pow(retries, 1.5) * 1000) + jitter;
+}
+```
+
+The max number of retries is 40. If the Fourvenues API doesn't receive a response after 40 retries, the event will be marked as failed.
+
+
+# Payment Success Event
+Source: https://docs.fourvenues.com/channel-manager/webhooks/events/payment-success-event
+
+Learn how to handle the payment success event in your integration.
+
+The `payment.success` event is sent when a payment is successfully processed.
+This event contains information about the payment and the resources that were affected by the payment.
+
+## Event Payload
+
+The payload of the `payment.success` event contains the following fields:
+
+* `payment_id`: The unique identifier of the payment.
+* `resource_type`: The type of resource that was affected by the payment. Now it's always `ticket`. In the future may be extended.
+* `resource_ids`: An array of unique identifiers of the resources that were affected by the payment.
+* `metadata`: Free-form metadata that you passed when creating the payment.
+* `send_resources`: A boolean value that indicates if you asked Fourvenues to send the resources via email, SMS or / and WhatsApp(r).
+
+```json theme={null}
+{
+  "id": "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b",
+  "event": "payment.success",
+  "payload": {
+    "payment_id": "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b",
+    "resource_type": "ticket",
+    "resource_ids": [
+      "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b"
+    ],
+    "metadata": {
+      "internal_id": "random-internal-id",
+    },
+    "send_resources": true
+  }
+}
+```
+
+
+# Ticket Refund Request Event
+Source: https://docs.fourvenues.com/channel-manager/webhooks/events/ticket-request-refund-event
+
+Learn how to handle the payment success event in your integration.
+
+The `ticket.request_refund` event is sent when a ticket needs to be refunded.
+This event contains information about the ticket that needs refund.
+
+## Event Payload
+
+The payload of the `ticket.request_refund` event contains the following fields:
+
+* `qr_code`: QR code of the ticket.
+* `client_name`: Name of the client that has the ticket.
+* `client_email`: Email related to the ticket.
+* `event_id`: Id of the event from where the ticket is from.
+* `ticket_id`: Unique identifiera of the ticket.
+* `amount_to_refund`: Requested amount to be refunded.
+* `currency`: Currency requested to be refunded.
+
+```json theme={null}
+{
+  "id": "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b",
+  "event": "ticket.request_refund",
+  "payload": {
+    "qr_code": "75P42W5G0",
+    "client_name": "John Doe",
+    "client_email": "email@email.com",
+    "event_id": "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b",
+    "ticket_id": "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b",
+    "amount_to_refund": 15,
+    "currency": "EUR",
+    "resource_type": "ticket"
+  }
+}
+```
+
+
+# Authentication
+Source: https://docs.fourvenues.com/channel-manager/webhooks/introduction/authentication
+
+
+
+To authenticate the events sent by the Channel Manager API, you need to verify the signature of the event using the `sign_secret` value you received when you registered your webhook endpoint.
+
+The signature of the event is generated using the HMAC-SHA256 algorithm with the `sign_secret` value as the key and the event payload (stringified) as the input.
+
+Here is an example of how to verify the event signature in Node.js:
+
+```javascript theme={null}
+const crypto = require('crypto');
+
+const verifySignature = (payload, signature, signSecret) => {
+  const hmac = crypto.createHmac('sha256', signSecret);
+  hmac.update(payload);
+  const calculatedSignature = hmac.digest('hex');
+  return calculatedSignature === signature;
+};
+```
+
+You can use this function to verify the signature of the event before processing it in your application.
+
+The signature can be found in the `X-Webhook-Signature` HTTP header of the event request. You can use this value to verify the event signature and ensure that the event was sent by the Channel Manager API.
+
+If you are using a body parser middleware in your application, make sure to parse the request body after verifying the signature or stringify the request body before passing it to the `verifySignature` function.
+
+
+# Creating a webhook endpoint
+Source: https://docs.fourvenues.com/channel-manager/webhooks/introduction/creating-a-webhook-endpoint
+
+
+
+First of all, in order to receive events from the Channel Manager API, you need to register a webhook endpoint in the Fourvenues API.
+
+If you are in a local environment, you can use a tool like [ngrok](https://ngrok.com/) to expose your local server to the internet.
+
+## Register your webhook endpoint
+
+```bash theme={null}
+curl --request POST \
+  --url https://channels-service-alpha.fourvenues.com/webhooks/endpoints \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "name": "<string>",
+  "url": "<string>"
+}'
+```
+
+Response example:
+
+```json theme={null}
+{
+  "_id": "<string>",
+  "name": "<string>",
+  "url": "<string>",
+  "sign_secret": "<string>"
+}
+```
+
+
+# Introduction
+Source: https://docs.fourvenues.com/channel-manager/webhooks/introduction/introduction
+
+
+
+Webhooks are a powerful way to listen to events that happen in your integration.
+You can use webhooks to listen to events such as `payment.success` or `payment.refund` and handle them in your application.
+
+In this section, you will find all the information you need to start using webhooks in your integration.
+
+If it's your first time using webhooks, we recommend you to read the [🔊 Listening to Webhooks Guide](channel-manager/recipes/listening-to-webhooks) to get started.
+
+
+# Webhook event object
+Source: https://docs.fourvenues.com/channel-manager/webhooks/introduction/webhook-event-object
+
+
+
+When you register a webhook endpoint in the Channel Manager API, you will start receiving events in your webhook endpoint.
+These events are sent as HTTP POST requests with a JSON payload that contains information about the event.
+
+The standard structure of the webhook event object is as follows:
+
+* `request.headers['x-webhook-id']`: The unique identifier of the event.
+* `request.headers['x-webhook-signature']`: The signature of the event. This value is generated using the `sign_secret` value you received when you registered your webhook endpoint.
+* `request.body.id`: The unique identifier of the event.
+* `request.body.event`: The name of the event. Example `payment.success`.
+* `request.body.payload`: The data related to the event. This can be different for each event type.
+
+```json theme={null}
+{
+  "id": "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b",
+  "event": "payment.success",
+  "payload": {
+    "payment_id": "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b",
+    "resource_type": "ticket",
+    "resource_ids": [
+      "5f7b1b3b-7b7b-4b7b-8b7b-9b7b1b3b7b7b"
+    ],
+    "metadata": {
+      "internal_id": "random-internal-id",
+    },
+    "send_resources": true
+  }
+}
+```
+
+
+# Get booking by code
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/get-booking-by-code
+
+get /bookings/code/{bookingCode}
+Get a booking by code
+
+
+
+# Get booking by id
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/get-booking-by-id
+
+get /bookings/{bookingId}
+Get a booking by id
+
+
+
+# Get bookings
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/get-bookings
+
+get /bookings/
+Get all the bookings given a date (allows filtering by space name)
+
+
+
+# Get bookings availability
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/get-bookings-availability
+
+get /bookings/availability
+Get an event booking\'s availability
+
+
+
+# Get bookings by email
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/get-bookings-by-email
+
+get /bookings/email/{email}
+Get bookings by client email
+
+
+
+# Get bookings events
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/get-bookings-events
+
+get /bookings/events
+Get all the bookings by event date. This endpoint filters by event date instead of updated_at.
+
+
+
+# Patch booking deposit
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/patch-booking-deposit
+
+patch /bookings/{bookingId}/deposit
+Update the deposit (fianza) and deposit paid (fianza_pagada) of a booking.
+
+
+
+# Patch booking minimum spend
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/patch-booking-minimum-spend
+
+patch /bookings/{bookingId}/minimum-spend
+Update the minimum spend of a booking.
+
+
+
+# Patch booking space
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/patch-booking-space
+
+patch /bookings/{bookingId}/space
+Update the space of a booking.
+
+
+
+# Post booking external transaction
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/post-booking-external-transaction
+
+post /bookings/{bookingId}/external-transaction
+Create an external payment for a booking
+
+
+
+# Post bookings walk in
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/post-bookings-walk-in
+
+post /bookings/walk-in
+Create a walk-in booking
+
+
+
+# Put bookings products
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/put-bookings-products
+
+put /bookings/{bookingId}/products
+Update the products of a booking
+
+
+
+# Put bookings status
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/put-bookings-status
+
+put /bookings/{bookingId}/status
+Update the status of a booking.
+
+
+
+# Put bookings update fields
+Source: https://docs.fourvenues.com/integrations/api-reference/bookings/put-bookings-update-fields
+
+put /bookings/{bookingId}/update-fields
+Update booking information
+
+
+
+# Get channels
+Source: https://docs.fourvenues.com/integrations/api-reference/channels/get-channels
+
+get /channels/
+Get all the channels.
+
+
+
+# Get client by id
+Source: https://docs.fourvenues.com/integrations/api-reference/clients/get-client-by-id
+
+get /clients/{clientId}
+Get a client by id
+
+
+
+# Get clients
+Source: https://docs.fourvenues.com/integrations/api-reference/clients/get-clients
+
+get /clients/
+Get all the clients
+
+
+
+# Get clients marketing preferences
+Source: https://docs.fourvenues.com/integrations/api-reference/clients/get-clients-marketing-preferences
+
+get /clients/marketing-preferences
+Get marketing preferences for a list of clients by their emails
+
+
+
+# Delete discount codes
+Source: https://docs.fourvenues.com/integrations/api-reference/discount-codes/delete-discount-codes
+
+delete /discount-codes/
+Delete one or more discount codes by id (scoped to the organization).  Already-deleted or non-existing ids are ignored. The codes are also detached from any rate that references them.
+
+
+
+# Get discount code by code
+Source: https://docs.fourvenues.com/integrations/api-reference/discount-codes/get-discount-code-by-code
+
+get /discount-codes/by-code/{code}
+Get a single discount code by its code.  Same scope as the list: without event_id it looks up the organization-level code;  with event_id it looks up the code scoped to that event.  If not found in the event but the code exists at organization level, returns 404 with a body  { reason: "DISCOUNT_CODE_NOT_ASSOCIATED_TO_EVENT", organization_level: true, discount_code_id, discount_code }.  Returns a plain 404 if no code matches at all.
+
+
+
+# Get discount code by id
+Source: https://docs.fourvenues.com/integrations/api-reference/discount-codes/get-discount-code-by-id
+
+get /discount-codes/{discountCodeId}
+Get a single discount code by its unique id.
+
+
+
+# Get discount codes
+Source: https://docs.fourvenues.com/integrations/api-reference/discount-codes/get-discount-codes
+
+get /discount-codes/
+Get discount codes for the organization.  Without event_id returns organization-level codes.  With event_id returns codes scoped to that event.
+
+
+
+# Patch discount codes bookings
+Source: https://docs.fourvenues.com/integrations/api-reference/discount-codes/patch-discount-codes-bookings
+
+patch /discount-codes/bookings/{discountCodeId}
+Update an existing booking (reservas) discount code by id.  The code type and the code value are fixed at creation: the id must belong to a booking code.  Booking codes have no rate association or quantity/sales limits.
+
+
+
+# Patch discount codes tickets
+Source: https://docs.fourvenues.com/integrations/api-reference/discount-codes/patch-discount-codes-tickets
+
+patch /discount-codes/tickets/{discountCodeId}
+Update an existing ticket (entradas) discount code by id.  The code type and the code value are fixed at creation: the id must belong to a ticket code.  rate_ids can only be updated on event-scoped codes and requires event_id.
+
+
+
+# Post discount codes bookings
+Source: https://docs.fourvenues.com/integrations/api-reference/discount-codes/post-discount-codes-bookings
+
+post /discount-codes/bookings
+Create a booking (reservas) discount code at organization or event level.  Booking codes validate at event level only: no rate association and no quantity/sales limits.
+
+
+
+# Post discount codes import
+Source: https://docs.fourvenues.com/integrations/api-reference/discount-codes/post-discount-codes-import
+
+post /discount-codes/import
+Import organization-level discount codes into an event.  All codes must belong to the organization and have a parent reference.  Already imported codes are skipped. Duplicate IDs in the request are ignored.  Fails when a code with the same value already exists in the target event.
+
+
+
+# Post discount codes tickets
+Source: https://docs.fourvenues.com/integrations/api-reference/discount-codes/post-discount-codes-tickets
+
+post /discount-codes/tickets
+Create a ticket (entradas) discount code at organization or event level.  Ticket codes can be associated to ticket rates via rate_ids and support quantity/sales limits.
+
+
+
+# Get event by id
+Source: https://docs.fourvenues.com/integrations/api-reference/events/get-event-by-id
+
+get /events/{eventId}
+Get an event by its identifier.
+
+
+
+# Get events
+Source: https://docs.fourvenues.com/integrations/api-reference/events/get-events
+
+get /events/
+Get all the events given a date.
+
+
+
+# Get external payments
+Source: https://docs.fourvenues.com/integrations/api-reference/external-payments/get-external-payments
+
+get /external-payments/
+Get all the external payments given an event or a date range.
+
+
+
+# Get invoices
+Source: https://docs.fourvenues.com/integrations/api-reference/invoicing/get-invoices
+
+get /invoicing/invoices
+Get all the invoices for an organization
+
+
+
+# Get list by code
+Source: https://docs.fourvenues.com/integrations/api-reference/lists/get-list-by-code
+
+get /lists/by-code/{listCode}
+Get a list by its code.
+
+
+
+# Get list by id
+Source: https://docs.fourvenues.com/integrations/api-reference/lists/get-list-by-id
+
+get /lists/{listId}
+Get a list by its identifier.
+
+
+
+# Get lists
+Source: https://docs.fourvenues.com/integrations/api-reference/lists/get-lists
+
+get /lists/
+Get all the lists given a event.
+
+
+
+# Get lists rates
+Source: https://docs.fourvenues.com/integrations/api-reference/lists/get-lists-rates
+
+get /lists-rates/
+Get all the rates of lists given a event.
+
+
+
+# Put list by code checkin
+Source: https://docs.fourvenues.com/integrations/api-reference/lists/put-list-by-code-checkin
+
+put /lists/by-code/{listCode}/checkin
+Checkin a list by its code.
+
+
+
+# Put list checkin
+Source: https://docs.fourvenues.com/integrations/api-reference/lists/put-list-checkin
+
+put /lists/{listId}/checkin
+Checkin a list by its identifier.
+
+
+
+# Get pass by code
+Source: https://docs.fourvenues.com/integrations/api-reference/passes/get-pass-by-code
+
+get /passes/by-code/{passCode}
+Get a pass by its code.
+
+
+
+# Get pass by id
+Source: https://docs.fourvenues.com/integrations/api-reference/passes/get-pass-by-id
+
+get /passes/{passId}
+Get a pass by its identifier.
+
+
+
+# Get passes
+Source: https://docs.fourvenues.com/integrations/api-reference/passes/get-passes
+
+get /passes/
+Get all the passes given a event.
+
+
+
+# Get passes rates
+Source: https://docs.fourvenues.com/integrations/api-reference/passes/get-passes-rates
+
+get /passes-rates/
+Get all the rates of passes given a event.
+
+
+
+# Put pass by code checkin
+Source: https://docs.fourvenues.com/integrations/api-reference/passes/put-pass-by-code-checkin
+
+put /passes/by-code/{passCode}/checkin
+Activate a pass.
+
+
+
+# Put pass checkin
+Source: https://docs.fourvenues.com/integrations/api-reference/passes/put-pass-checkin
+
+put /passes/{passId}/checkin
+Activate a pass.
+
+
+
+# Get payment by id
+Source: https://docs.fourvenues.com/integrations/api-reference/payments/get-payment-by-id
+
+get /payments/{paymentId}
+Get a payment by its identifier. (Only using Fourvenues payments gateway).
+
+
+
+# Get payments
+Source: https://docs.fourvenues.com/integrations/api-reference/payments/get-payments
+
+get /payments/
+Get all the payments given a event or a date range. (Only using Fourvenues payments gateway).
+
+
+
+# Get refund by id
+Source: https://docs.fourvenues.com/integrations/api-reference/refunds/get-refund-by-id
+
+get /refunds/{refundId}
+Get a refund by its identifier.
+
+
+
+# Get refunds
+Source: https://docs.fourvenues.com/integrations/api-reference/refunds/get-refunds
+
+get /refunds/
+Get all the refunds given a event or a date range. (Only using Fourvenues payments gateway).
+
+
+
+# Get sales
+Source: https://docs.fourvenues.com/integrations/api-reference/sales/get-sales
+
+get /sales/
+
+
+
+# Post subscription
+Source: https://docs.fourvenues.com/integrations/api-reference/subscriptions/post-subscription
+
+post /subscriptions/{email}
+Insert subscription for an email.
+
+
+
+# Delete tickets
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/delete-tickets
+
+delete /tickets/
+Soft delete tickets created by integrations API.
+
+
+
+# Get ticket by code
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/get-ticket-by-code
+
+get /tickets/by-code/{ticketCode}
+Get ticket by code.
+
+
+
+# Get ticket by id
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/get-ticket-by-id
+
+get /tickets/{ticketId}
+Get ticket by id.
+
+
+
+# Get tickets
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/get-tickets
+
+get /tickets/
+Get all tickets for an event. Supports filtering by date range on created_at or updated_at. Each ticket includes created_at and updated_at in ISO 8601 format.
+
+
+
+# Get tickets check in
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/get-tickets-check-in
+
+get /tickets/check-in/{ticketCode}
+Check if a ticket is allowed to be checked in. Its checked against the current event.
+
+
+
+# Get tickets rates
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/get-tickets-rates
+
+get /tickets-rates/
+Get all the rates of tickets given a event.
+
+
+
+# Get tickets rates future events supplement labels
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/get-tickets-rates-future-events-supplement-labels
+
+get /tickets-rates/future-events-supplement-labels
+Get all the labels of the supplements configured in rates from future events.
+
+
+
+# Patch tickets supplement product quantity used
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/patch-tickets-supplement-product-quantity-used
+
+patch /tickets/supplement-product-quantity-used/{ticketId}
+Update the product quantity used of a supplement given its slug.
+
+
+
+# Post tickets
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/post-tickets
+
+post /tickets/
+Create one or more tickets.  Email and FullName are required for each ticket.  All tickets must have the same rate and priceId.  ReferralId or ChannelId can be passed but not both.  This endpoint does not check for rate, channel or any sort of limits
+
+
+
+# Post tickets refund
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/post-tickets-refund
+
+post /tickets/refund/{ticketId}
+Refund a ticket.
+
+
+
+# Put ticket by code checkin
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/put-ticket-by-code-checkin
+
+put /tickets/by-code/{ticketCode}/checkin
+Update check-in from ticket
+
+
+
+# Put ticket checkin
+Source: https://docs.fourvenues.com/integrations/api-reference/tickets/put-ticket-checkin
+
+put /tickets/{ticketId}/checkin
+Update check-in from ticket
+
+
+
+# Get users
+Source: https://docs.fourvenues.com/integrations/api-reference/users/get-users
+
+get /users/
+Get all the users.
+
+
+
+# Get v2 pass by code
+Source: https://docs.fourvenues.com/integrations/api-reference/v2/get-v2-pass-by-code
+
+get /v2/passes/by-code/{passCode}
+Get a pass by its code with usage information for every event assigned to its pass type.
+
+
+
+# Get v2 pass by id
+Source: https://docs.fourvenues.com/integrations/api-reference/v2/get-v2-pass-by-id
+
+get /v2/passes/by-id/{passId}
+Get a pass by its identifier with usage information for every event assigned to its pass type.
+
+
+
+# Get v2 passes
+Source: https://docs.fourvenues.com/integrations/api-reference/v2/get-v2-passes
+
+get /v2/passes/
+Get all the passes given an event with usage information for every event assigned to their pass type.
+
+
+
+# Patch v2 pass check in by code
+Source: https://docs.fourvenues.com/integrations/api-reference/v2/patch-v2-pass-check-in-by-code
+
+patch /v2/passes/check-in/by-code/{passCode}
+Check in a pass by its code if it belongs to the event and the current time is within the event range.
+
+
+
+# Get wallet movements
+Source: https://docs.fourvenues.com/integrations/api-reference/wallet-movement/get-wallet-movements
+
+get /wallet-movements/
+Get all the wallet movements in your organization.
+
+
+
+# Get webhook deliveries
+Source: https://docs.fourvenues.com/integrations/api-reference/webhook-deliveries/get-webhook-deliveries
+
+get /webhook-deliveries/
+Lists delivery attempts of the organization, optionally filtered by endpoint and/or status.
+
+
+
+# Get webhook delivery by id
+Source: https://docs.fourvenues.com/integrations/api-reference/webhook-deliveries/get-webhook-delivery-by-id
+
+get /webhook-deliveries/{webhookDeliveryId}
+Gets a single delivery owned by the organization, with its attempts and the exact  payload that was signed and sent (see the `WebhookEventPayload` schema).
+
+
+
+# Post webhook delivery replay
+Source: https://docs.fourvenues.com/integrations/api-reference/webhook-deliveries/post-webhook-delivery-replay
+
+post /webhook-deliveries/{webhookDeliveryId}/replay
+Replays a single delivery, which must be in `failed` state and belong to an active endpoint.
+
+
+
+# Delete webhook endpoint
+Source: https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/delete-webhook-endpoint
+
+delete /webhook-endpoints/{webhookEndpointId}
+Hard deletes an owned webhook endpoint. The delivery history is preserved.
+
+
+
+# Get webhook endpoint by id
+Source: https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/get-webhook-endpoint-by-id
+
+get /webhook-endpoints/{webhookEndpointId}
+Gets a single webhook subscription owned by the organization.
+
+
+
+# Get webhook endpoints
+Source: https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/get-webhook-endpoints
+
+get /webhook-endpoints/
+Lists all webhook subscriptions of the organization. No query parameters accepted.
+
+
+
+# Patch webhook endpoint
+Source: https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/patch-webhook-endpoint
+
+patch /webhook-endpoints/{webhookEndpointId}
+Updates `name`, `url` and/or `events` of an owned webhook endpoint. At least one field is required.  `status`, `disabled_at`, `disabled_reason`, `sign_secret` and `organization_id` are not editable.
+
+
+
+# Post webhook endpoint enable
+Source: https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/post-webhook-endpoint-enable
+
+post /webhook-endpoints/{webhookEndpointId}/enable
+Reactivates a disabled webhook endpoint. Idempotent if it is already active.
+
+
+
+# Post webhook endpoint replay failed deliveries
+Source: https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/post-webhook-endpoint-replay-failed-deliveries
+
+post /webhook-endpoints/{webhookEndpointId}/replay-failed-deliveries
+Bulk-replays all failed deliveries of the endpoint. Requires the endpoint to be active.  <br><br>Recovery flow when deliveries start failing: the endpoint is auto-disabled by the webhook-service after  repeated delivery failures (`status: "disabled"`, with `disabled_at` and `disabled_reason`). To recover:  1. fetch the endpoint by id (or the list) to confirm `disabled_at` and `disabled_reason`;  2. fix the destination behind the endpoint URL;  3. call the enable operation to reactivate it;  4. call this operation to bulk-replay everything that failed while it was disabled — rejected with 409 while the  endpoint is still disabled;  5. verify by listing the webhook deliveries with `status=failed` (optionally narrowed by `endpoint_id`) that no  failed deliveries remain.
+
+
+
+# Post webhook endpoints
+Source: https://docs.fourvenues.com/integrations/api-reference/webhook-endpoints/post-webhook-endpoints
+
+post /webhook-endpoints/
+Creates a webhook subscription for the organization. `events` is deduplicated automatically.  `sign_secret` is shown only once — store it now, it cannot be retrieved later. There is no rotation: if you lose it,  create a new endpoint.  <br><br>Outbound webhook contract: every webhook is an HTTP POST to the endpoint URL with a minimal, stable JSON body  (`id`, `event`, `resource_type`, `resource_id`, `created_at` — see the `WebhookEventPayload` schema). It is a change  ping: fetch the resource details from this API using `resource_id`.  <br><br>Signature: each request carries `X-Webhook-Id` (the delivery id) and  `X-Webhook-Signature: t=<unix seconds>,v1=<hex>`, where `<hex>` is the HMAC-SHA256 of `"<t>.<raw body>"` keyed with  `sign_secret`. Recompute it over the raw body and compare with a constant-time equality check; reject stale  timestamps to prevent replays.  <br><br>Delivery semantics: any 2xx acknowledges the delivery (10 s timeout, redirects are not followed). Anything  else is retried with exponential backoff and jitter, up to 20 attempts over ~72 h. Delivery is at-least-once and  unordered: deduplicate by payload `id`.
+
+
+
+# Authentication
+Source: https://docs.fourvenues.com/integrations/introduction/authentication
+
+
+
+***
+
+title: "Authentication"
+description: To get started using the Integrations API, you'll need to authenticate your requests.
+\---API Keys can be requested through your organization portal under **Settings > Developer Portal**.
+
+API Keys have a limited lifespan and can be revoked at any time if they are misused.
+Also, they have capabilities to access only the endpoints that are necessary for your integration.
+
+Api Keys must be included in the `X-Api-Key` HTTP header.
+
+Test everything is working correctly using the [auth](integrations/api-reference/auth/get-auth-information)
+endpoint and curl:
+
+```bash theme={null}
+$ curl -H "X-Api-Key: [apiKey]" https://api-alpha.fourvenues.com/integrations/channels
+
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "pw2gra4r20xlu02js0ybj42s6vYpAzeX",
+      "name": "My team",
+      "slug": "my-team"
+    }
+  ]
+}
+```
+
+
+# Overview
+Source: https://docs.fourvenues.com/integrations/introduction/overview
+
+
+
+***
+
+title: "Overview"
+description: "The Integrations API gives you programmatic access to your own Fourvenues data: events, tickets, lists, payments, refunds and wallet movements."
+\---## What is the Integrations API?
+
+The **Integrations API** is designed for **venue owners and operators** who need programmatic access to their own data inside Fourvenues. Use it to build custom tooling on top of your venues — from check-in scanners to finance dashboards.
+
+<Info>
+  Looking to sell tickets on behalf of multiple venues as a marketplace? You probably want the [Channel Manager API](/channel-manager/introduction/overview) instead.
+</Info>
+
+## Key concepts
+
+| Concept | Description |
+| - | - |
+| **Ownership** | Your API key only has access to the venues that belong to your account. |
+| **Read-heavy** | Most endpoints are read-only. Write operations are limited to check-in actions and booking status updates. |
+| **Event-scoped** | Tickets, lists, bookings and passes are always scoped to a specific event. |
+| **Alpha / Prod** | Two separate environments with isolated data (see [Requirements](/integrations/introduction/requirements)). |
+
+## Where to start
+
+<CardGroup>
+  <Card title="Use Cases" icon="map" href="/integrations/introduction/use-cases">
+    End-to-end flows: custom check-in, payments report, datawarehouse sync.
+  </Card>
+
+  <Card title="What can I do?" icon="list-check" href="/integrations/introduction/what-can-i-do">
+    Full map of supported actions and the endpoints that back them.
+  </Card>
+
+  <Card title="Requirements" icon="shield-check" href="/integrations/introduction/requirements">
+    Auth, environments, rate limits, conditional fields and pagination.
+  </Card>
+
+  <Card title="API Reference" icon="code" href="/integrations/api-reference/events/get-events">
+    Full endpoint reference with interactive playground.
+  </Card>
+</CardGroup>
+
+
+# Publishing Checklist
+Source: https://docs.fourvenues.com/integrations/introduction/publishing-checklist
+
+Minimum quality validation before merging documentation changes to the Integrations API or Channel Manager API docs.
+
+Use this checklist before submitting a pull/merge request with documentation changes. Each item must be checked (or explicitly waived with a justification) before the PR can be merged.
+
+## 1. Content accuracy
+
+* [ ] All endpoint paths match the actual API (verify against the OpenAPI spec or a real request).
+* [ ] Base URLs are correct for both alpha and production environments.
+* [ ] HTTP methods (`GET`, `POST`, `PUT`, `DELETE`) match the actual API.
+* [ ] Request/response examples have been manually tested against the alpha environment.
+* [ ] No placeholder values left in examples (e.g. `YOUR_TOKEN`, `REPLACE_ME`, `TODO`).
+
+## 2. Required & optional fields
+
+* [ ] Required fields are clearly marked as required in text or in the API reference parameter tables.
+* [ ] Conditional required fields are explicitly documented (e.g. list entry fields depend on list rate config; `entry_date` required when `enter: 1`).
+* [ ] Optional fields include their default value where applicable.
+
+## 3. Examples
+
+* [ ] Every new endpoint or flow includes at least one request example (`curl` or equivalent).
+* [ ] Every request example has a matching response example.
+* [ ] Responses show realistic (non-trivial) data — not empty arrays or single-field objects.
+* [ ] Amounts in examples are expressed in cents and include a note clarifying the unit.
+
+## 4. Environments
+
+* [ ] Alpha URLs (`api-alpha.fourvenues.com` / `channels-service-alpha.fourvenues.com`) are used in all examples.
+* [ ] A callout or note explains the difference between alpha and production where relevant.
+* [ ] No production API keys or real credentials appear anywhere in the docs.
+
+## 5. Authentication
+
+* [ ] Every example includes the `X-Api-Key` header.
+* [ ] There is a clear explanation of how to obtain an API key (contact email or process).
+* [ ] Scoping limitations are documented (own venues only / partner venues only).
+
+## 6. Links & navigation
+
+* [ ] All internal links (`/integrations/...`, `/channel-manager/...`) resolve correctly in the local Mintlify preview.
+* [ ] New pages are registered in `docs.json` under the correct navigation group.
+* [ ] No broken or 404 links (run `mintlify broken-links` or check manually).
+
+## 7. Mintlify formatting
+
+* [ ] MDX frontmatter includes `title` and `description` for every new file.
+* [ ] No unclosed MDX component tags (`<Card>`, `<Info>`, `<Warning>`, etc.).
+* [ ] Code blocks include the correct language tag (`bash`, `json`).
+* [ ] Tables render correctly (no broken pipe characters or missing headers).
+
+## 8. Use cases & flows
+
+* [ ] At least 2 complete end-to-end flows exist for the Integrations API.
+* [ ] At least 1 complete end-to-end flow exists for the Channel Manager API.
+* [ ] Each flow follows the same format: context → numbered steps → request → response → notes.
+
+## 9. Errors & edge cases
+
+* [ ] Common error codes (401, 403, 404, 422, 429, 500) are documented with their cause and fix.
+* [ ] Conditional logic is explained with a warning/note callout (not buried in prose).
+* [ ] Rate limiting guidance is present in the Requirements page of each API.
+
+## 10. Review sign-off
+
+* [ ] At least one person who did **not** write the docs has read through the changes.
+* [ ] The reviewer has attempted to follow a use-case flow using only the documentation (no prior knowledge assumed).
+* [ ] Any outstanding TODOs or open questions are tracked as issues — not left as inline comments in the docs.
+
+<Info>
+  If you waive any checklist item, add a comment to the PR explaining why and when it will be addressed.
+</Info>
+
+
+# Requirements
+Source: https://docs.fourvenues.com/integrations/introduction/requirements
+
+
+
+***
+
+title: "Requirements & Constraints"
+description: "Authentication, environments, pagination, rate limits and conditional fields for the Integrations API."
+\---## Authentication
+
+All requests must include your API key in the `X-Api-Key` HTTP header:
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/events/' \
+  --header 'X-Api-Key: YOUR_API_KEY_HERE'
+```
+
+### Getting an API key
+
+API keys are provisioned by the Fourvenues team. To request one, contact [integrations@fourvenues.com](mailto:integrations@fourvenues.com) and include:
+
+\- Your venue name(s) and Fourvenues account email
+\- The integration you are building (e.g. "custom check-in scanner", "BI dashboard")
+\- The endpoints you need access to
+
+<Warning>
+  API keys are **scoped**: they only grant access to the specific endpoints requested. If you need additional access later, contact the team to update your key's permissions.
+</Warning>
+
+### Key lifecycle
+
+| Property | Detail |
+| - | - |
+| **Expiry** | Keys have a limited lifespan and must be rotated before expiry. |
+| **Revocation** | Keys can be revoked immediately if misused. |
+| **Scope** | Each key is tied to specific endpoints and your account's venues only. |
+
+\---## Environments
+
+| Environment | Base URL | Purpose |
+| - | - | - |
+| **Alpha** | `https://api-alpha.fourvenues.com/integrations` | Development & testing — uses isolated data, no real payments |
+| **Production** | `https://api.fourvenues.com/integrations` | Live data — use only when your integration is fully tested |
+
+<Warning>
+  The alpha environment contains **test data only**. Events, tickets and payments created there do not appear in production and vice versa. Always validate your integration against alpha before switching to production.
+</Warning>
+
+You can verify your API key is working against the correct environment by calling the channels endpoint:
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/channels/' \
+  --header 'X-Api-Key: YOUR_API_KEY_HERE'
+```
+
+A successful response returns the channels associated with your key:
+
+```json theme={null}
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "pw2gra4r20xlu02js0ybj42s6vYpAzeX",
+      "name": "My team",
+      "slug": "my-team"
+    }
+  ]
+}
+```
+
+\---## Pagination
+
+Most list endpoints return paginated results. Common query parameters:
+
+| Parameter | Type | Description |
+| - | - | - |
+| `page` | integer | Page number, starting at `1` |
+| `limit` | integer | Number of results per page (default varies per endpoint) |
+| `start_date` | string (`YYYY-MM-DD`) | Filter records created/updated after this date |
+| `end_date` | string (`YYYY-MM-DD`) | Filter records created/updated before this date |
+| `date_field` | string | Which date field to filter on: `created_at` or `updated_at` |
+
+<Tip>
+  For incremental syncs, always use `date_field=updated_at` together with a narrow `start_date`/`end_date` window to avoid re-fetching unchanged records.
+</Tip>
+
+\---## Conditional required fields
+
+Some endpoints have fields that become required depending on context.
+
+### Check-in endpoint (`PUT /integrations/tickets/{id}/checkin`)
+
+| Field | Required? | Notes |
+| - | - | - |
+| `enter` | **Always required** | `1` to mark as entered, `0` to revert |
+| `entry_date` | Required when `enter: 1` | ISO 8601 datetime string (e.g. `2024-09-28T23:00:00.000Z`) |
+
+### Bookings (`GET /integrations/bookings/`)
+
+| Field | Required? | Notes |
+| - | - | - |
+| `event_id` | **Required** | The event to query bookings for |
+| `date` | **Required** | The event date in `YYYY-MM-DD` format |
+
+\---## Rate limits
+
+The Integrations API does not publish explicit rate limit values, but the following guidelines apply:
+
+\- **Polling intervals:** Do not poll any endpoint more than once per minute. For check-in pre-loading, every 5 minutes is recommended.
+\- **Burst requests:** Avoid sending more than 10 requests per second from a single key.
+\- **429 responses:** If you receive a `429 Too Many Requests`, implement exponential backoff before retrying.
+
+\---## Common errors
+
+| HTTP Status | `success` | Cause | Fix |
+| - | - | - | - |
+| `401 Unauthorized` | `false` | Missing or invalid `X-Api-Key` | Check the header name and key value |
+| `403 Forbidden` | `false` | Key does not have access to this endpoint | Contact the Fourvenues team to update key scope |
+| `404 Not Found` | `false` | Resource does not exist or belongs to another account | Verify the `_id` or `code` |
+| `422 Unprocessable Entity` | `false` | Missing required field or invalid value | Check the request body against the API reference |
+| `429 Too Many Requests` | `false` | Rate limit exceeded | Implement exponential backoff |
+| `500 Internal Server Error` | `false` | Unexpected server error | Retry once; if persistent, contact support |
+
+\---## Security considerations
+
+\- **Never expose your API key in client-side code** (browser JavaScript, mobile apps). Always route requests through your backend.
+\- **Rotate keys regularly** — contact the team to issue a new key and invalidate the old one.
+\- **Use HTTPS** — all API endpoints require HTTPS. HTTP requests will be rejected.
+
+
+# Use cases
+Source: https://docs.fourvenues.com/integrations/introduction/use-cases
+
+
+
+***
+
+title: "Use Cases"
+description: "End-to-end integration flows for the Integrations API — built for venue owners and operators."
+\---The Integrations API is scoped to **your own venues**. The use cases below cover the most common integration patterns, each with a complete request/response flow.
+
+\---## Use Case 1 — Custom Check-in System
+
+**Goal:** Build your own scanner or POS that checks in tickets without using the Fourvenues app.
+
+### Step 1 — List your events
+
+Fetch the events to show the operator a picker:
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/events/' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "Pl4gr84v20xqu01js0ybj42s6vYtIz1T",
+      "name": "Saturday Night",
+      "slug": "saturday-night-2024-09-28",
+      "start": 1727474400,
+      "end": 1727503200,
+      "date": 1727474400
+    }
+  ]
+}
+```
+
+### Step 2 — Pre-load tickets for the selected event
+
+Poll this endpoint every 5 minutes and cache the result locally. This avoids a round-trip on every scan:
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/tickets/?event_id=Pl4gr84v20xqu01js0ybj42s6vYtIz1T' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "el7yuiyep0006msyw2pri1tem1LpJwSc",
+      "code": "P6J21FF2S",
+      "name": "Jane Doe",
+      "email": "jane@example.com",
+      "phone": "+34666000111",
+      "enter": 0,
+      "entry_date": null,
+      "event_id": "Pl4gr84v20xqu01js0ybj42s6vYtIz1T",
+      "payment_id": "Cl7yuiyhy0007msyw4vfl5ai6YF4WZRn"
+    }
+  ]
+}
+```
+
+<Tip>
+  Pass `start_date` equal to the `created_at` of the last ticket you received to only fetch new tickets on each poll, reducing response size significantly.
+</Tip>
+
+### Step 3 — Fallback: look up by code at scan time
+
+If a scanned code is not found in your local cache (ticket bought after the last poll), look it up directly:
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/tickets/code/P6J21FF2S' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": {
+    "_id": "el7yuiyep0006msyw2pri1tem1LpJwSc",
+    "code": "P6J21FF2S",
+    "name": "Jane Doe",
+    "enter": 0
+  }
+}
+```
+
+### Step 4 — Mark the ticket as checked in
+
+Use the ticket `_id` to submit the check-in. `enter: 1` marks as entered, `enter: 0` reverts:
+
+```bash theme={null}
+curl --request PUT \
+  --url 'https://api-alpha.fourvenues.com/integrations/tickets/el7yuiyep0006msyw2pri1tem1LpJwSc/checkin' \
+  --header 'X-Api-Key: <api-key>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "enter": 1,
+    "entry_date": "2024-09-28T23:00:00.000Z"
+  }'
+```
+
+```json theme={null}
+{
+  "success": true
+}
+```
+
+<Warning>
+  If the ticket has already been checked in (`enter: 1`), the API will return an error. Always check the current `enter` value before attempting a check-in.
+</Warning>
+
+**Same flow works for Lists** using `/integrations/lists/{id}/checkin` and for Passes using `/integrations/passes/{id}/checkin`.
+
+\---## Use Case 2 — Payments & Refunds Report
+
+**Goal:** Export all payments and refunds for your events into a finance system or spreadsheet.
+
+### Step 1 — List events in a date range
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/events/?start_date=2024-01-01&end_date=2024-03-31' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+Save the `_id` of each event you want to report on.
+
+### Step 2 — Fetch payments for each event
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/payments/?event_id=Pl4gr84v20xqu01js0ybj42s6vYtIz1T' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "pm9abc123def4567890",
+      "amount": 2500,
+      "currency": "EUR",
+      "payment_method": "card",
+      "status": "paid",
+      "created_at": "2024-09-28T21:15:00.000Z",
+      "event_id": "Pl4gr84v20xqu01js0ybj42s6vYtIz1T"
+    }
+  ]
+}
+```
+
+<Info>
+  `amount` is always expressed in **cents** (e.g. `2500` = €25.00).
+</Info>
+
+### Step 3 — Fetch refunds for each event
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/refunds/?event_id=Pl4gr84v20xqu01js0ybj42s6vYtIz1T' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "rf9abc123def4567890",
+      "amount": 2500,
+      "currency": "EUR",
+      "reason": "customer_request",
+      "created_at": "2024-09-29T10:00:00.000Z",
+      "payment_id": "pm9abc123def4567890",
+      "event_id": "Pl4gr84v20xqu01js0ybj42s6vYtIz1T"
+    }
+  ]
+}
+```
+
+### Step 4 — Fetch wallet movements (optional)
+
+If your venues use the Fourvenues wallet, you can pull movement history:
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/wallet-movements/?event_id=Pl4gr84v20xqu01js0ybj42s6vYtIz1T' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```json theme={null}
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "wm9abc123def4567890",
+      "amount": 1000,
+      "currency": "EUR",
+      "type": "credit",
+      "description": "Drink token redeemed",
+      "created_at": "2024-09-28T23:45:00.000Z"
+    }
+  ]
+}
+```
+
+\---## Use Case 3 — Datawarehouse / Incremental Sync
+
+**Goal:** Keep an external database in sync with Fourvenues data, updated daily.
+
+### Initial load
+
+On the first run, pull all events and for each event pull tickets, lists and bookings:
+
+```bash theme={null}
+# Events
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/events/' \
+  --header 'X-Api-Key: <api-key>'
+
+# Tickets for a specific event
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/tickets/?event_id=EVENT_ID' \
+  --header 'X-Api-Key: <api-key>'
+
+# Lists for a specific event
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/lists/?event_id=EVENT_ID' \
+  --header 'X-Api-Key: <api-key>'
+
+# Bookings for a specific event + date
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/bookings/?event_id=EVENT_ID&date=2024-09-28' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+<Tip>
+  Convert the event's `date` Unix timestamp to a `YYYY-MM-DD` string before using it as the `date` parameter for bookings:
+
+  ```bash theme={null}
+  date -r 1727474400 "+%Y-%m-%d"  # → 2024-09-28
+  ```
+</Tip>
+
+### Incremental updates (daily)
+
+Use `start_date` / `end_date` together with `date_field=updated_at` to fetch only records that changed in the last 24 hours:
+
+```bash theme={null}
+# Tickets updated yesterday
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/tickets/?event_id=EVENT_ID&start_date=2024-09-27&end_date=2024-09-28&date_field=updated_at' \
+  --header 'X-Api-Key: <api-key>'
+
+# Lists updated yesterday
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/lists/?event_id=EVENT_ID&start_date=2024-09-27&end_date=2024-09-28&date_field=updated_at' \
+  --header 'X-Api-Key: <api-key>'
+```
+
+Upsert the returned records into your warehouse using `_id` as the primary key.
+
+
+# What can i do
+Source: https://docs.fourvenues.com/integrations/introduction/what-can-i-do
+
+
+
+***
+
+title: "What Can I Do?"
+description: "Full map of supported actions and the Integrations API endpoints that back them."
+\---Use this page as a quick reference to find the right endpoint for any action you want to automate.
+
+## Events
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List all events | `GET` | `/integrations/events/` | Supports `start_date`, `end_date` filters |
+| Get a single event | `GET` | `/integrations/events/{id}` | By event `_id` |
+
+## Tickets
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List tickets for an event | `GET` | `/integrations/tickets/` | Requires `event_id`; supports `start_date`, `end_date`, `date_field` |
+| Get a ticket by ID | `GET` | `/integrations/tickets/{id}` | — |
+| Get a ticket by code (QR) | `GET` | `/integrations/tickets/code/{code}` | Useful at scan time |
+| Check in by ID | `PUT` | `/integrations/tickets/{id}/checkin` | Body: `enter`, `entry_date` |
+| Check in by code | `PUT` | `/integrations/tickets/code/{code}/checkin` | Body: `enter`, `entry_date` |
+| List ticket rates | `GET` | `/integrations/tickets/rates/` | Requires `event_id` |
+
+## Lists (guest lists)
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List entries for an event | `GET` | `/integrations/lists/` | Requires `event_id` |
+| Get a list entry by ID | `GET` | `/integrations/lists/{id}` | — |
+| Get a list entry by code | `GET` | `/integrations/lists/code/{code}` | — |
+| Check in by ID | `PUT` | `/integrations/lists/{id}/checkin` | Body: `enter`, `entry_date` |
+| Check in by code | `PUT` | `/integrations/lists/code/{code}/checkin` | Body: `enter`, `entry_date` |
+| List rates for lists | `GET` | `/integrations/lists/rates/` | Requires `event_id` |
+
+## Passes
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List passes | `GET` | `/integrations/passes/` | Requires `event_id` |
+| Get a pass by ID | `GET` | `/integrations/passes/{id}` | — |
+| Get a pass by code | `GET` | `/integrations/passes/code/{code}` | — |
+| Check in by ID | `PUT` | `/integrations/passes/{id}/checkin` | Body: `enter`, `entry_date` |
+| Check in by code | `PUT` | `/integrations/passes/code/{code}/checkin` | Body: `enter`, `entry_date` |
+| List pass rates | `GET` | `/integrations/passes/rates/` | Requires `event_id` |
+
+## Bookings
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List bookings for an event | `GET` | `/integrations/bookings/` | Requires `event_id` and `date` |
+| Update booking status | `PUT` | `/integrations/bookings/{id}/status` | — |
+| Update booking products | `PUT` | `/integrations/bookings/{id}/products` | — |
+
+## Payments & Refunds
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List payments | `GET` | `/integrations/payments/` | Filter by `event_id` |
+| List refunds | `GET` | `/integrations/refunds/` | Filter by `event_id` |
+
+## Wallet
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List wallet movements | `GET` | `/integrations/wallet-movements/` | Filter by `event_id` |
+
+## Users & Channels
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| List users | `GET` | `/integrations/users/` | — |
+| List channels | `GET` | `/integrations/channels/` | Returns channels associated with your API key |
+
+## Subscriptions
+
+| Action | Method | Endpoint | Notes |
+| - | - | - | - |
+| Create a subscription | `POST` | `/integrations/subscriptions/` | — |
+
+\---## Limitations
+
+\- **No ticket creation** — ticket sales happen through Fourvenues checkout or the Channel Manager API.
+\- **No event creation or editing** — the Integrations API is read-heavy; event management happens in the Fourvenues dashboard.
+\- **No refund triggering** — refunds are initiated from the dashboard; the API lets you read them.
+\- **Check-in only** — the only write operations on tickets/lists/passes are check-in status updates.
+
+
+# ✅ Custom Check-in System
+Source: https://docs.fourvenues.com/integrations/recipes/checkin-tickets
+
+Learn how to mark tickets as checked in using the Integrations API.
+
+In this recipe, you will learn how to mark tickets as checked in using the Integrations API. This is useful when you have a custom system as a POS or custom check-in system and you want to mark the tickets as checked in in Fourvenues.
+
+We will go through the following steps:
+
+* Retriving events information.
+* Retriving tickets of an event every 5 minutes.
+* Falling back if not found.
+* Mark the ticket as checked in when the ticket is found.
+
+## Retriving events information
+
+To start, you need to retrieve the events information. You can use the [events](/integrations/api-reference/events/get-events) endpoints to retrieve the events information.
+
+```bash theme={null}
+curl --request GET \
+  --url https://api-alpha.fourvenues.com/integrations/events/ \
+  --header 'x-api-key: <api-key>'
+  
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "Pl4gr84v20xqu01js0ybj42s6vYtIz1T",
+      "flyer": "https://www.your-domain.com/flyer.jpg",
+      "name": "Saturday Night",
+      "slug": "saturday-night-26-09-2022",
+      "url": "https://www.fourvenues.com/gengis-kan/events/saturday-night-26-09-2022",
+      "description": "This event takes place every Thursday",
+      ...
+    }
+  ]
+}
+```
+
+Now, with that information show the events to the user and ask for the event to check-in.
+
+## Retriving tickets of an event every 5 minutes
+
+In order to make the check-in process more efficient, you can retrieve the tickets of an event every 5 minutes and save it in your own database. This way, the check-in process will be faster and you will not need to make a request to the Fourvenues API every time you want to check-in a ticket.
+
+You can use the [tickets](/integrations/api-reference/tickets/get-tickets) endpoint to retrieve the tickets of an event.
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/tickets/?event_id=int-event-id' \
+  --header 'x-api-key: <api-key>'
+
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "el7yuiyep0006msyw2pri1tem1LpJwSc",
+      "code": "P6J21FF2S",
+      "email": "my-client-email@fourvenues.com",
+      "enter": 0,
+      "entry_date": 123,
+      "event_id": "Mjo4f9o9h01fdjvmmrgn9aoh4s5IBHzX",
+      "name": "Miguel Román",
+      "payment_id": "Cl7yuiyhy0007msyw4vfl5ai6YF4WZRn",
+      "phone": "+34666666666",
+      ...
+    }
+  ]
+}
+```
+
+Now, you can recall this endpoint every 5 minuts passing the `start_date` as the last `created_at` of the last ticket retrieved.
+
+## Falling back if not found
+
+It may be that during the check-in process, the ticket is not found in your database due that has been sold after the last request. In this case, you can make a request to the [tickets](/integrations/api-reference/tickets/get-ticket-by-id) endpoint to retrieve the ticket information.
+
+```bash theme={null}
+curl --request GET \
+  --url 'https://api-alpha.fourvenues.com/integrations/tickets/int-ticket-id' \
+  --header 'x-api-key: <api-key>'
+
+{
+  "success": true,
+  "data": {
+    "_id": "el7yuiyep0006msyw2pri1tem1LpJwSc",
+    "code": "P6J21FF2S",
+    "email": "my-client-email@fourvenues.com",
+    "enter": 0,
+    "entry_date": 123,
+    "event_id": "Mjo4f9o9h01fdjvmmrgn9aoh4s5IBHzX",
+    "name": "Miguel Román",
+    "payment_id": "Cl7yuiyhy0007msyw4vfl5ai6YF4WZRn",
+    "phone": "+34666666666",
+    ...
+  }
+}
+```
+
+## Mark the ticket as checked in when the ticket is found
+
+Finally, when you have the ticket information, you can send a request to the [checkin](/integrations/api-reference/tickets/checkin-ticket) endpoint to mark the ticket as checked in.
+
+```bash theme={null}
+curl --request PUT \
+  --url https://api-alpha.fourvenues.com/integrations/tickets/int-ticket-id/checkin \
+  --header 'secret: <api-key>' \
+  --header 'x-api-key: <api-key>' \
+  --data '{
+  "enter": 1,
+  "entry_date": "2022-09-15T23:00:00.000Z",
+  "quality": 2
+}'
+
+{
+  "success": true
+}
+```
+
+If the request is successful, the ticket will be marked as checked in in the Fourvenues system.
+
+If the request is not successful, it means that the ticket has already been checked in and the customer will not be able to enter the event again.
+
+
+# 💾 Create Datawarehouse
+Source: https://docs.fourvenues.com/integrations/recipes/datawarehouse
+
+Learn how to generate custom Datawarehouse
+
+We will go through the following steps:
+
+* Retriving events information.
+* Retriving bookings, lists and tickets related to events.
+* Retriving latest status of bookings, lists and tickets related to events.
+
+## Retriving events information
+
+Request [Events](/integrations/api-reference/events/get-events):
+
+```bash theme={null}
+curl --request GET \
+--url https: //api-alpha.fourvenues.com/integrations/events/ \
+--header 'x-api-key: <api-key>'
+
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "wl7j9fejp1b3e01ao2j7sh9cdx3LWYPV", # Event ID
+            "name": "Viernes",
+      "slug": "viernes-16-09-20227",
+      "url": "http://localhost:8000/gengis-kan/events/viernes-16-09-20227",
+      "start": 1663365600,
+      "end": 1663392600,
+      "date": 1737586800, # Format ISO_8601
+            ...
+    }
+  ]
+}
+```
+
+## Retriving bookings, lists and tickets related to events
+
+You need convert 'date' property of event to lcoal timezone
+
+```bash theme={null}
+`date -r 1737586800 "+%Y-%m-%d"` # Output 2025-01-23
+```
+
+Get bookings by Event ID and Event Date:
+
+```bash theme={null}
+curl --request GET \
+--url https: //api-alpha.fourvenues.com/integrations/bookings/availability?event_id=EVENT_IDA&date=EVENT_DATE \
+--header 'x-api-key: <api-key>'
+
+{
+  "success": true,
+  "data": [
+      {
+          "_id": "nm650et24001a1aqu29o58m85yNSoxGL",
+          "email": "username@fourvenues.com",
+          "walkin": false,
+          "refunded": 0,
+          "created_at": "2025-01-20T12:15:25.852Z",
+          "updated_at": "2025-01-20T12:15:41.907Z",
+          "currency": "EUR",
+          "hour": "",
+          "invoice_references": [],
+          "corrective_invoice_references": [],
+          "payments": [
+              {
+                  "_id": "gm650et2u001b1aquhruhbqdgyd9rPhC",
+                  "amount": 108,
+                  "currency": "EUR",
+                  "payment_method": "amex",
+                  "created_at": "2025-01-20T12:15:25.878Z",
+                  "created_by": ""
+              }
+          ],
+          "event_id": "gm650c38b00321bo02rvq8psdAtW1WYA",
+          ...
+      }
+    ]      
+}     
+```
+
+### Retriving Tickets information by Event ID
+
+```bash theme={null}
+curl --request GET \
+--url https: //api-alpha.fourvenues.com/integrations/tickets?event_id=EVENT_ID' \
+--header 'x-api-key:  <api-key>'
+
+
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "cm60p0mqw00291ypebpps5x0mqb7hfxF",
+      "remarketing": false,
+      "email": "username@xxxx.com",
+      "refunded": 0,
+      "updated_at": 1737114362837,
+            ....
+    }
+  ]
+}
+```
+
+### Retriving Lists information by Event ID
+
+```bash theme={null}
+curl --request GET \
+--url https: //api-alpha.fourvenues.com/integrations/lists/?event_id=EVENT_ID&date_field=updated_at \
+--header 'x-api-key:  <api-key>'
+
+{
+  "success": true,
+  "data": [
+    {
+      "_id": "wm66l7bwq000018qu45839mwmQLY86i8",
+      "event_id": "gm650c38b00321bo02rvq8psdAtW1WYA",
+      "rate_id": "fm66l5z5h000c1ao0c8qa373r25jtkwf",
+      "channel_id": "ym5gm2jtm000118n4do0gbhvo5m9XMSC",
+      "name": "nombre cliente",
+      "for": 1,
+      ...
+    }
+  ]
+}
+```
+
+## Retriving latest status of bookings, lists and tickets related to events
+
+Update bookings, lists and tickets information with previus day, for example start\_date: `2025-01-21`and end\_date:`2025-01-22`:
+
+Request [Bookings](/integrations/api-reference/bookings/get-bookings):
+
+```bash theme={null}
+curl --request GET \
+--url https: //api-alpha.fourvenues.com/integrations/lists/?event_id=EVENT_ID&date=EVENT_DATE&date_field=updated_at&start_date=2025-01-21&end_date=2025-01-22' \
+--header 'x-api-key:  <api-key>'
+```
+
+Request [Lists](/integrations/api-reference/lists/get-lists):
+
+```bash theme={null}
+curl --request GET \
+--url https: //api-alpha.fourvenues.com/integrations/lists/?event_id=EVENT_ID&start_date=2025-01-21&end_date=2025-01-22&date_field=updated_at \
+--header 'x-api-key:  <api-key>'
+```
+
+Request [Tickets](/integrations/api-reference/tickets/get-tickets):
+
+```bash theme={null}
+curl --request GET \
+--url https: //api-alpha.fourvenues.com/integrations/tickets?event_id=EVENT_ID&start_date=2025-01-21&end_date=2025-01-22&date_field=updated_at \
+--header 'x-api-key:  <api-key>'
+```
+
+
+# Readme
+Source: https://docs.fourvenues.com/introduction/readme
+
+
+
+***
+
+title: "Overview"
+description: "Welcome to the Fourvenues Documentation site! Here you'll be able to find all the information about our APIs."
+\---Fourvenues wants to be the best partner for your business, that's why we have created this documentation site to help you use our APIs. Here you'll find all the information about our actual APIs and the new ones that we are developing.
+
+Now, there are two main APIs that you can use:
+\- [Channel Manager API](/channel-manager/introduction/overview): This API allows you to manage the venues that are part of your marketplace or your own venues.
+\- [Integrations API](/integrations/api-reference/introduction/overview): This API allows you to integrate your system with Fourvenues to get information about the events, scan tickets, and more but only for your own venues (not collaborators).
+\- [Reseller API](/reseller/introduction/overview): This API is created for third-party resellers that want to do a secure resell.
+
+
+# Swap reseller ticket
+Source: https://docs.fourvenues.com/reseller/api-reference/swap-reseller-ticket
+
+post /resellers/swap
+Swaps a reseller's ticket with a new one and provides a new barcode and PDF.
+
+**One ticket per request.** `ticket` is a single object, not a list: there is no batch or multi-swap variant of this endpoint, and any field outside the documented ones answers `400`. To transfer several tickets, call the endpoint once per barcode. Each call is independent, so a failure on one barcode leaves the others untouched.
+
+**One swap per ticket.** The swap returns a new ticket that carries the resale on it, so calling `swap` again with that new barcode answers `200` with `swappable: false` and `error: "RESELL_ALREADY_RESOLD"`. The same rule is what [Validate reseller barcode](/reseller/api-reference/validate-reseller-barcode) reports up front.
+
+A rule that blocks the resale answers `200` with `swappable: false` and no swap performed, except for an already scanned ticket or one whose holder name was already changed, which answer `400`. Check `swappable` rather than the status code.
+
+| `error` | Meaning |
+| --- | --- |
+| `RESELL_NOT_ALLOWED` | The ticket was already scanned, or its holder name was already changed. `valid` is `false`. |
+| `RESELL_PENDING_NAME_CHANGE` | A name change on the ticket is awaiting payment. |
+| `RESELL_ALREADY_RESOLD` | The ticket already came from a swap. A ticket can only be resold once. |
+| `RESELL_NOT_SWAPPABLE` | The ticket belongs to an organization your API key does not cover. |
+
+When a ticket matches more than one rule, the first one in that order is the one reported.
+
+
+
+
+# Get reseller event
+Source: https://docs.fourvenues.com/reseller/api-reference/v2/get-v2-event-by-id
+
+get /resellers/v2/events/{id}
+Returns one sellable event, with its ticket rates and their stock when asked for. An event outside the API key is answered as not found.
+
+
+
+# List reseller events
+Source: https://docs.fourvenues.com/reseller/api-reference/v2/get-v2-events
+
+get /resellers/v2/events
+Lists the sellable events of the organizations the API key covers: active, visible, not cancelled, not private and not yet ended. Ordered by start date, ascending.
+
+
+
+# List reseller organizations
+Source: https://docs.fourvenues.com/reseller/api-reference/v2/get-v2-organizations
+
+get /resellers/v2/organizations
+Lists the organizations the API key may sell for. The key itself is the scope: a key that covers no organization answers an empty page. Ordered by id so paging is deterministic.
+
+
+
+# List tickets of a buyer
+Source: https://docs.fourvenues.com/reseller/api-reference/v2/get-v2-tickets
+
+get /resellers/v2/tickets
+Lists the activated tickets a buyer holds for one organization that can be resold, limited to events the reseller could list. Tickets that `/resellers/validate` would refuse are left out: already scanned, with a name change completed or still being paid for, or that came from a resale. Both `email` and `organization_id` are required: the endpoint answers for one buyer at a time, never a census. Ordered by purchase date, newest first.
+
+
+
+# Validate reseller barcode
+Source: https://docs.fourvenues.com/reseller/api-reference/validate-reseller-barcode
+
+get /resellers/validate
+Validates a reseller's barcode and checks if it's valid and swappable.
+
+A rule that blocks the resale is not an HTTP error. The barcode resolved, so the answer is `200` with `swappable: false` and an `error` naming the rule, and without `event` or `type`. Check `swappable` rather than the status code.
+
+| `error` | Meaning |
+| --- | --- |
+| `RESELL_NOT_ALLOWED` | The ticket was already scanned, or its holder name was already changed. `valid` is `false`. |
+| `RESELL_PENDING_NAME_CHANGE` | A name change on the ticket is awaiting payment. |
+| `RESELL_ALREADY_RESOLD` | The ticket already came from a swap. A ticket can only be resold once. |
+| `RESELL_NOT_SWAPPABLE` | The ticket belongs to an organization your API key does not cover. |
+
+When a ticket matches more than one rule, the first one in that order is the one reported.
+
+
+
+
+# Authentication
+Source: https://docs.fourvenues.com/reseller/introduction/authentication
+
+To get started using the Reseller API, you'll need to authenticate your requests.
+
+Currently, API Keys can only be created by the Fourvenues team. If you need one,
+contact us at [integrations@fourvenues.com](mailto:integrations@fourvenues.com) and we'll be happy to help you.
+
+API Keys have a limited lifespan and can be revoked at any time if they are misused.
+Also, they have capabilities to access only the endpoints that are necessary for your integration.
+
+Api Keys must be included in the `Authorization` HTTP header, raw, with no scheme in front of them:
+
+```http theme={null}
+Authorization: rs_live_xxxxxxxxxxxxxxxx
+```
+
+Keys prefixed `rs_test_` operate against the test environment; `rs_live_` ones against production.
+The same key serves both version 2 and the swap operations.
+
+A key reaches only the organizations Fourvenues authorized on it. Asking for one outside that set answers
+`403 ORGANIZATION_NOT_ALLOWED`, and an event outside it answers `404`, so an organization you cannot see is
+indistinguishable from one that does not exist. [List reseller organizations](/reseller/api-reference/v2/get-v2-organizations)
+tells you which ones your key covers at any moment, including the ones activated after it was issued.
+
+
+# Overview
+Source: https://docs.fourvenues.com/reseller/introduction/overview
+
+Welcome to the Reseller API Documentation site! Here you'll be able to find all the information regarding the Reseller API.
+
+The Reseller API allows you to integrate your reseller system with Fourvenues to do a secure resell.
+
+It has two parts, and they serve different moments of the same flow:
+
+* **Swap operations** — `validate` and `swap` — resolve a ticket from its barcode: whether it can be resold, and the exchange itself.
+* **Version 2** is read-only and gives you the catalogue around that flow: the organizations your key covers, their events on sale with rates and stock, and the tickets a buyer holds.
+
+Version 2 lives under `/resellers/v2`. The swap operations keep their own paths and are not versioned.
+
+## Conventions
+
+* **Envelope.** Every response is `{ "data": ..., "success": true }`. Paginated listings add `has_more`.
+* **Pagination.** `limit` (1–100, default 50) and `offset` (default 0). `has_more: true` means another page follows.
+* **Dates.** ISO 8601 in UTC, for example `2026-10-03T21:00:00.000Z`.
+* **Query parameters.** Only the documented ones are accepted; anything else answers `400`.
+* **Errors.** HTTP status plus a JSON body carrying the reason.
+* **Evolution.** Changes within v2 are always additive. Ignore the fields you do not use.
+
+## What the catalogue does not include
+
+There is no endpoint that lists every ticket of your authorized organizations. Two reasons: it would expose
+buyers who take no part in the resale, and the volume — hundreds of thousands of records per organization —
+is not something to serve or keep in sync by polling. Access to tickets is always bounded: the holder brings
+them in [Tickets of a buyer](/reseller/api-reference/v2/get-v2-tickets), which requires their email, or they
+are resolved one at a time.
+
+To know whether a ticket you already published is still valid — not cancelled, not refunded, not scanned —
+use [Validate reseller barcode](/reseller/api-reference/validate-reseller-barcode) with its barcode. It is the
+precise source, because it also evaluates every rule that would block the swap. Do not re-run the buyer search
+for that check.
+
+<Note>
+  A ticket cancellation webhook is coming, so you will be told the moment a ticket is cancelled or refunded
+  instead of asking. Until then, checking your published tickets periodically with `validate` covers the case.
+</Note>
+
+
