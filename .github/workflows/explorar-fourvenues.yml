@@ -10,33 +10,52 @@ jobs:
   explorar:
     runs-on: ubuntu-latest
     steps:
-      - name: Script del widget completo (desde la letra 3000)
+      - name: Parte central del script del widget
         run: |
           mkdir -p out
           curl -sSL -A "Mozilla/5.0" -o out/widget.js "https://www.fourvenues.com/assets/iframe/condado-club-denia/events"
-          tail -c +3000 out/widget.js
-      - name: Página del iframe con la lista de eventos
+          head -c 9000 out/widget.js | tail -c 6200
+      - name: Navegador real en condadoclub.es/evento/ registrando peticiones a Fourvenues
         run: |
-          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
-          code=$(curl -sSL -A "$UA" -o out/iframe.html -w "%{http_code} %{content_type} %{url_effective}" "https://www.fourvenues.com/iframe/condado-club-denia/events")
-          echo "== $code ($(wc -c < out/iframe.html) bytes)"
-          head -c 4000 out/iframe.html; echo
-          echo "== enlaces a eventos"; grep -oE "condado-club-denia/events/[A-Za-z0-9_-]+" out/iframe.html | sort -u | head -40
-          echo "== json-ld / datos"; grep -oE "application/ld\+json|__NEXT_DATA__|ng-state|window\.__[A-Z_]+" out/iframe.html | sort | uniq -c
-          echo "== scripts"; grep -oE "src=\"[^\"]+\"" out/iframe.html | head -30
-          echo "== api"; grep -oE "https?://[^\"' )<>]*api[^\"' )<>]*" out/iframe.html | sort -u | head -30
-      - name: Página pública de eventos de Condado en fourvenues.com
-        run: |
-          UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
-          for u in "https://www.fourvenues.com/es/condado-club-denia/events" "https://www.fourvenues.com/condado-club-denia/events"; do
-            f="out/pub-$(echo "$u" | md5sum | cut -c1-6).html"
-            code=$(curl -sSL -A "$UA" -o "$f" -w "%{http_code} %{url_effective}" "$u" || true)
-            echo "== $u -> $code ($(wc -c < "$f" 2>/dev/null) bytes)"
-            grep -oE "events/[A-Za-z0-9_-]{8,}" "$f" | sort -u | head -20
-            grep -c "application/ld+json" "$f" || true
-            grep -oE '"@type":"[A-Za-z]+"' "$f" | sort | uniq -c | head
-          done
+          mkdir -p nav && cd nav && npm init -y >/dev/null && npm i playwright@1 >/dev/null 2>&1 && npx playwright install --with-deps chromium >/dev/null 2>&1
+          cat > nav.js <<'JS'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          (async () => {
+            const b = await chromium.launch();
+            const p = await b.newPage({ viewport: { width: 1280, height: 900 } });
+            const seen = [];
+            p.on('response', async (r) => {
+              const u = r.url();
+              if (!/fourvenues/.test(u)) return;
+              const ct = r.headers()['content-type'] || '';
+              let body = '';
+              if (/json/.test(ct)) { try { body = (await r.text()).slice(0, 2500); } catch (e) {} }
+              seen.push({ u, s: r.status(), ct, m: r.request().method(), h: r.request().headers(), body });
+            });
+            await p.goto('https://www.condadoclub.es/evento/', { waitUntil: 'networkidle', timeout: 60000 }).catch(e => console.log('goto', e.message));
+            await p.waitForTimeout(8000);
+            console.log('URL final:', p.url());
+            const frames = p.frames().map(f => f.url());
+            console.log('IFRAMES:', JSON.stringify(frames, null, 1));
+            for (const x of seen) {
+              console.log(`\n=== ${x.m} ${x.s} ${x.u}\n    ct=${x.ct}`);
+              if (x.h['app-id'] || x.h['authorization']) console.log('    headers:', JSON.stringify({ 'app-id': x.h['app-id'], authorization: x.h['authorization'] ? '(presente)' : undefined }));
+              if (x.body) console.log('    body:', x.body);
+            }
+            // Enlaces a eventos visibles dentro del iframe
+            for (const f of p.frames()) {
+              try {
+                const links = await f.evaluate(() => [...document.querySelectorAll('a')].map(a => a.href).filter(h => /events\//.test(h)));
+                if (links.length) console.log('\nENLACES en', f.url(), '\n', [...new Set(links)].slice(0, 30).join('\n'));
+              } catch (e) {}
+            }
+            await p.screenshot({ path: 'evento.png', fullPage: false });
+            await b.close();
+          })();
+          JS
+          node nav.js
       - uses: actions/upload-artifact@v4
         with:
-          name: fourvenues-exploracion-2
-          path: out
+          name: fourvenues-exploracion-3
+          path: nav/evento.png
