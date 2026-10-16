@@ -255,7 +255,16 @@
     .ev-card.is-past img { filter: grayscale(0.6) brightness(0.8); }
     .ev-card.is-past:hover img { filter: none; }
     .ev-card.is-past .ev-card-date { color: var(--w60); }
-    .ev-card.is-past .ev-card-btn { background: transparent; color: var(--white); border: 1px solid var(--w15); }
+    .ev-month { margin: 0 0 36px; }
+    .ev-month h3 { font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--w60); margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--w15); }
+    .ev-month h3 span { color: var(--w40); font-weight: 400; letter-spacing: 1px; margin-left: 8px; }
+    .ev-cards-past { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    @media (min-width: 1100px) { .ev-cards-past { grid-template-columns: repeat(6, 1fr); } }
+    @media (max-width: 599px) { .ev-cards-past { grid-template-columns: repeat(3, 1fr); gap: 8px; } }
+    .ev-card.is-past { border-radius: 14px; }
+    .ev-card.is-past .ev-card-body { padding: 12px; }
+    .ev-card.is-past h2 { font-size: 18px; margin: 0; }
+    @media (max-width: 599px) { .ev-card.is-past { border-radius: 10px; } .ev-card.is-past .ev-card-body { padding: 8px; } .ev-card.is-past h2 { font-size: 14px; } .ev-card.is-past .ev-card-date { font-size: 8px; letter-spacing: 1px; } }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://www.condadoclub.es/eventos/friday-mode-16-10-2026/"},{"@type":"ListItem","position":2,"url":"https://www.condadoclub.es/eventos/prive-17-10-2026/"},{"@type":"ListItem","position":3,"url":"https://www.condadoclub.es/eventos/zafiro-halloween-30-10-2026/"},{"@type":"ListItem","position":4,"url":"https://www.condadoclub.es/eventos/halloween-31-10-202638/"},{"@type":"ListItem","position":5,"url":"https://www.condadoclub.es/eventos/la-gran-fiesta-indie-21-11-2026/"},{"@type":"ListItem","position":6,"url":"https://www.condadoclub.es/eventos/chimo-bayo---remember-05-12-2026/"}]}</script>
 </head>
@@ -368,14 +377,16 @@
       <p class="ev-kicker">Histórico</p>
       <h2 class="ev-title">Eventos pasados</h2>
     </div>
-    <div class="ev-cards">
+    <section class="ev-month">
+      <h3>Octubre de 2026<span>6 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-11-10-2026/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/dc0f767e-117d-46b0-83a5-c2fd08b5e100/w=1350" alt="Cartel de Old School Reggaeton" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">11 oct 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/shark--condado-10-10-2026/">
@@ -384,7 +395,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">10 oct 2026</p>
           <h2>SHARK®️ 📍 CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/mia-salvador-09-10-2026/">
@@ -393,7 +404,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">9 oct 2026</p>
           <h2>MIA SALVADOR</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/puro-condado-08-10-2026/">
@@ -402,7 +413,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">8 oct 2026</p>
           <h2>PURO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fever-03-10-2026/">
@@ -411,7 +422,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">3 oct 2026</p>
           <h2>FEVER</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/friday-mode-02-10-2026/">
@@ -420,16 +431,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">2 oct 2026</p>
           <h2>FRIDAY MODE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Septiembre de 2026<span>8 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/interstellar-26-09-2026/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/3c68d939-4ad1-4d39-cedd-6c94e7422900/w=1350" alt="Cartel de Interstellar" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">26 sept 2026</p>
           <h2>INTERSTELLAR</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fancy-25-09-2026/">
@@ -438,7 +454,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">25 sept 2026</p>
           <h2>FANCY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fever-19-09-20261/">
@@ -447,7 +463,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">19 sept 2026</p>
           <h2>FEVER</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-18-09-2026/">
@@ -456,7 +472,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">18 sept 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/prive-12-09-2026/">
@@ -465,7 +481,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">12 sept 2026</p>
           <h2>PRIVÉ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/aura-11-09-20262/">
@@ -474,7 +490,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">11 sept 2026</p>
           <h2>AURA</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fever-05-09-2026/">
@@ -483,7 +499,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">5 sept 2026</p>
           <h2>FEVER</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/friday-mode-04-09-2026/">
@@ -492,16 +508,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">4 sept 2026</p>
           <h2>FRIDAY MODE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Agosto de 2026<span>21 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/hidalgo--villalobos-29-08-2026/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/55700b8c-fdfd-44ae-9e0f-dcfab4baa100/w=1350" alt="Cartel de Hidalgo &amp; Villalobos" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">29 ago 2026</p>
           <h2>HIDALGO &amp; VILLALOBOS</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/frik-boys-erra-aslani--juan-beato-28-08-2026/">
@@ -510,7 +531,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">28 ago 2026</p>
           <h2>FRIK BOYS ERRA ASLANI &amp; JUAN BEATO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/zafiro-white-party-27-08-2026/">
@@ -519,7 +540,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">27 ago 2026</p>
           <h2>ZAFIRO WHITE PARTY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/alvama-ice-26-08-2026/">
@@ -528,7 +549,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">26 ago 2026</p>
           <h2>ALVAMA ICE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-25-08-2026/">
@@ -537,7 +558,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">25 ago 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/juan-valiente-22-08-2026/">
@@ -546,7 +567,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">22 ago 2026</p>
           <h2>JUAN VALIENTE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/la-casita-lo-perreo-21-08-2026/">
@@ -555,7 +576,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">21 ago 2026</p>
           <h2>LA CASITA LO PERREO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/zafiro-white-party-20-08-2026/">
@@ -564,7 +585,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">20 ago 2026</p>
           <h2>ZAFIRO WHITE PARTY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/shark--condado-19-08-2026/">
@@ -573,7 +594,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">19 ago 2026</p>
           <h2>SHARK®️ 📍 CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-18-08-2026/">
@@ -582,7 +603,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">18 ago 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/barce-15-08-2026/">
@@ -591,7 +612,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">15 ago 2026</p>
           <h2>BARCE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/alex-martini-14-08-2026/">
@@ -600,7 +621,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">14 ago 2026</p>
           <h2>ÁLEX MARTINI</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fancy-white-party-13-08-2026/">
@@ -609,7 +630,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">13 ago 2026</p>
           <h2>FANCY WHITE PARTY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/infierno-club-by-yung-beef-12-08-2026/">
@@ -618,7 +639,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">12 ago 2026</p>
           <h2>INFIERNO CLUB by YUNG BEEF</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/mia-salvador-old-school-reggaeton-11-08-2026/">
@@ -627,7 +648,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">11 ago 2026</p>
           <h2>MIA SALVADOR Old School Reggaeton</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/ivan-ortuno-08-08-2026/">
@@ -636,7 +657,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">8 ago 2026</p>
           <h2>IVÁN ORTUÑO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/shark--condado-07-08-2026/">
@@ -645,7 +666,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">7 ago 2026</p>
           <h2>SHARK®️ 📍 CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fancy-white-party-06-08-2026/">
@@ -654,7 +675,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">6 ago 2026</p>
           <h2>FANCY WHITE PARTY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/almighty-en-concierto-05-08-2026/">
@@ -663,7 +684,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">5 ago 2026</p>
           <h2>ALMIGHTY EN CONCIERTO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-04-08-2026/">
@@ -672,7 +693,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">4 ago 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/juan-valiente-01-08-2026/">
@@ -681,16 +702,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">1 ago 2026</p>
           <h2>JUAN VALIENTE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Julio de 2026<span>23 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/alex-martini-31-07-2026/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/1176f5a3-a014-4499-0db7-eee502af5400/w=1350" alt="Cartel de Álex Martini" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">31 jul 2026</p>
           <h2>ÁLEX MARTINI</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/zafiro-white-party-30-07-2026/">
@@ -699,7 +725,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">30 jul 2026</p>
           <h2>ZAFIRO WHITE PARTY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/luar-la-l-29-07-2026/">
@@ -708,7 +734,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">29 jul 2026</p>
           <h2>LUAR LA L</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-28-07-2026/">
@@ -717,7 +743,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">28 jul 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/equis-25-07-2026/">
@@ -726,7 +752,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">25 jul 2026</p>
           <h2>EQUIS</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/luxe-nights-24-07-2026/">
@@ -735,7 +761,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">24 jul 2026</p>
           <h2>LUXE NIGHTS</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fancy-white-party-23-07-2026/">
@@ -744,7 +770,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">23 jul 2026</p>
           <h2>FANCY WHITE PARTY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/roa-22-07-2026/">
@@ -753,7 +779,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">22 jul 2026</p>
           <h2>ROA</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-21-07-2026/">
@@ -762,7 +788,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">21 jul 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/campeones-del-mundo-19-07-20261/">
@@ -771,7 +797,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">19 jul 2026</p>
           <h2>CAMPEONES DEL MUNDO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/mike-fajardo-18-07-2026/">
@@ -780,7 +806,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">18 jul 2026</p>
           <h2>MIKE FAJARDO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/brytiago-en-concierto-17-07-2026/">
@@ -789,7 +815,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">17 jul 2026</p>
           <h2>BRYTIAGO EN CONCIERTO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/zafiro-white-party-16-07-2026/">
@@ -798,7 +824,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">16 jul 2026</p>
           <h2>ZAFIRO WHITE PARTY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/alvama-ice-15-07-2026/">
@@ -807,7 +833,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">15 jul 2026</p>
           <h2>ALVAMA ICE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-14-07-2026/">
@@ -816,7 +842,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">14 jul 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/11-aniversario-11-07-2026/">
@@ -825,7 +851,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">11 jul 2026</p>
           <h2>11 ANIVERSARIO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/11-aniversario-10-07-20261/">
@@ -834,7 +860,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">10 jul 2026</p>
           <h2>11 ANIVERSARIO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fancy-white-party-09-07-2026/">
@@ -843,7 +869,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">9 jul 2026</p>
           <h2>FANCY WHITE PARTY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/sinaka-en-concierto-08-07-2026/">
@@ -852,7 +878,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">8 jul 2026</p>
           <h2>SINAKA EN CONCIERTO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-07-07-2026/">
@@ -861,7 +887,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">7 jul 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fiestas-de-denia-04-07-20261/">
@@ -870,7 +896,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">4 jul 2026</p>
           <h2>FIESTAS DE DÉNIA</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/summer-mode-03-07-2026/">
@@ -879,7 +905,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">3 jul 2026</p>
           <h2>SUMMER MODE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/puro-condado-02-07-2026/">
@@ -888,16 +914,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">2 jul 2026</p>
           <h2>PURO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Junio de 2026<span>9 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/prive-27-06-2026/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/7498bd00-c307-48c8-bacc-fe6ad97d2e00/w=1350" alt="Cartel de Privé" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">27 jun 2026</p>
           <h2>PRIVÉ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/bumbum-26-06-2026/">
@@ -906,7 +937,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">26 jun 2026</p>
           <h2>BUMBUM</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-23-06-2026/">
@@ -915,7 +946,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">23 jun 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fever--dann-valero-20-06-2026/">
@@ -924,7 +955,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">20 jun 2026</p>
           <h2>FEVER &amp; DANN VALERO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/project-xxl-19-06-2026/">
@@ -933,7 +964,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">19 jun 2026</p>
           <h2>PROJECT XXL</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fever-13-06-2026/">
@@ -942,7 +973,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">13 jun 2026</p>
           <h2>FEVER</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/friday-mode-12-06-2026/">
@@ -951,7 +982,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">12 jun 2026</p>
           <h2>FRIDAY MODE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/prive-06-06-2026/">
@@ -960,7 +991,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">6 jun 2026</p>
           <h2>PRIVÉ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/jose-nogales-05-06-2026/">
@@ -969,16 +1000,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">5 jun 2026</p>
           <h2>JOSE NOGALES</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Mayo de 2026<span>10 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/prive-30-05-2026/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/eaf2c3d3-ec66-4ac9-f79b-646bf745b800/w=1350" alt="Cartel de Privé" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">30 may 2026</p>
           <h2>PRIVÉ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-29-05-2026/">
@@ -987,7 +1023,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">29 may 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/interstellar-23-05-2026/">
@@ -996,7 +1032,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">23 may 2026</p>
           <h2>INTERSTELLAR</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/friday-mode-22-05-2026/">
@@ -1005,7 +1041,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">22 may 2026</p>
           <h2>FRIDAY MODE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fever-16-05-2026/">
@@ -1014,7 +1050,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">16 may 2026</p>
           <h2>FEVER</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/zafiro-15-05-2026/">
@@ -1023,7 +1059,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">15 may 2026</p>
           <h2>ZAFIRO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fever-09-05-2026/">
@@ -1032,7 +1068,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">9 may 2026</p>
           <h2>FEVER</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/puro-condado-08-05-2026/">
@@ -1041,7 +1077,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">8 may 2026</p>
           <h2>PURO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/prive-especial-sweet-suarez-02-05-2026/">
@@ -1050,7 +1086,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">2 may 2026</p>
           <h2>PRIVÉ ESPECIAL SWEET SUÁREZ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/mike-fajardo-01-05-2026/">
@@ -1059,16 +1095,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">1 may 2026</p>
           <h2>MIKE FAJARDO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Abril de 2026<span>13 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-30-04-2026/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/8aebcae1-6ed8-4436-17e0-8582749e4000/w=1350" alt="Cartel de Old School Reggaeton" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">30 abr 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/dann-valero-25-04-2026/">
@@ -1077,7 +1118,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">25 abr 2026</p>
           <h2>DANN VALERO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/pegao-neon-party-24-04-2026/">
@@ -1086,7 +1127,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">24 abr 2026</p>
           <h2>PEGAO NEON PARTY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/michael-g-18-04-2026/">
@@ -1095,7 +1136,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">18 abr 2026</p>
           <h2>MICHAEL G</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tributo-estopa-18-04-2026/">
@@ -1104,7 +1145,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">18 abr 2026</p>
           <h2>TRIBUTO “ESTOPA”</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/friday-mode-17-04-2026/">
@@ -1113,7 +1154,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">17 abr 2026</p>
           <h2>FRIDAY MODE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/interstellar-11-04-2026/">
@@ -1122,7 +1163,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">11 abr 2026</p>
           <h2>INTERSTELLAR</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/puro-condado-10-04-2026/">
@@ -1131,7 +1172,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">10 abr 2026</p>
           <h2>PURO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-05-04-2026/">
@@ -1140,7 +1181,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">5 abr 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/equis-04-04-2026/">
@@ -1149,7 +1190,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">5 abr 2026</p>
           <h2>EQUIS</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/barce-03-04-2026/">
@@ -1158,7 +1199,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">3 abr 2026</p>
           <h2>BARCE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/casper-magico-02-04-2026/">
@@ -1167,7 +1208,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">2 abr 2026</p>
           <h2>CASPER MÁGICO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/easter-mode-01-04-2026/">
@@ -1176,16 +1217,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">1 abr 2026</p>
           <h2>EASTER MODE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Marzo de 2026<span>12 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/fever-28-03-2026/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/feac5e34-a4d1-42a7-cbc9-4c60c7b5c300/w=1350" alt="Cartel de Fever" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">28 mar 2026</p>
           <h2>FEVER</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/feli-27-03-2026/">
@@ -1194,7 +1240,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">27 mar 2026</p>
           <h2>FELI</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/prive-21-03-2026/">
@@ -1203,7 +1249,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">21 mar 2026</p>
           <h2>PRIVÉ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tributo-el-canto-del-loco-21-03-2026/">
@@ -1212,7 +1258,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">21 mar 2026</p>
           <h2>TRIBUTO “EL CANTO DEL LOCO”</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/friday-mode-20-03-2026/">
@@ -1221,7 +1267,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">20 mar 2026</p>
           <h2>FRIDAY MODE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/la-nit-del-foc-18-03-2026/">
@@ -1230,7 +1276,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">18 mar 2026</p>
           <h2>LA NIT DEL FOC</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/dumore-14-03-2026/">
@@ -1239,7 +1285,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">14 mar 2026</p>
           <h2>DUMORE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-remember-fallas-festival-14-03-2026/">
@@ -1248,7 +1294,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">14 mar 2026</p>
           <h2>TARDEO: REMEMBER FALLAS FESTIVAL</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/jose-nogales-13-03-2026/">
@@ -1257,7 +1303,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">13 mar 2026</p>
           <h2>JOSE NOGALES</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fever-07-03-2026/">
@@ -1266,7 +1312,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">7 mar 2026</p>
           <h2>FEVER</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-fallero-07-03-2026/">
@@ -1275,7 +1321,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">7 mar 2026</p>
           <h2>TARDEO FALLERO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/puro-condado-06-03-2026/">
@@ -1284,16 +1330,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">6 mar 2026</p>
           <h2>PURO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Febrero de 2026<span>10 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/prive-28-02-2026/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/b6136bad-45ae-48cf-09ed-919bf83f4700/w=1350" alt="Cartel de Privé" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">28 feb 2026</p>
           <h2>PRIVÉ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-27-02-2026/">
@@ -1302,7 +1353,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">27 feb 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fercho-energy-21-02-2026/">
@@ -1311,7 +1362,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">21 feb 2026</p>
           <h2>FERCHO ENERGY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/project-xxl-black-party-20-02-2026/">
@@ -1320,7 +1371,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">20 feb 2026</p>
           <h2>PROJECT XXL BLACK PARTY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/carnaval-14-02-20268/">
@@ -1329,7 +1380,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">14 feb 2026</p>
           <h2>CARNAVAL</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-14-02-2026/">
@@ -1338,7 +1389,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">14 feb 2026</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/friday-mode-on-13-02-2026/">
@@ -1347,7 +1398,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">13 feb 2026</p>
           <h2>FRIDAY MODE ON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/jalix-07-02-2026/">
@@ -1356,7 +1407,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">7 feb 2026</p>
           <h2>JÁLIX</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-07-02-2026/">
@@ -1365,7 +1416,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">7 feb 2026</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/alvama-ice-06-02-2026/">
@@ -1374,16 +1425,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">6 feb 2026</p>
           <h2>ALVAMA ICE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Enero de 2026<span>17 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/dann-valero-31-01-2026/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/cf123d06-04dd-4d0c-33b2-f3b1d5ca0d00/w=1350" alt="Cartel de Dann Valero" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">31 ene 2026</p>
           <h2>DANN VALERO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/la-gran-fiesta-indie-31-01-2026/">
@@ -1392,7 +1448,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">31 ene 2026</p>
           <h2>LA GRAN FIESTA INDIE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tallarina-especial-fin-de-examenes-30-01-2026/">
@@ -1401,7 +1457,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">30 ene 2026</p>
           <h2>TALLARINA &quot;ESPECIAL FIN DE EXÁMENES&quot;</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/interstellar-24-01-2026/">
@@ -1410,7 +1466,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">24 ene 2026</p>
           <h2>INTERSTELLAR</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-24-01-2026/">
@@ -1419,7 +1475,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">24 ene 2026</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/pegao-23-01-2026/">
@@ -1428,7 +1484,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">23 ene 2026</p>
           <h2>PEGAO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/prive-17-01-2026/">
@@ -1437,7 +1493,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">17 ene 2026</p>
           <h2>PRIVÉ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-17-01-2026/">
@@ -1446,7 +1502,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">17 ene 2026</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/friday-mode-16-01-2026/">
@@ -1455,7 +1511,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">16 ene 2026</p>
           <h2>FRIDAY MODE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fever-10-01-2026/">
@@ -1464,7 +1520,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">10 ene 2026</p>
           <h2>FEVER</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-10-01-2026/">
@@ -1473,7 +1529,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">10 ene 2026</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/puro-condado-09-01-2026/">
@@ -1482,7 +1538,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">9 ene 2026</p>
           <h2>PURO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/noche-de-reyes-05-01-202635/">
@@ -1491,7 +1547,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">5 ene 2026</p>
           <h2>NOCHE DE REYES</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fercho-energy-03-01-2026/">
@@ -1500,7 +1556,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">3 ene 2026</p>
           <h2>FERCHO ENERGY</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-03-01-2026/">
@@ -1509,7 +1565,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">3 ene 2026</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-02-01-2026/">
@@ -1518,7 +1574,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">2 ene 2026</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/nochevieja-2025-31-12-20255/">
@@ -1527,16 +1583,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">1 ene 2026</p>
           <h2>NOCHEVIEJA 2025</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Diciembre de 2025<span>19 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/tardevieja-31-12-20252/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/3fd2597a-0c64-43f1-71fc-0431b07ebe00/w=1350" alt="Cartel de Tardevieja" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">31 dic 2025</p>
           <h2>TARDEVIEJA</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/interstellar-27-12-2025/">
@@ -1545,7 +1606,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">27 dic 2025</p>
           <h2>INTERSTELLAR</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-27-12-2025/">
@@ -1554,7 +1615,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">27 dic 2025</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/puro-condado-26-12-2025/">
@@ -1563,7 +1624,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">26 dic 2025</p>
           <h2>PURO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/navidad-25-12-20256/">
@@ -1572,7 +1633,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">25 dic 2025</p>
           <h2>NAVIDAD</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/nochebuena-24-12-202544/">
@@ -1581,7 +1642,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">25 dic 2025</p>
           <h2>NOCHEBUENA</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/prive-20-12-2025/">
@@ -1590,7 +1651,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">20 dic 2025</p>
           <h2>PRIVÉ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-20-12-2025/">
@@ -1599,7 +1660,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">20 dic 2025</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/luar-la-l-19-12-2025/">
@@ -1608,7 +1669,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">19 dic 2025</p>
           <h2>LUAR LA L</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-19-12-2025/">
@@ -1617,7 +1678,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">19 dic 2025</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/prive--ortuno-13-12-2025/">
@@ -1626,7 +1687,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">13 dic 2025</p>
           <h2>PRIVÉ &amp; ORTUÑO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-13-12-2025/">
@@ -1635,7 +1696,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">13 dic 2025</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/xiyo-y-fernandezz-12-12-2025/">
@@ -1644,7 +1705,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">12 dic 2025</p>
           <h2>XIYO Y FERNANDEZZ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-12-12-2025/">
@@ -1653,7 +1714,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">12 dic 2025</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/puro-condado-07-12-2025/">
@@ -1662,7 +1723,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">7 dic 2025</p>
           <h2>PURO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-remember-denia-festival-07-12-2025/">
@@ -1671,7 +1732,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">7 dic 2025</p>
           <h2>TARDEO: REMEMBER DÉNIA FESTIVAL</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/prive-06-12-2025/">
@@ -1680,7 +1741,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">6 dic 2025</p>
           <h2>PRIVÉ</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/tardeo-condado-06-12-2025/">
@@ -1689,7 +1750,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">6 dic 2025</p>
           <h2>TARDEO CONDADO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-05-12-2025/">
@@ -1698,16 +1759,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">5 dic 2025</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Noviembre de 2025<span>9 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/fiesta-top-94-29-11-2025/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/9cc30f7e-1f20-4a9e-e247-dc9725f64e00/w=1350" alt="Cartel de Fiesta Top #94" loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">29 nov 2025</p>
           <h2>FIESTA TOP #94</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/montoya-28-11-2025/">
@@ -1716,7 +1782,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">28 nov 2025</p>
           <h2>MONTOYA</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/interstellar-22-11-2025/">
@@ -1725,7 +1791,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">22 nov 2025</p>
           <h2>INTERSTELLAR</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/j-abdiel-21-11-2025/">
@@ -1734,7 +1800,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">21 nov 2025</p>
           <h2>J ABDIEL</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fever-15-11-2025/">
@@ -1743,7 +1809,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">15 nov 2025</p>
           <h2>FEVER</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/old-school-reggaeton-14-11-2025/">
@@ -1752,7 +1818,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">14 nov 2025</p>
           <h2>OLD SCHOOL REGGAETON</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/michael-g-08-11-2025/">
@@ -1761,7 +1827,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">8 nov 2025</p>
           <h2>MICHAEL G</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/feli-07-11-2025/">
@@ -1770,7 +1836,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">8 nov 2025</p>
           <h2>FELI</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/halloween--01-11-20251/">
@@ -1779,16 +1845,21 @@
         <div class="ev-card-body">
           <p class="ev-card-date">1 nov 2025</p>
           <h2>HALLOWEEN </h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
+      </div>
+    </section>
+    <section class="ev-month">
+      <h3>Octubre de 2025<span>5 eventos</span></h3>
+      <div class="ev-cards-past">
       <a class="ev-card is-past" href="/eventos/halloween--31-10-202517/">
         <img src="https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/55308cb1-a45f-4e3d-6822-02d824e35600/w=1350" alt="Cartel de Halloween " loading="lazy" />
         <div class="ev-card-grad"></div>
         <div class="ev-card-body">
           <p class="ev-card-date">31 oct 2025</p>
           <h2>HALLOWEEN </h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/vareo-25-10-2025/">
@@ -1797,7 +1868,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">25 oct 2025</p>
           <h2>VAREO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/dj-totote-24-10-2025/">
@@ -1806,7 +1877,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">25 oct 2025</p>
           <h2>DJ TOTOTE</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/prive--18-10-2025/">
@@ -1815,7 +1886,7 @@
         <div class="ev-card-body">
           <p class="ev-card-date">18 oct 2025</p>
           <h2>PRIVÉ </h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
       <a class="ev-card is-past" href="/eventos/fomo-17-10-20251/">
@@ -1824,10 +1895,11 @@
         <div class="ev-card-body">
           <p class="ev-card-date">18 oct 2025</p>
           <h2>FOMO</h2>
-          <span class="ev-card-btn">Ver evento</span>
+          
         </div>
       </a>
-    </div>
+      </div>
+    </section>
   </main>
 
   <a class="ev-whatsapp" href="https://wa.me/34601602030?text=Hola%2C+necesito+informaci%C3%B3n+sobre+Condado+Club." target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">

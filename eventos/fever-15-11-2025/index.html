@@ -255,7 +255,16 @@
     .ev-card.is-past img { filter: grayscale(0.6) brightness(0.8); }
     .ev-card.is-past:hover img { filter: none; }
     .ev-card.is-past .ev-card-date { color: var(--w60); }
-    .ev-card.is-past .ev-card-btn { background: transparent; color: var(--white); border: 1px solid var(--w15); }
+    .ev-month { margin: 0 0 36px; }
+    .ev-month h3 { font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--w60); margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--w15); }
+    .ev-month h3 span { color: var(--w40); font-weight: 400; letter-spacing: 1px; margin-left: 8px; }
+    .ev-cards-past { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    @media (min-width: 1100px) { .ev-cards-past { grid-template-columns: repeat(6, 1fr); } }
+    @media (max-width: 599px) { .ev-cards-past { grid-template-columns: repeat(3, 1fr); gap: 8px; } }
+    .ev-card.is-past { border-radius: 14px; }
+    .ev-card.is-past .ev-card-body { padding: 12px; }
+    .ev-card.is-past h2 { font-size: 18px; margin: 0; }
+    @media (max-width: 599px) { .ev-card.is-past { border-radius: 10px; } .ev-card.is-past .ev-card-body { padding: 8px; } .ev-card.is-past h2 { font-size: 14px; } .ev-card.is-past .ev-card-date { font-size: 8px; letter-spacing: 1px; } }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Event","name":"Fever","startDate":"2025-11-15T22:45:00.000Z","endDate":"2025-11-16T05:30:00.000Z","eventStatus":"https://schema.org/EventScheduled","eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode","location":{"@type":"Place","name":"Condado Club","address":{"@type":"PostalAddress","streetAddress":"Calle Marqués de Campo, 42","postalCode":"03700","addressLocality":"Dénia","addressRegion":"Alicante","addressCountry":"ES"}},"image":["https://fourvenues.com/cdn-cgi/imagedelivery/kWuoTchaMsk7Xnc_FNem7A/f050c903-88ab-4930-c720-6082902a2800/w=1350"],"description":"Es imprescindible para el acceso a la discoteca presentar DNI o documento original físico de identificación.","organizer":{"@type":"Organization","name":"Condado Club","url":"https://www.condadoclub.es"},"offers":{"@type":"Offer","url":"https://www.condadoclub.es/evento/#events/fever-15-11-2025-G0GZ?hide=backarrow","availability":"https://schema.org/SoldOut"}}</script>
 </head>
