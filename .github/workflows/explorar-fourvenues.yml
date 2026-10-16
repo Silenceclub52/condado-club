@@ -1,0 +1,33 @@
+# Solo lectura: investiga de dónde carga el widget de Fourvenues los eventos.
+# Vive solo en la rama prueba-eventos; no publica nada.
+name: Explorar Fourvenues
+on:
+  push:
+    branches: [prueba-eventos]
+    paths: [".github/workflows/explorar-fourvenues.yml"]
+  workflow_dispatch:
+jobs:
+  explorar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el script del widget
+        run: |
+          mkdir -p out
+          curl -sSL -A "Mozilla/5.0" -D out/widget.headers -o out/widget.js "https://www.fourvenues.com/assets/iframe/condado-club-denia/events"
+          echo "== cabeceras"; cat out/widget.headers
+          echo "== tamaño"; wc -c out/widget.js
+          echo "== primeras 3000 letras"; head -c 3000 out/widget.js; echo
+          echo "== URLs encontradas"; grep -oE "https?://[^\"' )<>]+" out/widget.js | sort -u | head -80
+      - name: Seguir las URLs de Fourvenues que aparecen
+        run: |
+          for u in $(grep -oE "https?://[a-z0-9.-]*fourvenues\.com[^\"' )<>]*" out/widget.js | sort -u | head -15); do
+            f="out/$(echo "$u" | md5sum | cut -c1-8)"
+            code=$(curl -sSL -A "Mozilla/5.0" -o "$f" -w "%{http_code} %{content_type}" "$u" || true)
+            echo "== $u -> $code ($(wc -c < "$f") bytes)"
+            head -c 1500 "$f" | tr -d '\000'; echo
+            echo "-- urls dentro:"; grep -oE "https?://[^\"' )<>]+" "$f" | grep -i -E "api|event|fourvenues" | sort -u | head -30
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fourvenues-exploracion
+          path: out
