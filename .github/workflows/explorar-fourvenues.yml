@@ -1,61 +1,47 @@
-# Solo lectura: investiga de dónde carga el widget de Fourvenues los eventos.
-# Vive solo en la rama prueba-eventos; no publica nada.
+# Solo lectura: descarga la documentación pública de la API de Fourvenues
+# y la guarda en la rama prueba-eventos (carpeta docs-fourvenues/).
 name: Explorar Fourvenues
 on:
   push:
     branches: [prueba-eventos]
     paths: [".github/workflows/explorar-fourvenues.yml"]
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
-  explorar:
+  docs:
     runs-on: ubuntu-latest
     steps:
-      - name: Parte central del script del widget
+      - uses: actions/checkout@v4
+      - name: Descargar documentación
         run: |
-          mkdir -p out
-          curl -sSL -A "Mozilla/5.0" -o out/widget.js "https://www.fourvenues.com/assets/iframe/condado-club-denia/events"
-          head -c 9000 out/widget.js | tail -c 6200
-      - name: Navegador real en condadoclub.es/evento/ registrando peticiones a Fourvenues
+          mkdir -p docs-fourvenues
+          B=https://docs.fourvenues.com
+          for f in llms.txt llms-full.txt sitemap.xml openapi.json; do
+            code=$(curl -sSL -A "Mozilla/5.0" -o "docs-fourvenues/$f" -w "%{http_code}" "$B/$f" || true)
+            echo "$f -> $code ($(wc -c < docs-fourvenues/$f) bytes)"
+            [ "$code" = "200" ] || rm -f "docs-fourvenues/$f"
+          done
+          # Páginas en Markdown (Mintlify sirve .md) a partir de llms.txt o del sitemap
+          { grep -oE "https://docs\.fourvenues\.com/[^ )\"<]+" docs-fourvenues/llms.txt 2>/dev/null; grep -oE "https://docs\.fourvenues\.com/[^<]+" docs-fourvenues/sitemap.xml 2>/dev/null; } | sed 's/\.md$//' | sort -u > docs-fourvenues/_urls.txt || true
+          echo "URLs: $(wc -l < docs-fourvenues/_urls.txt)"
+          mkdir -p docs-fourvenues/pages
+          while read -r u; do
+            case "$u" in *integrations*|*introduction*|*getting*|*recipes*) ;; *) continue ;; esac
+            n=$(echo "${u#https://docs.fourvenues.com/}" | tr '/' '_')
+            curl -sSL -A "Mozilla/5.0" -o "docs-fourvenues/pages/$n.md" "$u.md" || true
+          done < docs-fourvenues/_urls.txt
+          ls -la docs-fourvenues docs-fourvenues/pages | head -100
+          # OpenAPI de la Integrations API (rutas habituales de Mintlify)
+          for p in integrations/openapi.json api-reference/openapi.json openapi.yaml integrations/openapi.yaml; do
+            code=$(curl -sSL -A "Mozilla/5.0" -o /tmp/o -w "%{http_code}" "$B/$p" || true)
+            echo "$p -> $code"; [ "$code" = "200" ] && cp /tmp/o "docs-fourvenues/$(echo $p | tr '/' '_')"
+          done
+          du -sh docs-fourvenues
+      - name: Guardar en la rama
         run: |
-          mkdir -p nav && cd nav && npm init -y >/dev/null && npm i playwright@1 >/dev/null 2>&1 && npx playwright install --with-deps chromium >/dev/null 2>&1
-          cat > nav.js <<'JS'
-          const { chromium } = require('playwright');
-          const fs = require('fs');
-          (async () => {
-            const b = await chromium.launch();
-            const p = await b.newPage({ viewport: { width: 1280, height: 900 } });
-            const seen = [];
-            p.on('response', async (r) => {
-              const u = r.url();
-              if (!/fourvenues/.test(u)) return;
-              const ct = r.headers()['content-type'] || '';
-              let body = '';
-              if (/json/.test(ct)) { try { body = (await r.text()).slice(0, 2500); } catch (e) {} }
-              seen.push({ u, s: r.status(), ct, m: r.request().method(), h: r.request().headers(), body });
-            });
-            await p.goto('https://www.condadoclub.es/evento/', { waitUntil: 'networkidle', timeout: 60000 }).catch(e => console.log('goto', e.message));
-            await p.waitForTimeout(8000);
-            console.log('URL final:', p.url());
-            const frames = p.frames().map(f => f.url());
-            console.log('IFRAMES:', JSON.stringify(frames, null, 1));
-            for (const x of seen) {
-              console.log(`\n=== ${x.m} ${x.s} ${x.u}\n    ct=${x.ct}`);
-              if (x.h['app-id'] || x.h['authorization']) console.log('    headers:', JSON.stringify({ 'app-id': x.h['app-id'], authorization: x.h['authorization'] ? '(presente)' : undefined }));
-              if (x.body) console.log('    body:', x.body);
-            }
-            // Enlaces a eventos visibles dentro del iframe
-            for (const f of p.frames()) {
-              try {
-                const links = await f.evaluate(() => [...document.querySelectorAll('a')].map(a => a.href).filter(h => /events\//.test(h)));
-                if (links.length) console.log('\nENLACES en', f.url(), '\n', [...new Set(links)].slice(0, 30).join('\n'));
-              } catch (e) {}
-            }
-            await p.screenshot({ path: 'evento.png', fullPage: false });
-            await b.close();
-          })();
-          JS
-          node nav.js
-      - uses: actions/upload-artifact@v4
-        with:
-          name: fourvenues-exploracion-3
-          path: nav/evento.png
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add docs-fourvenues
+          git commit -m "Documentación de la API de Fourvenues (descarga automática)" || echo "sin cambios"
+          git push
