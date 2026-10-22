@@ -8,6 +8,7 @@
 # Solo sube los archivos que son distintos (o faltan) en el servidor, de uno en
 # uno y sobrescribiendo en su sitio: nunca borra un archivo antes de subirlo.
 # Nunca borra archivos del servidor; cgi-bin y .well-known no se tocan.
+# CLAUDE.md es documentación del repo: no se sube a la web.
 #
 # Necesita el secreto FTP_PASSWORD (Settings → Secrets and variables → Actions).
 
@@ -18,6 +19,7 @@ on:
     branches: [main]
     paths-ignore:
       - ".github/**"
+      - "CLAUDE.md"
   workflow_dispatch:
     inputs:
       modo:
@@ -67,7 +69,7 @@ jobs:
         run: |
           mkdir -p "$RUNNER_TEMP/subir"
           git -c core.quotePath=false ls-files -z | while IFS= read -r -d '' f; do
-            case "$f" in .github/*) continue ;; esac
+            case "$f" in .github/*|CLAUDE.md) continue ;; esac
             if ! cmp -s "$f" "$RUNNER_TEMP/copia-servidor/$f"; then
               mkdir -p "$RUNNER_TEMP/subir/$(dirname "$f")"
               cp -p "$f" "$RUNNER_TEMP/subir/$f"

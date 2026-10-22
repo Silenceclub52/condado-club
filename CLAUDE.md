@@ -76,7 +76,7 @@ Código muerto: `EVENTS`, `EventCard` y `MONTH_NUM`/`MONTH_NAME` son de la versi
 
 Workflow `Publicar en Dinahosting`:
 
-- **Push a `main`** → copia de seguridad del servidor + publicación.
+- **Push a `main`** → copia de seguridad del servidor + publicación. `CLAUDE.md` no se sube a la web y un cambio solo en él no publica.
 - **Manual** (Actions → Run workflow): `comparar` (por defecto) solo hace copia y lista diferencias; `publicar` sube.
 - Pasos: descarga el servidor completo con `lftp mirror` (excepto `cgi-bin/` y `.well-known/`) → lo guarda como artifact `copia-servidor-<n>` (90 días) → compara con `git ls-files` → sube **solo** los archivos distintos o que faltan, uno a uno, sobrescribiendo.
 - **Nunca borra nada del servidor.** Si se elimina o renombra un archivo en el repo, el viejo sigue en Dinahosting: hay que borrarlo a mano por FTP.
