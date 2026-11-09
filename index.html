@@ -1412,8 +1412,8 @@ function Home({ onNav }) {
             Dénia, Alicante
           </p>
           <div className="hero-ctas">
-            <a href="/calendario" onClick={(e) => { e.preventDefault(); onNav('/calendario'); }} className="btn btn-gold">Ver próximos eventos →</a>
-            <a href="/mesas-vip" onClick={(e) => { e.preventDefault(); onNav('/mesas-vip'); }} className="btn btn-ghost">COMPRAR TICKETS Y VIP</a>
+            <a href="/calendario" onClick={(e) => { e.preventDefault(); onNav('/calendario'); }} className="btn btn-gold">Entradas y VIP →</a>
+            <a href="/mesas-vip" onClick={(e) => { e.preventDefault(); onNav('/mesas-vip'); }} className="btn btn-ghost">Ver zonas VIP</a>
           </div>
         </div>
       </section>
@@ -1775,7 +1775,7 @@ function Home({ onNav }) {
           Dénia, Alicante
         </p>
         <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}>
-          <a href="/mesas-vip" onClick={(e) => { e.preventDefault(); onNav('/mesas-vip'); }} className="btn btn-gold">TICKETS Y VIP</a>
+          <a href="/calendario" onClick={(e) => { e.preventDefault(); onNav('/calendario'); }} className="btn btn-gold">Entradas y VIP</a>
         </div>
       </div>
     </div>
@@ -1912,7 +1912,7 @@ function MesasVIP({ onNav }) {
       <PageHeader
         eyebrow="Reservas premium"
         title='Zonas <em style="font-style:normal;font-weight:300;color:var(--gold)">VIP</em>'
-        subtitle="Vive la fiesta como nunca. Elige tu zona y disfruta del mejor ambiente con mesa propia y servicio exclusivo. Una experiencia inolvidable en Condado."
+        subtitle="Vive la fiesta como nunca. Elige tu zona y disfruta del mejor ambiente con mesa propia y servicio exclusivo. Una experiencia inolvidable en Condado. Las mesas se reservan por evento: elige la fecha en el calendario y selecciona tu zona."
       />
 
       <div style={{ padding: '0 24px 60px' }}>
@@ -1943,7 +1943,7 @@ function MesasVIP({ onNav }) {
                     ))}
                   </ul>
                   <button onClick={() => onNav('/calendario')} className="btn btn-gold" style={{ width: '100%' }}>
-                    Tickets y VIP
+                    Elegir fecha y reservar →
                   </button>
                 </div>
               </article>
